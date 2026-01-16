@@ -134,18 +134,46 @@
 
     <main id="main-content" class="opacity-0 transition-opacity duration-1000">
         
-        <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center">
-            <div class="text-xl font-black tracking-tighter">GS<span class="text-[#C5A059]"> </span>Hospitality</div>
-            <div class="hidden lg:flex space-x-10">
-                <a href="#davos" class="nav-item">Davos Summit</a>
-                <a href="#estates" class="nav-item">Rentals</a>
-                <a href="#logistics" class="nav-item">Logistics</a>
-                <a href="#gastronomy" class="nav-item">Gastronomy</a>
-                <a href="#production" class="nav-item">Pavilions</a>
-                <a href="#legal" class="nav-item text-gray-500">Legal</a>
-            </div>
-            <a href="#contact" class="text-[10px] font-bold border border-[#C5A059] px-4 py-2 text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition uppercase">Inquire</a>
-        </nav>
+   <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+    <a href="https://swisswowvacations.com/index.html" class="text-xl font-black tracking-tighter hover:opacity-70 transition-opacity duration-300">
+        GS<span class="text-[#C5A059]">.</span>Hospitality
+    </a>
+
+    <div class="hidden lg:flex space-x-10">
+        <a href="#davos" class="nav-item">Davos Summit</a>
+        <a href="#estates" class="nav-item">Rentals</a>
+        <a href="#logistics" class="nav-item">Logistics</a>
+        <a href="#gastronomy" class="nav-item">Gastronomy</a>
+        <a href="#production" class="nav-item">Pavilions</a>
+        <a href="#legal" class="nav-item text-gray-500">Legal</a>
+    </div>
+
+    <div class="flex items-center space-x-4">
+        <a href="#contact" class="text-[10px] font-bold border border-[#C5A059] px-4 py-2 text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition uppercase whitespace-nowrap">
+            Inquire
+        </a>
+        
+        <button onclick="toggleMenu()" class="lg:hidden text-white transition hover:text-[#C5A059] p-2">
+            <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+    </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#050505] hidden flex-col justify-center items-center text-center p-10 transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
+    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-[#C5A059]">
+        <i data-lucide="x" class="w-8 h-8"></i>
+    </button>
+    
+    <div class="space-y-8 flex flex-col">
+        <a href="#davos" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Davos Summit</a>
+        <a href="#estates" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Rentals</a>
+        <a href="#logistics" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Logistics</a>
+        <a href="#gastronomy" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Gastronomy</a>
+        <a href="#production" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Pavilions</a>
+        <hr class="border-white/10 w-12 mx-auto">
+        <a href="#legal" onclick="toggleMenu()" class="text-xs tracking-[0.4em] text-gray-500 uppercase">Legal & Privacy</a>
+    </div>
+</div>
 
         <section class="h-screen flex items-center justify-center relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
@@ -612,6 +640,25 @@
             document.body.style.overflowY = 'auto';
             document.getElementById('main-content').style.opacity = '1';
         }
+        function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const body = document.body;
+
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        // Small timeout to allow the 'hidden' removal to register before animating
+        setTimeout(() => {
+            menu.classList.remove('translate-x-full');
+            body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }, 10);
+    } else {
+        menu.classList.add('translate-x-full');
+        body.style.overflow = 'auto'; // Re-enable scrolling
+        setTimeout(() => {
+            menu.classList.add('hidden');
+        }, 500); // Matches the duration of the transition
+    }
+}
     </script>
 </body>
 </html>
