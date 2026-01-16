@@ -79,27 +79,58 @@
 </head>
 <body class="modal-active">
 
-    <div id="entry-gate" class="p-6">
-        <div class="max-w-xl w-full" data-aos="zoom-in">
-            <div class="text-center mb-10">
-                <h2 class="text-xs tracking-[0.8em] text-gray-500 uppercase mb-4">Secure Access</h2>
-                <h1 class="text-4xl font-extrabold tracking-tighter italic">GS<span class="text-[#C5A059]">.</span>HOSPITALITY</h1>
-            </div>
-            
-            <div class="glass p-8 rounded-2xl mb-6 text-[11px] text-gray-400 leading-relaxed">
-                <h3 class="text-white text-sm mb-4 uppercase font-bold">Terms of Engagement & Privacy</h3>
-                <p class="mb-4">By entering, you agree to our <strong>Swiss Privacy Standards</strong>. We facilitate high-level logistics and accommodations for the World Economic Forum and elite global summits.</p>
-                <p class="mb-4 italic underline">Notice on Media: All visuals are for conceptual representation. Any licensed media discrepancies are resolved at standard stock market valuation upon notice.</p>
-                
-                <label class="flex items-start space-x-3 cursor-pointer mt-6">
-                    <input type="checkbox" id="agree-check" class="mt-1 w-4 h-4 accent-[#C5A059]">
-                    <span class="text-gray-300">I have read and agree to the Disclaimers, Privacy Policy, and Terms of Use for GS-Hospitality.ch</span>
-                </label>
-            </div>
-            
-            <button onclick="enterSite()" id="enter-btn" disabled class="w-full btn-gold opacity-20 cursor-not-allowed uppercase">Confirm & Enter</button>
+<div id="entry-gate" class="p-6 flex items-center justify-center min-h-screen bg-black">
+    <div class="max-w-xl w-full" data-aos="zoom-in">
+        
+        <div class="text-center mb-10">
+            <h2 class="text-xs tracking-[0.8em] text-gray-500 uppercase mb-4">Secure Access Only</h2>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter italic text-white">
+                GS<span class="text-[#C5A059]">.</span>HOSPITALITY
+            </h1>
         </div>
+        
+        <div class="glass p-8 rounded-2xl mb-6 text-[11px] text-gray-400 leading-relaxed shadow-2xl">
+            <h3 class="text-white text-sm mb-4 uppercase font-bold tracking-widest border-b border-white/10 pb-2">
+                Discretionary Access & Private Governance
+            </h3>
+            
+            <p class="mb-3">
+                By entering, you agree to our <strong>Swiss Privacy Standards</strong>. This digital platform is intended for <strong>private purpose only</strong>. We facilitate elite logistics and high-profile accommodations for the World Economic Forum and global summits on a discretionary basis.
+            </p>
+
+            <div class="space-y-3">
+                <p>
+                    <strong>No Warranty & Liability:</strong> Information is provided "as is." GS-Hospitality offers no warranty regarding accuracy and assumes no liability for direct or indirect damages arising from the use of this site.
+                </p>
+
+                <p>
+                    <strong>Intellectual Property:</strong> All content, imagery, and design are exclusive property. <strong>Express written approval</strong> is strictly required to reproduce or utilize any site content.
+                </p>
+
+                <p>
+                    <strong>Terms of Use:</strong> We reserve the right to modify these terms, revoke access, or update information at any time without prior notice.
+                </p>
+
+                <p class="italic border-t border-white/10 pt-3">
+                    <strong>Notice on Media:</strong> All visuals are for conceptual representation. Any licensed media discrepancies are resolved exclusively at standard stock market valuation upon formal notice.
+                </p>
+            </div>
+            
+            <label class="flex items-start space-x-3 cursor-pointer mt-8 group">
+                <input type="checkbox" id="agree-check" class="mt-1 w-4 h-4 accent-[#C5A059] cursor-pointer">
+                <span class="text-gray-300 group-hover:text-white transition">
+                    I acknowledge the private nature of this portal and agree to the full Terms of Use, Privacy Policy, and Liability Disclaimers.
+                </span>
+            </label>
+        </div>
+        
+        <button onclick="enterSite()" id="enter-btn" disabled 
+            class="w-full bg-[#C5A059] text-black font-black py-4 rounded-xl opacity-20 cursor-not-allowed uppercase tracking-[0.2em] transition-all duration-500 hover:bg-white active:scale-95">
+            Confirm & Enter Experience
+        </button>
+
     </div>
+</div>
 
     <main id="main-content" class="opacity-0 transition-opacity duration-1000">
         
