@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GS Hospitality | WEF Davos & Elite Event Management</title>
+    <title>GS Hospitality | Premier Davos WEF Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap');
 
         :root {
-            --accent: #D4AF37; 
+            --accent: #C5A059; /* Muted Champagne Gold */
             --bg: #050505;
         }
 
@@ -22,15 +22,21 @@
             overflow: hidden; /* Locked until terms agreed */
         }
 
-        h1, h2, h3, .font-syne { font-family: 'Syne', sans-serif; }
+        h1, h2, h3, h4, .font-syne { font-family: 'Syne', sans-serif; }
 
         .glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
 
-        /* Entry Modal */
+        .text-gradient {
+            background: linear-gradient(to bottom right, #fff 30%, #C5A059);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Entry Gate Styles */
         #entry-gate {
             position: fixed;
             inset: 0;
@@ -41,133 +47,175 @@
             justify-content: center;
         }
 
-        .gold-gradient {
-            background: linear-gradient(90deg, #D4AF37, #FBF5E6, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btn-premium {
-            position: relative;
-            padding: 1rem 2rem;
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            transition: 0.4s;
-            overflow: hidden;
-        }
-
-        .btn-premium:hover {
+        .btn-gold {
             background: var(--accent);
             color: black;
+            padding: 1rem 2rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
         }
 
-        /* Prevent scroll when modal is active */
-        .modal-active { overflow: hidden; }
-        .site-visible { overflow-y: auto !important; }
+        .btn-gold:hover:not(:disabled) {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .nav-item {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover { color: var(--accent); }
+
+        /* Custom scroll for GenZ feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); }
     </style>
 </head>
 <body class="modal-active">
 
-    <div id="entry-gate" class="px-6 text-center">
-        <div class="max-w-2xl" data-aos="fade-up">
-            <h2 class="text-xs tracking-[0.6em] text-gray-500 uppercase mb-8">Official Entrance</h2>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-8 tracking-tighter">GS<span class="text-[#D4AF37]">.</span>HOSPITALITY</h1>
-            <div class="glass p-8 rounded-lg mb-8 text-sm text-gray-400 leading-relaxed text-left">
-                <p class="mb-4">By entering this site, you acknowledge and agree to our <b>Terms of Service</b>, <b>Privacy Policy</b>, and <b>Swiss Data Regulations</b>.</p>
-                <p class="mb-4 italic">Notice: GS Hospitality uses premium stock media for conceptual visualization. Any licensing discrepancies will be settled at standard stock market rates.</p>
-                <label class="flex items-center space-x-3 cursor-pointer">
-                    <input type="checkbox" id="agree-check" class="w-4 h-4 accent-[#D4AF37]">
-                    <span>I confirm I am seeking professional hospitality services and agree to the terms.</span>
+    <div id="entry-gate" class="p-6">
+        <div class="max-w-xl w-full" data-aos="zoom-in">
+            <div class="text-center mb-10">
+                <h2 class="text-xs tracking-[0.8em] text-gray-500 uppercase mb-4">Secure Access</h2>
+                <h1 class="text-4xl font-extrabold tracking-tighter italic">GS<span class="text-[#C5A059]">.</span>HOSPITALITY</h1>
+            </div>
+            
+            <div class="glass p-8 rounded-2xl mb-6 text-[11px] text-gray-400 leading-relaxed">
+                <h3 class="text-white text-sm mb-4 uppercase font-bold">Terms of Engagement & Privacy</h3>
+                <p class="mb-4">By entering, you agree to our <strong>Swiss Privacy Standards</strong>. We facilitate high-level logistics and accommodations for the World Economic Forum and elite global summits.</p>
+                <p class="mb-4 italic underline">Notice on Media: All visuals are for conceptual representation. Any licensed media discrepancies are resolved at standard stock market valuation upon notice.</p>
+                
+                <label class="flex items-start space-x-3 cursor-pointer mt-6">
+                    <input type="checkbox" id="agree-check" class="mt-1 w-4 h-4 accent-[#C5A059]">
+                    <span class="text-gray-300">I have read and agree to the Disclaimers, Privacy Policy, and Terms of Use for GS-Hospitality.ch</span>
                 </label>
             </div>
-            <button onclick="enterSite()" class="btn-premium w-full font-bold uppercase tracking-widest opacity-50 cursor-not-allowed" id="enter-btn" disabled>Enter Experience</button>
+            
+            <button onclick="enterSite()" id="enter-btn" disabled class="w-full btn-gold opacity-20 cursor-not-allowed uppercase">Confirm & Enter</button>
         </div>
     </div>
 
     <main id="main-content" class="opacity-0 transition-opacity duration-1000">
         
-        <nav class="fixed w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter">GS<span class="text-[#D4AF37]">.</span>HOSPITALITY</div>
-            <div class="hidden md:flex space-x-8 uppercase text-[10px] tracking-[0.2em] font-bold">
-                <a href="#home" class="hover:text-[#D4AF37]">Home</a>
-                <a href="#davos" class="hover:text-[#D4AF37]">Davos 2026</a>
-                <a href="#services" class="hover:text-[#D4AF37]">Services</a>
-                <a href="#legal" class="hover:text-[#D4AF37]">Legal</a>
-                <a href="#contact" class="bg-white text-black px-4 py-2 hover:bg-[#D4AF37]">Enquire</a>
+        <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center">
+            <div class="text-xl font-black tracking-tighter">GS<span class="text-[#C5A059]">.</span>H</div>
+            <div class="hidden lg:flex space-x-10">
+                <a href="#davos" class="nav-item">Summit 2026</a>
+                <a href="#estates" class="nav-item">Estates</a>
+                <a href="#logistics" class="nav-item">Logistics</a>
+                <a href="#gastronomy" class="nav-item">Gastronomy</a>
+                <a href="#production" class="nav-item">Production</a>
+                <a href="#legal" class="nav-item text-gray-500">Legal</a>
             </div>
+            <a href="#contact" class="text-[10px] font-bold border border-[#C5A059] px-4 py-2 text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition uppercase">Inquire</a>
         </nav>
 
-        <section id="home" class="h-screen flex items-center justify-center relative overflow-hidden">
-            <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-luxury-hotel-lobby-and-staircase-1165-large.mp4" type="video/mp4">
-            </video>
-            <div class="relative z-20 text-center px-6">
-                <h1 class="text-6xl md:text-9xl font-extrabold mb-4 tracking-tighter gold-gradient">THE PINNACLE.</h1>
-                <p class="text-xl md:text-2xl font-light tracking-widest text-gray-300">WEF DAVOS · GLOBAL TRAVEL · ELITE EVENTS</p>
+        <section class="h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
+            <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale" alt="Davos Background">
+            
+            <div class="relative z-20 text-center px-6" data-aos="fade-up">
+                <span class="text-[#C5A059] tracking-[0.5em] text-[10px] uppercase mb-4 block">Official Mission Support</span>
+                <h1 class="text-6xl md:text-9xl font-extrabold tracking-tighter text-gradient leading-tight">DAVOS<br>EXPERIENCE.</h1>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400 text-sm md:text-lg font-light tracking-wide uppercase">High-Profile Accommodations · Elite Logistics · Global Summits</p>
             </div>
         </section>
 
-        <section id="davos" class="py-24 px-6 md:px-24 bg-[#080808]">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div data-aos="fade-right">
-                        <span class="text-[#D4AF37] font-bold tracking-widest text-xs">ANNUAL MEETING 2026</span>
-                        <h2 class="text-5xl font-bold mt-4 mb-8">DAVOS DELEGATE SOLUTIONS</h2>
-                        <p class="text-gray-400 mb-6 text-lg">We provide end-to-end mission support for the World Economic Forum. From high-security chalet acquisitions to Michelin-standard catering in the heart of the Alps.</p>
-                        <ul class="space-y-4 text-sm uppercase tracking-wider text-gray-300">
-                            <li class="flex items-center"><i data-lucide="check" class="text-[#D4AF37] mr-3 w-4"></i> High-Profile Security Chalets</li>
-                            <li class="flex items-center"><i data-lucide="check" class="text-[#D4AF37] mr-3 w-4"></i> Private Aviation & Ground Transfers</li>
-                            <li class="flex items-center"><i data-lucide="check" class="text-[#D4AF37] mr-3 w-4"></i> Exclusive Networking Catering</li>
-                        </ul>
+        <section id="davos" class="py-32 px-6 md:px-24">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl font-bold mb-8 italic">THE SUMMIT<br>AUTHORITY.</h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">Navigating the World Economic Forum requires more than just a room; it requires a strategic base of operations. GS-Hospitality provides end-to-end management for delegations, corporate entities, and private families.</p>
+                    <div class="flex items-center space-x-6">
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-[#C5A059]">01</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500">Security Clearance</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-3xl font-bold text-[#C5A059]">24/7</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500">Concierge Support</p>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" class="rounded-lg grayscale hover:grayscale-0 transition duration-500 h-64 w-full object-cover" alt="Elite Event">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800" class="rounded-lg mt-8 grayscale hover:grayscale-0 transition duration-500 h-64 w-full object-cover" alt="Catering">
+                </div>
+                <div class="glass p-4 rounded-3xl" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1518005020480-10f43bc5406b?auto=format&fit=crop&q=80&w=1000" class="rounded-2xl grayscale hover:grayscale-0 transition duration-700 h-96 w-full object-cover" alt="Davos Chalet">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#080808]">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+                
+                <div id="estates" class="glass p-10 group hover:border-[#C5A059] transition duration-500" data-aos="fade-up">
+                    <i data-lucide="key" class="text-[#C5A059] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">High-Profile Estates</h3>
+                    <p class="text-gray-500 text-sm mb-6">Exclusive Davos chalets, off-market hotel buyouts, and high-security residential zones for VIP delegations.</p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest text-gray-400">
+                        <li>· Alpine Luxury Chalets</li>
+                        <li>· Secure Penthouse Suites</li>
+                        <li>· Corporate HQ Venues</li>
+                    </ul>
+                </div>
+
+                <div id="logistics" class="glass p-10 group hover:border-[#C5A059] transition duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <i data-lucide="shield-check" class="text-[#C5A059] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Travel & Security</h3>
+                    <p class="text-gray-500 text-sm mb-6">Precision logistics including armored transfers, private aviation, and Zurich-to-Davos helicopter shuttles.</p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest text-gray-400">
+                        <li>· Private Jet Charters</li>
+                        <li>· Chauffeur Limousines</li>
+                        <li>· VIP Protection Details</li>
+                    </ul>
+                </div>
+
+                <div id="gastronomy" class="glass p-10 group hover:border-[#C5A059] transition duration-500" data-aos="fade-up" data-aos-delay="200">
+                    <i data-lucide="utensils" class="text-[#C5A059] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Elite Gastronomy</h3>
+                    <p class="text-gray-500 text-sm mb-6">Michelin-standard private chefs and premium catering solutions tailored for high-stakes networking events.</p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest text-gray-400">
+                        <li>· In-Chalet Private Dining</li>
+                        <li>· Gala Event Catering</li>
+                        <li>· Swiss-Alpine Fusion</li>
+                    </ul>
+                </div>
+
+                <div id="production" class="glass p-10 group hover:border-[#C5A059] transition duration-500" data-aos="fade-up">
+                    <i data-lucide="layers" class="text-[#C5A059] mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Event Production</h3>
+                    <p class="text-gray-500 text-sm mb-6">Full-scale pavilion builds, pop-up branding, and nightcap networking events during the summit week.</p>
+                    <ul class="text-[10px] space-y-2 uppercase tracking-widest text-gray-400">
+                        <li>· Pavilion Management</li>
+                        <li>· Media Center Setup</li>
+                        <li>· Evening Receptions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal" class="py-24 border-t border-white/5 bg-black px-6">
+            <div class="max-w-4xl mx-auto">
+                <h4 class="text-xs font-bold text-white uppercase mb-8 tracking-widest">Compliance & Governance</h4>
+                <div class="grid md:grid-cols-2 gap-12 text-[10px] text-gray-600 tracking-widest uppercase leading-loose">
+                    <div>
+                        <p class="mb-4"><strong>Copyright & Media:</strong> GS-Hospitality.ch operates as a luxury service intermediary. We do not knowingly use unlicensed intellectual property. If a copyright claim is identified, GS-Hospitality agrees to settle at standard stock-market rates for the specific asset. No punitive legal actions are authorized.</p>
+                        <p><strong>Swiss Privacy:</strong> We strictly adhere to Swiss Federal Data Protection (FADP). Your communication with us is privileged and confidential.</p>
+                    </div>
+                    <div>
+                        <p class="mb-4"><strong>Service Disclaimer:</strong> We are an independent hospitality provider. While we provide services during the World Economic Forum, we are not an official partner of the WEF organization.</p>
+                        <p><strong>Liability:</strong> GS-Hospitality acts under Swiss law. All logistics and security services are subject to individual master service agreements.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="py-24 px-6">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold italic font-syne">OUR ECOSYSTEM</h3>
-            </div>
-            <div class="grid md:grid-cols-4 gap-4 max-w-7xl mx-auto">
-                <div class="glass p-8 hover:bg-white/5 transition" data-aos="fade-up">
-                    <i data-lucide="plane" class="mb-6 text-[#D4AF37]"></i>
-                    <h4 class="font-bold mb-2">Global Travel</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Bespoke itineraries, private jet chartering, and VIP logistics for international dignitaries.</p>
-                </div>
-                <div class="glass p-8 hover:bg-white/5 transition" data-aos="fade-up" data-aos-delay="100">
-                    <i data-lucide="chef-hat" class="mb-6 text-[#D4AF37]"></i>
-                    <h4 class="font-bold mb-2">Premium Catering</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Executive dining experiences curated by top European chefs for private summits.</p>
-                </div>
-                <div class="glass p-8 hover:bg-white/5 transition" data-aos="fade-up" data-aos-delay="200">
-                    <i data-lucide="home" class="mb-6 text-[#D4AF37]"></i>
-                    <h4 class="font-bold mb-2">Elite Accommodations</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Off-market chalets and luxury suites in Davos, St. Moritz, and Zurich.</p>
-                </div>
-                <div class="glass p-8 hover:bg-white/5 transition" data-aos="fade-up" data-aos-delay="300">
-                    <i data-lucide="shield-check" class="mb-6 text-[#D4AF37]"></i>
-                    <h4 class="font-bold mb-2">Event Security</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Discreet, high-level protection for high-profile individuals and sensitive summits.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="legal" class="py-24 px-6 border-t border-white/5 bg-[#030303]">
-            <div class="max-w-4xl mx-auto text-[10px] text-gray-600 tracking-widest uppercase leading-loose">
-                <h5 class="text-white mb-4 text-xs">Legal & Compliance</h5>
-                <p class="mb-4"><b>Copyright Disclaimer:</b> All visual content on gs-hospitality.ch is used for conceptual and marketing purposes. GS Hospitality does not intentionally use unlicensed media. In the event of a licensing dispute, we agree to compensate at standard stock image market prices upon notification. No punitive damages or legal fees shall be entertained for media use.</p>
-                <p class="mb-4"><b>Privacy Policy:</b> We adhere to the Swiss Federal Act on Data Protection (FADP) and GDPR. No user data is sold to third parties. All lead inquiries are encrypted and handled with absolute Swiss discretion.</p>
-                <p><b>Liability Disclaimer:</b> GS Hospitality acts as a high-level intermediary and consultant. Specific service delivery for WEF Davos events is subject to individual contractual agreements and local Alpine regulations.</p>
-            </div>
-        </section>
-
-        <footer class="py-12 px-6 text-center border-t border-white/5">
-            <div class="text-xs text-gray-500 tracking-[0.4em]">© 2026 GS-HOSPITALITY.CH | ZURICH · DAVOS</div>
+        <footer class="py-12 text-center border-t border-white/5">
+            <p class="text-[10px] text-gray-500 tracking-[0.6em]">© 2026 GS-HOSPITALITY.CH | ZURICH · DAVOS · ST. MORITZ</p>
         </footer>
 
     </main>
@@ -175,7 +223,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         lucide.createIcons();
-        AOS.init({ duration: 1000 });
+        AOS.init({ duration: 1200 });
 
         const checkbox = document.getElementById('agree-check');
         const enterBtn = document.getElementById('enter-btn');
@@ -183,17 +231,16 @@
         checkbox.addEventListener('change', function() {
             if(this.checked) {
                 enterBtn.disabled = false;
-                enterBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                enterBtn.classList.remove('opacity-20', 'cursor-not-allowed');
             } else {
                 enterBtn.disabled = true;
-                enterBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                enterBtn.classList.add('opacity-20', 'cursor-not-allowed');
             }
         });
 
         function enterSite() {
             document.getElementById('entry-gate').style.display = 'none';
-            document.body.classList.remove('modal-active');
-            document.body.classList.add('site-visible');
+            document.body.style.overflowY = 'auto';
             document.getElementById('main-content').style.opacity = '1';
         }
     </script>
