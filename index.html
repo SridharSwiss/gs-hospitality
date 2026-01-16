@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GS Hospitality | Redefining Guest Experiences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --accent: #D4AF37; /* Sophisticated Gold */
+            --bg: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-syne {
+            font-family: 'Syne', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width .3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tighter">GS<span class="text-[#D4AF37]">.</span>HOSPITALITY</div>
+        <div class="hidden md:flex space-x-8 uppercase text-xs tracking-widest font-semibold">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">Vision</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#ventures" class="nav-link">Portfolio</a>
+            <a href="#contact" class="px-5 py-2 border border-white hover:bg-white hover:text-black transition duration-300">Let's Connect</a>
+        </div>
+        <div class="md:hidden">
+            <i data-lucide="menu"></i>
+        </div>
+    </nav>
+
+    <section id="home" class="h-screen flex items-center justify-center relative overflow-hidden px-6">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a] z-10"></div>
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=2070" class="w-full h-full object-cover opacity-40" alt="Luxury Hotel">
+        </div>
+        
+        <div class="relative z-20 text-center" data-aos="zoom-out" data-aos-duration="1500">
+            <span class="text-[#D4AF37] tracking-[0.3em] uppercase text-sm mb-4 block">Elegance meets Strategy</span>
+            <h1 class="text-5xl md:text-8xl font-extrabold mb-6 tracking-tighter">THE NEW ERA OF <br><span class="text-gradient">HOSPITALITY.</span></h1>
+            <p class="max-w-xl mx-auto text-gray-400 text-lg mb-8 font-light">
+                We blend the precision of Kiari Ventures with the creative edge of Skaah to build iconic guest destinations.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#services" class="bg-white text-black px-10 py-4 font-bold uppercase text-sm hover:bg-[#D4AF37] transition">Our Expertise</a>
+                <a href="#about" class="border border-white/30 glass px-10 py-4 font-bold uppercase text-sm hover:bg-white/10 transition">The GS Vision</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 md:px-24">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl font-bold mb-6">WHY GS-HOSPITALITY?</h2>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                    In a world where digital presence is as vital as physical comfort, we bridge the gap. Inspired by the market intelligence of <b>Idence BDS</b>, we don't just manage hotels; we engineer high-yield hospitality ecosystems.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-[#D4AF37] text-3xl font-bold">12+</h3>
+                        <p class="text-xs text-gray-500 uppercase">Global Ventures</p>
+                    </div>
+                    <div>
+                        <h3 class="text-[#D4AF37] text-3xl font-bold">98%</h3>
+                        <p class="text-xs text-gray-500 uppercase">Guest Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <div class="aspect-square glass rounded-2xl p-2">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1000" class="rounded-xl w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Hospitality Concept">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-[#0d0d0d] px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-sm tracking-[0.5em] text-[#D4AF37] uppercase mb-4">What we do</h2>
+            <h3 class="text-4xl md:text-5xl font-bold">CORE CAPABILITIES</h3>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="glass p-10 hover-lift border-t-2 border-transparent" data-aos="fade-up" data-aos-delay="100">
+                <i data-lucide="layout" class="mb-6 text-[#D4AF37]"></i>
+                <h4 class="text-xl font-bold mb-4">Strategic Branding</h4>
+                <p class="text-gray-400 text-sm">Identity creation that resonates with Gen Z and Millennial luxury travelers. We build stories, not just rooms.</p>
+            </div>
+            <div class="glass p-10 hover-lift border-t-2 border-transparent" data-aos="fade-up" data-aos-delay="200">
+                <i data-lucide="trending-up" class="mb-6 text-[#D4AF37]"></i>
+                <h4 class="text-xl font-bold mb-4">Operations & Growth</h4>
+                <p class="text-gray-400 text-sm">Revenue management and operational excellence derived from data-driven insights and market trends.</p>
+            </div>
+            <div class="glass p-10 hover-lift border-t-2 border-transparent" data-aos="fade-up" data-aos-delay="300">
+                <i data-lucide="globe" class="mb-6 text-[#D4AF37]"></i>
+                <h4 class="text-xl font-bold mb-4">Digital Ecosystems</h4>
+                <p class="text-gray-400 text-sm">Custom tech-stack integration to streamline guest bookings and enhance the digital touchpoints.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ventures" class="py-24 px-6 md:px-24">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+                <h2 class="text-4xl font-bold">CURATED VENTURES</h2>
+                <p class="text-gray-500 mt-2">Selected projects under the GS-Hospitality umbrella.</p>
+            </div>
+            <div class="mt-4 md:mt-0 uppercase text-xs font-bold tracking-widest border-b border-[#D4AF37] cursor-pointer">View All Works</div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="group relative overflow-hidden h-[400px]" data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <div class="text-center">
+                        <h5 class="text-2xl font-bold">LUMIÈRE RESORT</h5>
+                        <p class="text-sm tracking-widest text-[#D4AF37]">The Alps, Switzerland</p>
+                    </div>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden h-[400px]" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                    <div class="text-center">
+                        <h5 class="text-2xl font-bold">URBAN LOFT CO.</h5>
+                        <p class="text-sm tracking-widest text-[#D4AF37]">Zurich City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-24 border-t border-white/10 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-6xl font-extrabold mb-8 tracking-tighter">SAY <span class="text-[#D4AF37]">HELLO.</span></h2>
+                <p class="text-gray-400 mb-8">Ready to elevate your hospitality venture to the next generation? Our team in Switzerland is ready.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="mail" class="text-[#D4AF37] w-5"></i>
+                        <span>hello@gs-hospitality.ch</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="map-pin" class="text-[#D4AF37] w-5"></i>
+                        <span>Zurich, Switzerland</span>
+                    </div>
+                </div>
+            </div>
+            <form class="space-y-4">
+                <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 p-4 focus:outline-none focus:border-[#D4AF37] transition">
+                <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 p-4 focus:outline-none focus:border-[#D4AF37] transition">
+                <textarea placeholder="Tell us about your project" rows="4" class="w-full bg-white/5 border border-white/10 p-4 focus:outline-none focus:border-[#D4AF37] transition"></textarea>
+                <button class="w-full bg-[#D4AF37] text-black font-bold p-4 uppercase hover:bg-white transition">Send Inquiry</button>
+            </form>
+        </div>
+        <div class="mt-24 text-center text-xs text-gray-600 uppercase tracking-widest">
+            &copy; 2024 GS-HOSPITALITY.CH — ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+        // Initialize Scroll Animations
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
