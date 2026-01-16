@@ -11,7 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap');
 
         :root {
-            --accent: #C5A059;
+            --accent: #C5A059; /* Muted Champagne Gold */
             --bg: #050505;
         }
 
@@ -36,7 +36,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Entry Gate Scroll Fix for Mobile */
+        /* Entry Gate Styles */
         #entry-gate {
             position: fixed;
             inset: 0;
@@ -45,8 +45,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-y: auto;
-            padding: 20px 0;
+        }
+
+        .btn-gold {
+            background: var(--accent);
+            color: black;
+            padding: 1rem 2rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+
+        .btn-gold:hover:not(:disabled) {
+            background: white;
+            transform: scale(1.05);
         }
 
         .nav-item {
@@ -59,13 +71,7 @@
 
         .nav-item:hover { color: var(--accent); }
 
-        /* Mobile Menu Overlay */
-        #mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        #mobile-menu.active { transform: translateX(0); }
-
+        /* Custom scroll for GenZ feel */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--accent); }
@@ -73,153 +79,539 @@
 </head>
 <body class="modal-active">
 
-<div id="entry-gate">
-    <div class="max-w-xl w-full px-6 py-10" data-aos="zoom-in">
-        <div class="text-center mb-8">
-            <h2 class="text-[10px] tracking-[0.8em] text-gray-500 uppercase mb-4">Secure Access Only</h2>
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tighter italic text-white">
+<div id="entry-gate" class="p-6 flex items-center justify-center min-h-screen bg-black">
+    <div class="max-w-xl w-full" data-aos="zoom-in">
+        
+        <div class="text-center mb-10">
+            <h2 class="text-xs tracking-[0.8em] text-gray-500 uppercase mb-4">Secure Access Only</h2>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter italic text-white">
                 GS<span class="text-[#C5A059]">.</span>HOSPITALITY
             </h1>
         </div>
         
-        <div class="glass p-6 md:p-8 rounded-2xl mb-6 text-[11px] text-gray-400 leading-relaxed shadow-2xl">
-            <h3 class="text-white text-sm mb-4 uppercase font-bold tracking-widest border-b border-white/10 pb-2">Discretionary Access</h3>
-            <p class="mb-3">By entering, you agree to our <strong>Swiss Privacy Standards</strong>. This digital platform is intended for <strong>private purpose only</strong>.</p>
-            <div class="space-y-3 max-h-[40vh] overflow-y-auto pr-2">
-                <p><strong>No Warranty & Liability:</strong> Information is provided "as is." GS-Hospitality offers no warranty regarding accuracy.</p>
-                <p><strong>Intellectual Property:</strong> All content is exclusive property. <strong>Written approval</strong> is required for any use.</p>
-                <p class="italic border-t border-white/10 pt-3 text-[10px]">Notice on Media: Visuals are conceptual. Discrepancies resolved at standard stock market valuation.</p>
+        <div class="glass p-8 rounded-2xl mb-6 text-[11px] text-gray-400 leading-relaxed shadow-2xl">
+            <h3 class="text-white text-sm mb-4 uppercase font-bold tracking-widest border-b border-white/10 pb-2">
+                Discretionary Access & Private Governance
+            </h3>
+            
+            <p class="mb-3">
+                By entering, you agree to our <strong>Swiss Privacy Standards</strong>. This digital platform is intended for <strong>private purpose only</strong>. We facilitate elite logistics and high-profile accommodations for the World Economic Forum and global summits on a discretionary basis.
+            </p>
+
+            <div class="space-y-3">
+                <p>
+                    <strong>No Warranty & Liability:</strong> Information is provided "as is." GS-Hospitality offers no warranty regarding accuracy and assumes no liability for direct or indirect damages arising from the use of this site.
+                </p>
+
+                <p>
+                    <strong>Intellectual Property:</strong> All content, imagery, and design are exclusive property. <strong>Express written approval</strong> is strictly required to reproduce or utilize any site content.
+                </p>
+
+                <p>
+                    <strong>Terms of Use:</strong> We reserve the right to modify these terms, revoke access, or update information at any time without prior notice.
+                </p>
+
+                <p class="italic border-t border-white/10 pt-3">
+                    <strong>Notice on Media:</strong> All visuals are for conceptual representation. Any licensed media discrepancies are resolved exclusively at standard stock market valuation upon formal notice.
+                </p>
             </div>
             
             <label class="flex items-start space-x-3 cursor-pointer mt-8 group">
-                <input type="checkbox" id="agree-check" class="mt-1 w-5 h-5 accent-[#C5A059] cursor-pointer">
-                <span class="text-gray-300 text-[10px] md:text-xs">I acknowledge the private nature of this portal and agree to the Terms of Use.</span>
+                <input type="checkbox" id="agree-check" class="mt-1 w-4 h-4 accent-[#C5A059] cursor-pointer">
+                <span class="text-gray-300 group-hover:text-white transition">
+                    I acknowledge the private nature of this portal and agree to the full Terms of Use, Privacy Policy, and Liability Disclaimers.
+                </span>
             </label>
         </div>
         
         <button onclick="enterSite()" id="enter-btn" disabled 
-            class="w-full bg-[#C5A059] text-black font-black py-4 rounded-xl opacity-20 cursor-not-allowed uppercase tracking-[0.2em] transition-all">
-            Confirm & Enter
+            class="w-full bg-[#C5A059] text-black font-black py-4 rounded-xl opacity-20 cursor-not-allowed uppercase tracking-[0.2em] transition-all duration-500 hover:bg-white active:scale-95">
+            Confirm & Enter Experience
         </button>
+
     </div>
 </div>
 
-<main id="main-content" class="opacity-0 transition-opacity duration-1000">
-    
-    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
-        <div class="text-xl font-black tracking-tighter">GS<span class="text-[#C5A059]">.</span>H</div>
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
         
-        <div class="hidden lg:flex space-x-10">
-            <a href="#davos" class="nav-item">Davos Summit</a>
-            <a href="#estates" class="nav-item">Estates</a>
-            <a href="#logistics" class="nav-item">Logistics</a>
-            <a href="#gastronomy" class="nav-item">Gastronomy</a>
-            <a href="#production" class="nav-item">Production</a>
-        </div>
-
-        <div class="flex items-center space-x-4">
+        <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center">
+            <div class="text-xl font-black tracking-tighter">GS<span class="text-[#C5A059]">.</span>Hospitality</div>
+            <div class="hidden lg:flex space-x-10">
+                <a href="#davos" class="nav-item">Davos Summit</a>
+                <a href="#estates" class="nav-item">Estates</a>
+                <a href="#logistics" class="nav-item">Logistics</a>
+                <a href="#gastronomy" class="nav-item">Gastronomy</a>
+                <a href="#production" class="nav-item">Production</a>
+                <a href="#legal" class="nav-item text-gray-500">Legal</a>
+            </div>
             <a href="#contact" class="text-[10px] font-bold border border-[#C5A059] px-4 py-2 text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition uppercase">Inquire</a>
-            <button onclick="toggleMenu()" class="lg:hidden text-white"><i data-lucide="menu"></i></button>
+        </nav>
+
+        <section class="h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
+            <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale" alt="Davos Background">
+            
+            <div class="relative z-20 text-center px-6" data-aos="fade-up">
+                <span class="text-[#C5A059] tracking-[0.5em] text-[10px] uppercase mb-4 block">Mission Support</span>
+                <h1 class="text-6xl md:text-9xl font-extrabold tracking-tighter text-gradient leading-tight">DECADE OF DAVOS<br>EXPERIENCE.</h1>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400 text-sm md:text-lg font-light tracking-wide uppercase">High-Profile Accommodations · Elite Logistics · Premium Catering · Global Summits</p>
+            </div>
+        </section>
+
+<section id="davos" class="py-32 px-6 md:px-24">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+        <div data-aos="fade-right">
+            <h2 class="text-5xl font-bold mb-8 italic">THE SUMMIT<br>AUTHORITY.</h2>
+            <p class="text-gray-400 leading-relaxed mb-6">Navigating the Davos Annual Conference requires more than just a room; it requires a strategic base of operations. GS-Hospitality provides end-to-end management for delegations, corporate entities, and private families.</p>
+            <div class="flex items-center space-x-6">
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-[#C5A059]">01</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-500">Premium Service</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-[#C5A059]">24/7</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-500">Concierge Support</p>
+                </div>
+            </div>
         </div>
-    </nav>
-
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black p-10 flex flex-col justify-center space-y-8 lg:hidden">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-[#C5A059]"><i data-lucide="x"></i></button>
-        <a href="#davos" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter">Davos Summit</a>
-        <a href="#estates" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter">Estates</a>
-        <a href="#logistics" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter">Logistics</a>
-        <a href="#gastronomy" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter">Gastronomy</a>
-        <a href="#production" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter">Production</a>
-    </div>
-
-    <section class="h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
-        <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale" alt="Davos">
         
-        <div class="relative z-20 text-center px-6" data-aos="fade-up">
-            <span class="text-[#C5A059] tracking-[0.4em] text-[9px] uppercase mb-4 block">Mission Support</span>
-            <h1 class="text-4xl sm:text-6xl md:text-9xl font-extrabold tracking-tighter text-gradient leading-tight uppercase">DECADE OF<br>EXPERIENCE.</h1>
-            <p class="max-w-xl mx-auto mt-6 text-gray-400 text-xs md:text-sm font-light tracking-widest uppercase">High-Profile Accommodations · Elite Logistics · Global Summits</p>
+        <div class="glass p-4 rounded-3xl" data-aos="fade-left">
+            <img src="gs hospitality.jpg" 
+                 class="rounded-2xl grayscale hover:grayscale-0 transition duration-700 h-96 w-full object-cover" 
+                 alt="Luxury Davos Chalet Interior"
+                 onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1980&auto=format&fit=crop'">
         </div>
-    </section>
+    </div>
+</section>
+<section id="estates" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+            <div class="max-w-2xl">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">The Private Collection</h2>
+                <h3 class="text-5xl md:text-6xl font-extrabold tracking-tighter italic">OFF-MARKET <br><span class="text-white/30">ESTATES.</span></h3>
+            </div>
+            <p class="text-gray-500 text-sm max-w-xs mt-6 md:mt-0 italic border-l border-[#C5A059] pl-6">
+                Direct access to high-security chalets and corporate HQ venues in the Davos restricted zones.
+            </p>
+        </div>
 
-    <section id="davos" class="py-20 md:py-32 px-6 md:px-24">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div class="grid md:grid-cols-3 gap-6">
+            
+            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px]" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=1960&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Davos Dorf</span>
+                    <h4 class="text-2xl font-bold mb-4 italic text-white">The Alpine Fortress</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
+                        Reinforced security zones, 12 bedrooms, private wellness wing, and direct tunnel access for high-profile delegations.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Secure Zone</span>
+                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Helipad</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px]" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Promenade Core</span>
+                    <h4 class="text-2xl font-bold mb-4 italic text-white">Summit Headquarters</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
+                        Premier branding location on the Davos Promenade. Integrated media center, 3 levels of networking lounges.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Branding Ready</span>
+                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">High Traffic</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px]" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                    <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Davos Platz</span>
+                    <h4 class="text-2xl font-bold mb-4 italic text-white">The Zenith Loft</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
+                        Ultra-modern minimalist estate for executive families. Panoramic views of the valley with absolute privacy.
+                    </p>
+                    <div class="flex space-x-2">
+                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Private Chef</span>
+                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Discreet Entry</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center" data-aos="zoom-in">
+            <p class="text-xs tracking-[0.4em] text-gray-600 uppercase mb-4">Can't find what you are looking for?</p>
+            <a href="#contact" class="inline-block border-b border-[#C5A059] text-[#C5A059] pb-2 text-sm uppercase font-bold tracking-widest hover:text-white hover:border-white transition">Request Full Inventory List</a>
+        </div>
+    </div>
+</section>
+<section id="logistics" class="py-24 px-6 md:px-24 bg-[#050505] border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div data-aos="fade-right">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 italic">THE SUMMIT AUTHORITY.</h2>
-                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6">GS-Hospitality provides end-to-end management for delegations, corporate entities, and private families.</p>
-                <div class="flex space-x-10">
-                    <div><p class="text-3xl font-bold text-[#C5A059]">01</p><p class="text-[9px] uppercase tracking-widest text-gray-500">Premium</p></div>
-                    <div><p class="text-3xl font-bold text-[#C5A059]">24/7</p><p class="text-[9px] uppercase tracking-widest text-gray-500">Concierge</p></div>
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Strategic Assets</h2>
+                <h3 class="text-5xl md:text-6xl font-extrabold tracking-tighter italic mb-8 uppercase">AVIATION & <br><span class="text-white/20">GROUP TRANSIT.</span></h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    When the Davos Promenade reaches capacity, GS-Hospitality moves above it. We specialize in synchronized group movements and rapid aerial deployments for international delegations.
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="p-6 glass rounded-2xl border-l-4 border-[#C5A059]">
+                        <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-widest">Delegation Shuttles</h4>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-widest leading-loose">High-capacity luxury coaches and Mercedes Sprinters configured for mobile briefing environments.</p>
+                    </div>
+                    <div class="p-6 glass rounded-2xl border-l-4 border-[#C5A059]">
+                        <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-widest">Point-to-Point Aviation</h4>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-widest leading-loose">Dedicated flight coordinators for Samedan (LSZS) and Zurich (LSZH) slot management.</p>
+                    </div>
                 </div>
             </div>
-            <div class="glass p-3 rounded-3xl" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1980&auto=format&fit=crop" class="rounded-2xl grayscale h-64 md:h-96 w-full object-cover">
+            
+            <div class="relative group" data-aos="fade-left">
+                <div class="glass p-2 rounded-[2rem] overflow-hidden shadow-2xl shadow-[#C5A059]/5">
+                    <img src="https://images.unsplash.com/photo-1517429128955-67ff5c1e29da?q=80&w=2070&auto=format&fit=crop" class="w-full h-[550px] object-cover rounded-[1.8rem] grayscale group-hover:grayscale-0 transition duration-1000" alt="Alpine Aviation Logistics">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="logistics" class="py-20 px-6 md:px-24 bg-[#050505]">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div class="order-2 lg:order-1 relative group">
+        <div class="grid md:grid-cols-3 gap-6">
+            
+            <div class="glass p-10 border-t border-white/5 hover:bg-[#C5A059]/5 transition" data-aos="fade-up">
+                <i data-lucide="helicopter" class="text-[#C5A059] w-10 h-10 mb-8"></i>
+                <h4 class="text-xl font-bold mb-4 italic uppercase">Heli-Shuttles</h4>
+                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest">35-minute Zurich-Davos aerial bridge. Bypassing the Landquart bottleneck with dedicated landing priority at Stilli and surrounding zones.</p>
+            </div>
+
+            <div class="glass p-10 border-t border-white/5 hover:bg-[#C5A059]/5 transition" data-aos="fade-up" data-aos-delay="100">
+                <i data-lucide="bus" class="text-[#C5A059] w-10 h-10 mb-8"></i>
+                <h4 class="text-xl font-bold mb-4 italic uppercase">Delegation Fleet</h4>
+                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest">Coordinated convoys of 15+ VIP vehicles. Real-time GPS tracking and dedicated command-center monitoring for synchronized arrival.</p>
+            </div>
+
+            <div class="glass p-10 border-t border-white/5 hover:bg-[#C5A059]/5 transition" data-aos="fade-up" data-aos-delay="200">
+                <i data-lucide="navigation" class="text-[#C5A059] w-10 h-10 mb-8"></i>
+                <h4 class="text-xl font-bold mb-4 italic uppercase">Jet Liaison</h4>
+                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest">Full-service aviation concierge at Samedan Airport. Catering, security-cleared tarmac access, and immediate heli-transfer to Davos.</p>
+            </div>
+
+        </div>
+    </div>
+</section>      
+<section id="gastronomy" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div class="order-2 lg:order-1 relative" data-aos="fade-right">
                 <div class="glass p-2 rounded-[2rem] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1517429128955-67ff5c1e29da?q=80&w=2070&auto=format&fit=crop" class="w-full h-72 md:h-[550px] object-cover rounded-[1.8rem] grayscale">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1980&auto=format&fit=crop" class="w-full h-[600px] object-cover rounded-[1.8rem] grayscale hover:grayscale-0 transition duration-1000" alt="Premium Indian Gastronomy">
+                    <div class="absolute bottom-10 left-10 glass px-6 py-4 rounded-xl border border-[#C5A059]/30">
+                        <p class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase font-bold">Signature Dish</p>
+                        <p class="text-white italic font-syne text-lg">Saffron Infused Alpine Lamb</p>
+                    </div>
                 </div>
             </div>
+
             <div class="order-1 lg:order-2" data-aos="fade-left">
-                <h2 class="text-xs tracking-[0.5em] text-[#C5A059] uppercase mb-4">Strategic Assets</h2>
-                <h3 class="text-4xl md:text-6xl font-bold tracking-tighter mb-8 italic">AVIATION & TRANSIT.</h3>
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="p-6 glass rounded-2xl border-l-2 border-[#C5A059] text-xs uppercase tracking-widest text-gray-400">Heli-Shuttles: 35-minute ZRH-DAV bridge.</div>
-                    <div class="p-6 glass rounded-2xl border-l-2 border-[#C5A059] text-xs uppercase tracking-widest text-gray-400">Delegation Fleet: Coordinated VIP convoys.</div>
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Elite Gastronomy</h2>
+                <h3 class="text-5xl md:text-6xl font-extrabold tracking-tighter italic mb-8 uppercase">INDIAN <br><span class="text-white/20">HERITAGE.</span></h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    Inspired by the refined spice palettes of <span class="text-white">India</span>, we bring authentic Indian fine dining to the heart of Davos. From intimate chalet dinners to grand corporate receptions, our gastronomy is designed to leave a lasting impression.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4 border-b border-white/5 pb-6">
+                        <div class="text-[#C5A059] font-syne text-2xl font-bold">01</div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase text-sm tracking-widest">In-Chalet Private Chefs</h4>
+                            <p class="text-xs text-gray-500">24/7 bespoke Indian menus served in the privacy of your Davos residence.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 border-b border-white/5 pb-6">
+                        <div class="text-[#C5A059] font-syne text-2xl font-bold">02</div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase text-sm tracking-widest">Corporate Midnight Curries</h4>
+                            <p class="text-xs text-gray-500">The legendary Davos nightcap—high-end street food for late-night networking.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-[#C5A059] font-syne text-2xl font-bold">03</div>
+                        <div>
+                            <h4 class="text-white font-bold uppercase text-sm tracking-widest">Summit Gala Catering</h4>
+                            <p class="text-xs text-gray-500">Multi-course Michelin-standard Indian fusion for 50 to 500 delegates.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="digital-pass" class="py-20 px-6 bg-[#030303] text-center border-t border-white/5">
-        <h3 class="text-3xl font-bold italic mb-8 uppercase tracking-tighter">ACCESS PASS</h3>
-        <div class="glass p-6 rounded-3xl inline-block border border-[#C5A059]/30">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://sridharswiss.github.io/gs-hospitality/index.html&color=C5A059&bgcolor=000000" class="w-32 h-32 md:w-48 md:h-48 mx-auto">
-            <p class="mt-4 text-[9px] tracking-[0.3em] uppercase">GS-HOSPITALITY.CH</p>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass p-10 text-center hover:border-[#C5A059] transition duration-500" data-aos="zoom-in">
+                <i data-lucide="flame" class="w-8 h-8 text-[#C5A059] mx-auto mb-6"></i>
+                <h5 class="text-white font-bold mb-4 uppercase tracking-tighter text-xl">The Tandoor Room</h5>
+                <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-widest">Live station setups featuring traditional clay ovens transported to the Swiss Alps for ultimate authenticity.</p>
+            </div>
+            <div class="glass p-10 text-center hover:border-[#C5A059] transition duration-500" data-aos="zoom-in" data-aos-delay="100">
+                <i data-lucide="leaf" class="w-8 h-8 text-[#C5A059] mx-auto mb-6"></i>
+                <h5 class="text-white font-bold mb-4 uppercase tracking-tighter text-xl">Vegan Excellence</h5>
+                <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-widest">Sophisticated plant-based Indian menus meeting the highest sustainability standards of the modern executive.</p>
+            </div>
+            <div class="glass p-10 text-center hover:border-[#C5A059] transition duration-500" data-aos="zoom-in" data-aos-delay="200">
+                <i data-lucide="glass-water" class="w-8 h-8 text-[#C5A059] mx-auto mb-6"></i>
+                <h5 class="text-white font-bold mb-4 uppercase tracking-tighter text-xl">Spice Mixology</h5>
+                <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-widest">Cardamom, Star Anise, and Saffron infused cocktails curated by Zurich’s top mixologists.</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+<section id="production" class="py-24 px-6 md:px-24 bg-[#0a0a0a] border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-up">
+            <div class="max-w-2xl">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Summit Infrastructure</h2>
+                <h3 class="text-5xl md:text-7xl font-extrabold tracking-tighter italic uppercase">EVENT <br><span class="text-white/20">PRODUCTION.</span></h3>
+            </div>
+            <p class="text-gray-500 text-sm max-w-xs mt-6 md:mt-0 italic border-l border-[#C5A059] pl-6 uppercase tracking-[0.2em] leading-loose">
+                Engineering high-impact pavilions and secure media environments in restricted alpine zones.
+            </p>
+        </div>
 
-    <footer class="py-12 text-center text-[8px] md:text-[10px] text-gray-600 tracking-[0.5em] px-6">
-        © 2026 GS-HOSPITALITY | ZURICH · DAVOS · ST. MORITZ
-    </footer>
-</main>
+        <div class="grid lg:grid-cols-2 gap-10 mb-20">
+            
+            <div class="group relative overflow-hidden rounded-[2.5rem] glass border border-white/5 aspect-[4/5]" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
+                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000" 
+                     alt="Davos Promenade Pavilion">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-12">
+                    <span class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase mb-4 block">Construction & Branding</span>
+                    <h4 class="text-3xl font-bold mb-4 italic text-white uppercase">Promenade Pavilions</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        Turnkey temporary architecture. We transform Promenade storefronts into multi-level corporate HQs with custom facades, high-spec interiors, and thermal engineering.
+                    </p>
+                    <div class="flex space-x-4">
+                        <i data-lucide="hammer" class="w-5 h-5 text-[#C5A059]"></i>
+                        <i data-lucide="monitor" class="w-5 h-5 text-[#C5A059]"></i>
+                        <i data-lucide="zap" class="w-5 h-5 text-[#C5A059]"></i>
+                    </div>
+                </div>
+            </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    lucide.createIcons();
-    AOS.init({ duration: 1000 });
+            <div class="group relative overflow-hidden rounded-[2.5rem] glass border border-white/5 aspect-[4/5] lg:mt-24" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012&auto=format&fit=crop" 
+                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000" 
+                     alt="Media Center Production">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-12">
+                    <span class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase mb-4 block">Tech & Media</span>
+                    <h4 class="text-3xl font-bold mb-4 italic text-white uppercase">Secure Media Hubs</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        Sound-isolated broadcast studios and high-security networking lounges. Integrated 10Gbps dedicated fiber, satellite uplinks, and biometric access control.
+                    </p>
+                    <div class="flex space-x-4">
+                        <i data-lucide="wifi" class="w-5 h-5 text-[#C5A059]"></i>
+                        <i data-lucide="shield-check" class="w-5 h-5 text-[#C5A059]"></i>
+                        <i data-lucide="radio" class="w-5 h-5 text-[#C5A059]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    const checkbox = document.getElementById('agree-check');
-    const enterBtn = document.getElementById('enter-btn');
+        <div class="grid md:grid-cols-4 gap-4" data-aos="fade-up">
+            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
+                <h5 class="text-3xl font-bold mb-2">48H</h5>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Rapid Response Build</p>
+            </div>
+            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
+                <h5 class="text-3xl font-bold mb-2">4K+</h5>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Managed AV Assets</p>
+            </div>
+            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
+                <h5 class="text-3xl font-bold mb-2">10G</h5>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Dedicated Connectivity</p>
+            </div>
+            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
+                <h5 class="text-3xl font-bold mb-2">ZERO</h5>
+                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Downtime Tolerance</p>
+            </div>
+        </div>
 
-    checkbox.addEventListener('change', function() {
-        if(this.checked) {
-            enterBtn.disabled = false;
-            enterBtn.classList.remove('opacity-20', 'cursor-not-allowed');
-        } else {
-            enterBtn.disabled = true;
-            enterBtn.classList.add('opacity-20', 'cursor-not-allowed');
-        }
-    });
+        <div class="mt-20 p-10 glass rounded-3xl border border-dashed border-[#C5A059]/30 text-center" data-aos="zoom-in">
+            <h5 class="text-white font-bold uppercase tracking-widest mb-4">The Nightcap Networking Series</h5>
+            <p class="text-gray-500 text-xs max-w-2xl mx-auto uppercase tracking-widest leading-loose">
+                Beyond infrastructure, we produce the "Davos Nightcap"—seamless evening transitions featuring premium Indian mixology and networking environments that secure the day's negotiations.
+            </p>
+        </div>
 
-    function enterSite() {
-        document.getElementById('entry-gate').style.opacity = '0';
-        setTimeout(() => {
+    </div>
+</section>        
+        
+<section id="contact" class="py-24 px-6 md:px-24 bg-[#050505] relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C5A059] opacity-[0.03] blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="grid lg:grid-cols-2 gap-20">
+            
+            <div data-aos="fade-right">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Inquiry Portal</h2>
+                <h3 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 italic">SECURE YOUR <br><span class="text-white/20">OPERATIONS.</span></h3>
+                
+                <p class="text-gray-400 text-lg mb-12 max-w-md leading-relaxed">
+                    Our team operates with absolute Swiss discretion. Connect with us to discuss Davos 2026 mandates or year-round luxury hospitality management.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-6 group">
+                        <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
+                            <i data-lucide="mail" class="text-[#C5A059] w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Direct Liaison</p>
+                            <a href="mailto:hello@gs-hospitality.ch" class="text-xl font-bold hover:text-[#C5A059] transition">Send Whatsapp on: +41 79 548 90 25</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 group">
+                        <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
+                            <i data-lucide="map-pin" class="text-[#C5A059] w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">HQ & Operations</p>
+                            <p class="text-xl font-bold">Zurich • Davos • Interlaken • St Moritz </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass p-8 md:p-12 rounded-3xl border border-white/5" data-aos="fade-left">
+                <form action="#" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Corporate Email</label>
+                            <input type="email" placeholder="john@company.com" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Primary Interest</label>
+                        <select class="w-full bg-[#0a0a0a] border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm text-gray-400 appearance-none cursor-pointer">
+                            <option>Davos 2026 Mission Support</option>
+                            <option>Private Estate & Chalet Management</option>
+                            <option>VIP Logistics & Aviation</option>
+                            <option>Elite Catering & Event Production</option>
+                            <option>Security & Close Protection</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Message</label>
+                        <textarea rows="4" placeholder="How can we facilitate your stay?" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#C5A059] text-black font-black p-5 rounded-xl uppercase tracking-widest hover:bg-white transition duration-500 transform hover:-translate-y-1">
+                        Send Inquiry
+                    </button>
+                    
+                    <p class="text-[9px] text-center text-gray-600 uppercase tracking-widest mt-4">
+                        By sending, you agree to our 256-bit encrypted data handling.
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+        <section id="legal" class="py-24 border-t border-white/5 bg-black px-6">
+            <div class="max-w-4xl mx-auto">
+                <h4 class="text-xs font-bold text-white uppercase mb-8 tracking-widest">Compliance & Governance</h4>
+                <div class="grid md:grid-cols-2 gap-12 text-[10px] text-gray-600 tracking-widest uppercase leading-loose">
+                    <div>
+                        <p class="mb-4"><strong>Copyright & Media:</strong> GS-Hospitality.ch operates as a luxury service intermediary. We do not knowingly use unlicensed intellectual property. If a copyright claim is identified, GS-Hospitality agrees to settle at standard stock-market rates for the specific asset. No punitive legal actions are authorized.</p>
+                        <p><strong>Swiss Privacy:</strong> We strictly adhere to Swiss Federal Data Protection (FADP). Your communication with us is privileged and confidential.</p>
+                    </div>
+                    <div>
+                        <p class="mb-4"><strong>Service Disclaimer:</strong> We are an independent hospitality provider. While we provide services during the Annual conference.</p>
+                        <p><strong>Liability:</strong> GS-Hospitality acts under Swiss law. All logistics and security services are subject to individual master service agreements.</p>
+                    </div>
+                </div>
+            </div>
+            <section id="digital-pass" class="py-24 px-6 bg-[#030303] border-t border-white/5">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-16">
+        
+        <div class="text-center md:text-left max-w-lg" data-aos="fade-up">
+            <h4 class="text-[#C5A059] text-xs tracking-[0.5em] uppercase mb-4">Seamless Connectivity</h4>
+            <h3 class="text-4xl md:text-5xl font-extrabold italic mb-6">THE DIGITAL <br><span class="text-white/20">ACCESS PASS.</span></h3>
+            <p class="text-gray-500 text-sm uppercase tracking-widest leading-loose mb-10">
+                Share the GS-Hospitality experience. This encrypted link provides instant access to our private inventory, logistics schedules, and summit production details.
+            </p>
+            <div class="flex items-center space-x-6 justify-center md:justify-start">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="shield-check" class="text-[#C5A059] w-4 h-4"></i>
+                    <span class="text-[9px] text-gray-400 uppercase tracking-widest">Secure Link</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="zap" class="text-[#C5A059] w-4 h-4"></i>
+                    <span class="text-[9px] text-gray-400 uppercase tracking-widest">Instant Load</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="relative group" data-aos="zoom-in" data-aos-delay="200">
+            <div class="absolute -inset-4 bg-[#C5A059] opacity-10 blur-2xl rounded-full group-hover:opacity-20 transition duration-1000"></div>
+            
+            <div class="relative glass p-8 rounded-[2.5rem] border border-white/10 flex flex-col items-center">
+                <div class="bg-black p-4 rounded-2xl border border-[#C5A059]/30">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sridharswiss.github.io/gs-hospitality/index.html&color=C5A059&bgcolor=000000" 
+                         class="w-48 h-48" 
+                         alt="GS Hospitality QR Code">
+                </div>
+                <div class="mt-6 text-center">
+                    <p class="text-[10px] text-white font-bold tracking-[0.3em] uppercase mb-1">GS-HOSPITALITY</p>
+                    <p class="text-[8px] text-gray-600 uppercase tracking-widest">Private Member Portal</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+        </section>
+
+        <footer class="py-12 text-center border-t border-white/5">
+            <p class="text-[10px] text-gray-500 tracking-[0.6em]">© 2026 GS-HOSPITALITY | ZURICH · DAVOS · ST. MORITZ</p>
+        </footer>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({ duration: 1200 });
+
+        const checkbox = document.getElementById('agree-check');
+        const enterBtn = document.getElementById('enter-btn');
+
+        checkbox.addEventListener('change', function() {
+            if(this.checked) {
+                enterBtn.disabled = false;
+                enterBtn.classList.remove('opacity-20', 'cursor-not-allowed');
+            } else {
+                enterBtn.disabled = true;
+                enterBtn.classList.add('opacity-20', 'cursor-not-allowed');
+            }
+        });
+
+        function enterSite() {
             document.getElementById('entry-gate').style.display = 'none';
             document.body.style.overflowY = 'auto';
-            document.getElementById('main-content').classList.remove('opacity-0');
-        }, 800);
-    }
-
-    function toggleMenu() {
-        document.getElementById('mobile-menu').classList.toggle('active');
-    }
-</script>
+            document.getElementById('main-content').style.opacity = '1';
+        }
+    </script>
 </body>
 </html>
