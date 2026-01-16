@@ -75,6 +75,26 @@
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--accent); }
+   @keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 1.5s ease-out forwards;
+    animation-delay: 1s; /* Shows after the main title appears */
+}
+
+#service-cycler {
+    display: inline-block;
+    min-width: 250px; /* Prevents layout shift on text change */
+}
     </style>
 </head>
 <body class="modal-active">
@@ -191,16 +211,41 @@
 </div>
 </div>
 
-        <section class="h-screen flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black z-10"></div>
-            <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale" alt="Davos Background">
-            
-            <div class="relative z-20 text-center px-6" data-aos="fade-up">
-                <span class="text-[#C5A059] tracking-[0.5em] text-[10px] uppercase mb-4 block">Mission Support</span>
-                <h2 class="text-3xl md:text-6xl font-extrabold tracking-tighter text-gradient leading-tight uppercase">DECADE OF HOSPITALITY <br>EXPERIENCE IN SWITZERLAND . EUROPE</h2>
-                <p class="max-w-2xl mx-auto mt-6 text-gray-400 text-sm md:text-lg font-light tracking-wide uppercase">High-Profile Accommodations · Elite Logistics · Premium Catering · Global Summits</p>
+
+<section class="h-screen flex items-center justify-center relative overflow-hidden bg-black">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10"></div>
+    <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" 
+         class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale" alt="Davos Background">
+    
+    <div class="relative z-20 text-center px-6">
+        <div class="mb-4 h-6">
+             <span id="service-cycler" class="text-[#C5A059] tracking-[0.5em] text-[10px] md:text-xs uppercase font-bold transition-all duration-500 opacity-100">
+                Mission Support
+             </span>
+        </div>
+
+        <h2 class="text-3xl md:text-6xl font-extrabold tracking-tighter text-gradient leading-tight uppercase mb-8" 
+            data-aos="zoom-out-up" data-aos-delay="200">
+            DECADE OF <span class="italic">HOSPITALITY</span> <br>
+            EXPERIENCE IN <span class="text-white/80">SWITZERLAND | EUROPE</span>
+        </h2>
+
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-8 opacity-0 animate-fade-in-up">
+            <div class="flex items-center space-x-2">
+                <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse"></div>
+                <p class="text-gray-400 text-[10px] tracking-widest uppercase">High-Profile Accommodations</p>
             </div>
-        </section>
+            <div class="flex items-center space-x-2">
+                <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse delay-75"></div>
+                <p class="text-gray-400 text-[10px] tracking-widest uppercase">Elite Logistics</p>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse delay-150"></div>
+                <p class="text-gray-400 text-[10px] tracking-widest uppercase">Global Summit Production</p>
+            </div>
+        </div>
+    </div>
+</section>        
 
 <section id="davos" class="py-32 px-6 md:px-24">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
@@ -763,6 +808,37 @@
         }, 500); // Matches the duration of the transition
     }
 }
+ // Text Cycler for the Hero Section
+const services = [
+    "Mission Support",
+    "Secure Chalet Management",
+    "VIP Aviation Logistics",
+    "Elite Indian Gastronomy",
+    "Promenade Pavilion Design",
+    "Executive Protection"
+];
+
+let currentIndex = 0;
+const cyclerElement = document.getElementById('service-cycler');
+
+function cycleText() {
+    // Fade out
+    cyclerElement.style.opacity = '0';
+    cyclerElement.style.transform = 'translateY(-10px)';
+
+    setTimeout(() => {
+        // Change text
+        currentIndex = (currentIndex + 1) % services.length;
+        cyclerElement.textContent = services[currentIndex];
+        
+        // Fade in
+        cyclerElement.style.opacity = '1';
+        cyclerElement.style.transform = 'translateY(0)';
+    }, 500); // Half second for the fade transition
+}
+
+// Start cycling every 3 seconds
+setInterval(cycleText, 3000);       
     </script>
 </body>
 </html>
