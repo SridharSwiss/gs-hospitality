@@ -79,29 +79,29 @@
 </head>
 <body class="modal-active">
 
-<div id="entry-gate" class="p-6 flex items-center justify-center min-h-screen bg-black">
-    <div class="max-w-xl w-full" data-aos="zoom-in">
+<div id="entry-gate" class="p-4 md:p-6 flex items-center justify-center min-h-screen bg-black overflow-y-auto">
+    <div class="max-w-xl w-full my-auto" data-aos="zoom-in">
         
-        <div class="text-center mb-10">
-            <h2 class="text-xs tracking-[0.8em] text-gray-500 uppercase mb-4">Secure Access Only</h2>
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter italic text-white uppercase">
+        <div class="text-center mb-6 md:mb-10">
+            <h2 class="text-[9px] md:text-xs tracking-[0.5em] md:tracking-[0.8em] text-gray-500 uppercase mb-2">Secure Access Only</h2>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tighter italic text-white uppercase">
                 GS<span class="text-[#C5A059]">.</span>HOSPITALITY
             </h1>
-            <h2 class="text-xs tracking-[0.8em] text-gray-500 uppercase mt-4">Powered by Swiss Wow Vacations</h2>
+            <h2 class="text-[9px] md:text-xs tracking-[0.5em] md:tracking-[0.8em] text-gray-500 uppercase mt-2">Powered by Swiss Wow Vacations</h2>
         </div>
         
-        <div class="glass p-8 rounded-3xl mb-6 text-[11px] text-gray-400 leading-relaxed shadow-2xl text-center">
-            <h3 class="text-white text-sm mb-6 uppercase font-bold tracking-widest border-b border-white/10 pb-3">
+        <div class="glass p-5 md:p-8 rounded-2xl md:rounded-3xl mb-4 md:mb-6 text-[10px] md:text-[11px] text-gray-400 leading-relaxed shadow-2xl text-center">
+            <h3 class="text-white text-xs md:text-sm mb-4 md:mb-6 uppercase font-bold tracking-widest border-b border-white/10 pb-3">
                 Discretionary Access & Private Governance
             </h3>
             
-            <p class="mb-4">
-                <strong>Private Platform Notice:</strong> Access to this digital portal is granted strictly on a discretionary basis for private purposes. By proceeding, you acknowledge that you are entering a secure environment governed by <strong>Swiss Privacy Standards</strong> and the <strong>Federal Act on Data Protection (FADP)</strong>.
-            </p>
-
-            <div class="space-y-4">
+            <div class="max-h-[40vh] md:max-h-none overflow-y-auto pr-2 custom-scrollbar space-y-4">
                 <p>
-                    <strong>Exclusion of Liability:</strong> Information is provided on an "as is" basis. To the maximum extent permitted by Swiss Law, <strong>GS Hospitality</strong> (powered by <strong>Swiss Wow Vacations</strong>) expressly disclaims all liability for any direct, indirect, or consequential damages, including logistical delays, arising from the use of this site.
+                    <strong>Private Platform Notice:</strong> Access to this digital portal is granted strictly on a discretionary basis for private purposes. By proceeding, you acknowledge that you are entering a secure environment governed by <strong>Swiss Privacy Standards</strong> and the <strong>FADP</strong>.
+                </p>
+
+                <p>
+                    <strong>Exclusion of Liability:</strong> Information is provided on an "as is" basis. To the maximum extent permitted by Swiss Law, <strong>GS Hospitality</strong> expressly disclaims all liability for any direct, indirect, or consequential damages arising from the use of this site.
                 </p>
 
                 <p>
@@ -109,33 +109,42 @@
                 </p>
 
                 <p>
-                    <strong>Intellectual Property:</strong> All site architecture, imagery, and design are exclusive property. <strong>Express written authorization</strong> is strictly required to reproduce any content herein.
-                </p>
-
-                <p>
-                    <strong>Terms of Use:</strong> We reserve the absolute right to modify these terms, revoke access, or terminate digital sessions at any time without prior notice to protect the integrity of our operations.
+                    <strong>Terms of Use:</strong> We reserve the right to modify terms or revoke access at any time without prior notice to protect the integrity of our private operations.
                 </p>
 
                 <p class="italic border-t border-white/10 pt-4">
-                    <strong>Notice on Media:</strong> Visuals are for conceptual representation. Any licensed media discrepancies are resolved exclusively at standard industry stock-market valuation upon formal notice, excluding punitive claims.
+                    <strong>Notice on Media:</strong> Visuals are for conceptual representation. Discrepancies are resolved at standard industry stock-market valuation upon formal notice.
                 </p>
             </div>
             
-            <label class="flex items-start justify-center space-x-3 cursor-pointer mt-10 group text-left">
-                <input type="checkbox" id="agree-check" class="mt-1 w-4 h-4 accent-[#C5A059] cursor-pointer">
-                <span class="text-gray-300 group-hover:text-white transition max-w-sm">
-                    I acknowledge the private nature of this portal and agree to the full Terms of Use, Swiss Privacy Policy, and the comprehensive Exclusion of Liability.
+            <label class="flex items-start justify-center space-x-3 cursor-pointer mt-6 md:mt-10 group text-left">
+                <div class="flex items-center h-5">
+                    <input type="checkbox" id="agree-check" class="w-5 h-5 md:w-4 md:h-4 accent-[#C5A059] cursor-pointer rounded">
+                </div>
+                <span class="text-gray-300 group-hover:text-white transition text-[9px] md:text-[11px] max-w-[250px] md:max-w-sm">
+                    I acknowledge the private nature of this portal and agree to the Terms of Use and Exclusion of Liability.
                 </span>
             </label>
         </div>
         
         <button onclick="enterSite()" id="enter-btn" disabled 
-            class="w-full bg-[#C5A059] text-black font-black py-5 rounded-2xl opacity-20 cursor-not-allowed uppercase tracking-[0.2em] transition-all duration-500 hover:bg-white active:scale-95 shadow-xl">
+            class="w-full bg-[#C5A059] text-black font-black py-4 md:py-5 rounded-xl md:rounded-2xl opacity-20 cursor-not-allowed uppercase tracking-[0.2em] transition-all duration-500 active:scale-95 shadow-xl text-xs md:text-base">
             Confirm & Enter Experience
         </button>
 
     </div>
 </div>
+
+<style>
+    /* Custom Scrollbar for the legal area on mobile */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #C5A059;
+        border-radius: 10px;
+    }
+</style>
 
     <main id="main-content" class="opacity-0 transition-opacity duration-1000">
         
