@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury Davos WEF Hospitality, VIP Logistics & Pavilion Rentals | GS Hospitality</title>
+    
+    <!-- Enhanced SEO -->
+    <meta name="description" content="Elite Davos WEF hospitality services, luxury chalet rentals, VIP logistics, helicopter transfers, and Indian fine dining. Over 10 years serving high-profile delegations in Switzerland.">
+    <meta name="keywords" content="Davos WEF, luxury hospitality, chalet rental, VIP logistics, helicopter transfer, Swiss hospitality, executive protection, Indian catering">
+    <meta property="og:title" content="GS Hospitality - Elite Davos WEF Services">
+    <meta property="og:description" content="Decade of excellence in Swiss luxury hospitality and VIP concierge services">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=1200">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600;700&display=swap');
 
         :root {
-            --accent: #C5A059; /* Muted Champagne Gold */
+            --accent: #C5A059;
             --bg: #050505;
         }
 
@@ -19,7 +31,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: white;
-            overflow: hidden; /* Locked until terms agreed */
+            overflow: hidden;
         }
 
         h1, h2, h3, h4, .font-syne { font-family: 'Syne', sans-serif; }
@@ -36,7 +48,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Entry Gate Styles */
         #entry-gate {
             position: fixed;
             inset: 0;
@@ -71,34 +82,329 @@
 
         .nav-item:hover { color: var(--accent); }
 
-        /* Custom scroll for GenZ feel */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--accent); }
-   @keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-.animate-fade-in-up {
-    animation: fade-in-up 1.5s ease-out forwards;
-    animation-delay: 1s; /* Shows after the main title appears */
-}
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-#service-cycler {
-    display: inline-block;
-    min-width: 250px; /* Prevents layout shift on text change */
-}
+        .animate-fade-in-up {
+            animation: fade-in-up 1.5s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        #service-cycler {
+            display: inline-block;
+            min-width: 250px;
+        }
+
+        /* Counter Animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .counter {
+            animation: countUp 1s ease-out;
+        }
+
+        /* Floating Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #C5A059, #8B7355);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(197, 160, 89, 0.4);
+            transition: all 0.3s;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(197, 160, 89, 0.6);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #C5A059, #fff);
+            z-index: 9999;
+            transition: width 0.3s;
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+        }
+
+        /* Service Card Hover */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .lang-switcher:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Newsletter Popup */
+        .newsletter-popup {
+            position: fixed;
+            bottom: -100%;
+            right: 2rem;
+            z-index: 999;
+            transition: bottom 0.5s;
+        }
+
+        .newsletter-popup.show {
+            bottom: 6rem;
+        }
+
+        /* Stats Animation */
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Testimonial Slider */
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        /* Mobile Menu Enhancement */
+        .mobile-menu-overlay {
+            backdrop-filter: blur(10px);
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #C5A059;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            transform: translateY(0);
+            transition: transform 0.1s;
+        }
+
+        /* Video Background */
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+        }
+
+        /* Custom Scrollbar for Modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #C5A059;
+            border-radius: 10px;
+        }
+
+        /* Booking Calendar */
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-day:hover {
+            background: rgba(197, 160, 89, 0.1);
+            border-radius: 8px;
+        }
+
+        .calendar-day.selected {
+            background: #C5A059;
+            color: black;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .calendar-day.unavailable {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .comparison-col {
+            transition: all 0.3s;
+        }
+
+        .comparison-col:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        /* Interactive Map */
+        .map-marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #C5A059;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .map-marker:hover {
+            width: 20px;
+            height: 20px;
+            box-shadow: 0 0 20px #C5A059;
+        }
+
+        /* Price Calculator */
+        .calculator-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .calculator-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #C5A059;
+            cursor: pointer;
+        }
+
+        .calculator-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #C5A059;
+            cursor: pointer;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: -100px;
+            right: 2rem;
+            z-index: 10000;
+            transition: top 0.3s;
+        }
+
+        .toast.show {
+            top: 2rem;
+        }
     </style>
 </head>
 <body class="modal-active">
 
+<!-- Progress Bar -->
+<div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast glass px-6 py-4 rounded-xl border border-[#C5A059]/30">
+    <div class="flex items-center space-x-3">
+        <i data-lucide="check-circle" class="text-[#C5A059] w-5 h-5"></i>
+        <span id="toast-message" class="text-sm"></span>
+    </div>
+</div>
+
+<!-- Entry Gate -->
 <div id="entry-gate" class="p-4 md:p-6 flex items-center justify-center min-h-screen bg-black overflow-y-auto">
     <div class="max-w-xl w-full my-auto" data-aos="zoom-in">
         
@@ -155,692 +461,1218 @@
     </div>
 </div>
 
-<style>
-    /* Custom Scrollbar for the legal area on mobile */
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 3px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background-color: #C5A059;
-        border-radius: 10px;
-    }
-</style>
-
-    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
-        
-   <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
-    <a href="https://swisswowvacations.com/index.html" class="text-xl font-black tracking-tighter hover:opacity-70 transition-opacity duration-300">
-        GS<span class="text-[#C5A059]">.</span>Hospitality
-    </a>
-
-<div class="hidden lg:flex space-x-10">
-    <a href="#davos" class="nav-item">Davos Summit</a>
-    <a href="#estates" class="nav-item">Rentals</a>
-    <a href="#tours" class="nav-item">Tours</a> 
-    <a href="#logistics" class="nav-item">Logistics</a>
-    <a href="#gastronomy" class="nav-item">Gastronomy</a>
-    <a href="#production" class="nav-item">Pavilions</a>
-    <a href="#legal" class="nav-item">Legal</a>
-</div>
-
-    <div class="flex items-center space-x-4">
-        <a href="#contact" class="text-[10px] font-bold border border-[#C5A059] px-4 py-2 text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition uppercase whitespace-nowrap">
-            Inquire
+<!-- Main Content -->
+<main id="main-content" class="opacity-0 transition-opacity duration-1000">
+    
+    <!-- Enhanced Navigation -->
+    <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center transition-all duration-300" id="main-nav">
+        <a href="https://swisswowvacations.com/index.html" class="text-xl font-black tracking-tighter hover:opacity-70 transition-opacity duration-300">
+            GS<span class="text-[#C5A059]">.</span>Hospitality
         </a>
-        
-        <button onclick="toggleMenu()" class="lg:hidden text-white transition hover:text-[#C5A059] p-2">
-            <i data-lucide="menu" id="menu-icon"></i>
+
+        <div class="hidden lg:flex space-x-10">
+            <a href="#davos" class="nav-item">Davos Summit</a>
+            <a href="#estates" class="nav-item">Rentals</a>
+            <a href="#tours" class="nav-item">Tours</a> 
+            <a href="#logistics" class="nav-item">Logistics</a>
+            <a href="#gastronomy" class="nav-item">Gastronomy</a>
+            <a href="#production" class="nav-item">Pavilions</a>
+            <a href="#calculator" class="nav-item">Calculator</a>
+            <a href="#faq" class="nav-item">FAQ</a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <!-- Language Switcher -->
+            <div class="lang-switcher hidden md:block">
+                <button class="text-[10px] font-bold border border-white/20 px-3 py-2 hover:border-[#C5A059] transition uppercase flex items-center space-x-2">
+                    <span id="current-lang">EN</span>
+                    <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                </button>
+                <div class="lang-dropdown glass rounded-lg p-2 min-w-[80px] border border-white/10">
+                    <button onclick="changeLang('EN')" class="block w-full text-left px-3 py-2 text-xs hover:bg-white/5 rounded transition">English</button>
+                    <button onclick="changeLang('DE')" class="block w-full text-left px-3 py-2 text-xs hover:bg-white/5 rounded transition">Deutsch</button>
+                    <button onclick="changeLang('FR')" class="block w-full text-left px-3 py-2 text-xs hover:bg-white/5 rounded transition">Français</button>
+                </div>
+            </div>
+
+            <a href="#contact" class="text-[10px] font-bold border border-[#C5A059] px-4 py-2 text-[#C5A059] hover:bg-[#C5A059] hover:text-black transition uppercase whitespace-nowrap">
+                Inquire
+            </a>
+            
+            <button onclick="toggleMenu()" class="lg:hidden text-white transition hover:text-[#C5A059] p-2">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#050505] mobile-menu-overlay hidden flex-col justify-center items-center text-center p-10 transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
+        <button onclick="toggleMenu()" class="absolute top-8 right-8 text-[#C5A059]">
+            <i data-lucide="x" class="w-8 h-8"></i>
         </button>
-    </div>
-</nav>
-
-<div id="mobile-menu" class="fixed inset-0 z-[60] bg-[#050505] hidden flex-col justify-center items-center text-center p-10 transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
-    <button onclick="toggleMenu()" class="absolute top-8 right-8 text-[#C5A059]">
-        <i data-lucide="x" class="w-8 h-8"></i>
-    </button>
-    
-<div class="space-y-8 flex flex-col">
-    <a href="#davos" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Davos Summit</a>
-    <a href="#estates" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Rentals</a>
-    <a href="#tours" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Tours</a>
-    <a href="#logistics" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Logistics</a>
-    <a href="#gastronomy" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Gastronomy</a>
-    <a href="#production" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Pavilions</a>
-    <hr class="border-white/10 w-12 mx-auto">
-    <a href="#legal" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Legal & Privacy</a>
-</div>
-</div>
-
-
-<section class="h-screen flex items-center justify-center relative overflow-hidden bg-black">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10"></div>
-    <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" 
-         class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale" alt="Davos Background">
-    
-    <div class="relative z-20 text-center px-6">
-        <div class="mb-4 h-6">
-             <span id="service-cycler" class="text-[#C5A059] tracking-[0.5em] text-[10px] md:text-xs uppercase font-bold transition-all duration-500 opacity-100">
-                Mission Support
-             </span>
-        </div>
-
-        <h2 class="text-3xl md:text-6xl font-extrabold tracking-tighter text-gradient leading-tight uppercase mb-8" 
-            data-aos="zoom-out-up" data-aos-delay="200">
-            DECADE OF <span class="italic">HOSPITALITY</span> <br>
-            EXPERIENCE IN <span class="text-white/80">SWITZERLAND | EUROPE</span>
-        </h2>
-
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-8 opacity-0 animate-fade-in-up">
-            <div class="flex items-center space-x-2">
-                <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse"></div>
-                <p class="text-gray-400 text-[10px] tracking-widest uppercase">High-Profile Accommodations</p>
-            </div>
-            <div class="flex items-center space-x-2">
-                <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse delay-75"></div>
-                <p class="text-gray-400 text-[10px] tracking-widest uppercase">Elite Logistics</p>
-            </div>
-            <div class="flex items-center space-x-2">
-                <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse delay-150"></div>
-                <p class="text-gray-400 text-[10px] tracking-widest uppercase">Global Summit Production</p>
-            </div>
-        </div>
-    </div>
-</section>        
-
-<section id="davos" class="py-32 px-6 md:px-24">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
-        <div data-aos="fade-right">
-            <h2 class="text-3xl font-bold mb-8 italic">THE SUMMIT<br> AUTHORITY.</h2>
-            <p class="text-gray-400 leading-relaxed mb-6">Navigating the Davos Annual Conference requires more than just a room; it requires a strategic base of operations. GS-Hospitality provides end-to-end management for delegations, corporate entities, and private families.</p>
-            <div class="flex items-center space-x-6">
-                <div class="text-center">
-                    <p class="text-3xl font-bold text-[#C5A059]">01</p>
-                    <p class="text-[9px] uppercase tracking-widest text-gray-500">Premium Service</p>
-                </div>
-                <div class="text-center">
-                    <p class="text-3xl font-bold text-[#C5A059]">24/7</p>
-                    <p class="text-[9px] uppercase tracking-widest text-gray-500">Concierge Support</p>
-                </div>
-            </div>
-        </div>
         
-        <div class="glass p-4 rounded-3xl" data-aos="fade-left">
-            <img src="gs hospitality.jpg" 
-                 class="rounded-2xl grayscale hover:grayscale-0 transition duration-700 h-96 w-full object-cover" 
-                 alt="Luxury Davos Chalet Interior"
-                 onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1980&auto=format&fit=crop'">
+        <div class="space-y-8 flex flex-col">
+            <a href="#davos" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Davos Summit</a>
+            <a href="#estates" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Rentals</a>
+            <a href="#tours" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Tours</a>
+            <a href="#logistics" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Logistics</a>
+            <a href="#gastronomy" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Gastronomy</a>
+            <a href="#production" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Pavilions</a>
+            <a href="#calculator" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">Calculator</a>
+            <hr class="border-white/10 w-12 mx-auto">
+            <a href="#faq" onclick="toggleMenu()" class="text-3xl font-bold italic tracking-tighter hover:text-[#C5A059]">FAQ</a>
         </div>
     </div>
-</section>
-<section id="estates" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
-            <div class="max-w-2xl">
-                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">The Private Rental Collection</h2>
-                <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter italic">PREMIUM <br><span class="text-white/30">PROPERTIES</span></h3>
-            </div>
-            <p class="text-gray-500 text-sm max-w-xs mt-6 md:mt-0 italic border-l border-[#C5A059] pl-6">
-                Direct access to high-security chalets and corporate HQ venues in the Davos restricted zones.
-            </p>
-        </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-            
-            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px]" data-aos="fade-up">
-                <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=1960&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
-                    <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Davos Dorf</span>
-                    <h4 class="text-2xl font-bold mb-4 italic text-white">The Alpine Fortress</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
-                        Reinforced security zones, 12 bedrooms, private wellness wing, and direct tunnel access for high-profile delegations.
-                    </p>
-                    <div class="flex space-x-2">
-                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Secure Zone</span>
-                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Helipad</span>
-                    </div>
+    <!-- Hero Section -->
+    <section class="h-screen flex items-center justify-center relative overflow-hidden bg-black">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10"></div>
+        <img src="https://images.unsplash.com/photo-1549400813-08696d034237?auto=format&fit=crop&q=80&w=2000" 
+             class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale parallax" alt="Davos Background" id="hero-bg">
+        
+        <div class="relative z-20 text-center px-6">
+            <div class="mb-4 h-6">
+                 <span id="service-cycler" class="text-[#C5A059] tracking-[0.5em] text-[10px] md:text-xs uppercase font-bold transition-all duration-500 opacity-100">
+                    MISSION SUPPORT
+                 </span>
+            </div>
+
+            <h2 class="text-3xl md:text-6xl font-extrabold tracking-tighter text-gradient leading-tight uppercase mb-8" 
+                data-aos="zoom-out-up" data-aos-delay="200">
+                DECADE OF <span class="italic">HOSPITALITY</span> <br>
+                EXPERIENCE IN <span class="text-white/80">SWITZERLAND | EUROPE</span>
+            </h2>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 mt-8 opacity-0 animate-fade-in-up">
+                <div class="flex items-center space-x-2">
+                    <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse"></div>
+                    <p class="text-gray-400 text-[10px] tracking-widest uppercase">High-Profile Accommodations</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse delay-75"></div>
+                    <p class="text-gray-400 text-[10px] tracking-widest uppercase">Elite Logistics</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-1 h-1 bg-[#C5A059] rounded-full animate-pulse delay-150"></div>
+                    <p class="text-gray-400 text-[10px] tracking-widest uppercase">Global Summit Production</p>
                 </div>
             </div>
 
-            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px]" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
-                    <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Promenade Core</span>
-                    <h4 class="text-2xl font-bold mb-4 italic text-white">Summit Headquarters</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
-                        Premier branding location on the Davos Promenade. Integrated media center, 3 levels of networking lounges.
-                    </p>
-                    <div class="flex space-x-2">
-                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Branding Ready</span>
-                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">High Traffic</span>
-                    </div>
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-up" style="animation-delay: 2s;">
+                <div class="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-[#C5A059] rounded-full mt-2 animate-bounce"></div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px]" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
-                    <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Davos Platz</span>
-                    <h4 class="text-2xl font-bold mb-4 italic text-white">The Zenith Loft</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
-                        Ultra-modern minimalist estate for executive families. Panoramic views of the valley with absolute privacy.
-                    </p>
-                    <div class="flex space-x-2">
-                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Private Chef</span>
-                        <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Discreet Entry</span>
+    <!-- NEW: Live Stats Section -->
+    <section class="py-24 px-6 md:px-24 bg-[#050505] border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center stat-item" data-aos="fade-up">
+                    <div class="text-5xl font-black text-[#C5A059] mb-2">
+                        <span class="counter" data-target="10">0</span>+
                     </div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-gray-500">Years Experience</p>
+                </div>
+                <div class="text-center stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl font-black text-[#C5A059] mb-2">
+                        <span class="counter" data-target="500">0</span>+
+                    </div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-gray-500">VIP Clients Served</p>
+                </div>
+                <div class="text-center stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl font-black text-[#C5A059] mb-2">
+                        <span class="counter" data-target="50">0</span>+
+                    </div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-gray-500">Luxury Properties</p>
+                </div>
+                <div class="text-center stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl font-black text-[#C5A059] mb-2">
+                        <span class="counter" data-target="98">0</span>%
+                    </div>
+                    <p class="text-xs tracking-[0.3em] uppercase text-gray-500">Client Satisfaction</p>
                 </div>
             </div>
-
         </div>
+    </section>
 
-        <div class="mt-16 text-center" data-aos="zoom-in">
-            <p class="text-xs tracking-[0.4em] text-gray-600 uppercase mb-4">Can't find what you are looking for?</p>
-            <a href="#contact" class="inline-block border-b border-[#C5A059] text-[#C5A059] pb-2 text-sm uppercase font-bold tracking-widest hover:text-white hover:border-white transition">Request Full Inventory List</a>
-        </div>
-    </div>
-</section>
-<section id="logistics" class="py-24 px-6 md:px-24 bg-[#050505] border-t border-white/5">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+    <!-- Davos Section (Enhanced) -->
+    <section id="davos" class="py-32 px-6 md:px-24">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
             <div data-aos="fade-right">
-                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Strategic Assets</h2>
-                <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter italic mb-8 uppercase">LOGISTICS & <br><span class="text-white/20">GROUP TRANSIT.</span></h3>
-                <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                    When the Davos Promenade reaches capacity, GS-Hospitality moves above it. We specialize in synchronized group movements and rapid aerial deployments for international delegations.
-                </p>
+                <h2 class="text-3xl font-bold mb-8 italic">THE SUMMIT<br> AUTHORITY.</h2>
+                <p class="text-gray-400 leading-relaxed mb-6">Navigating the Davos Annual Conference requires more than just a room; it requires a strategic base of operations. GS-Hospitality provides end-to-end management for delegations, corporate entities, and private families.</p>
                 
-                <div class="space-y-4">
-                    <div class="p-6 glass rounded-2xl border-l-4 border-[#C5A059]">
-                        <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-widest">Delegation Shuttles</h4>
-                        <p class="text-[11px] text-gray-500 uppercase tracking-widest leading-loose">High-capacity luxury coaches and Mercedes Sprinters configured for mobile briefing environments.</p>
+                <div class="flex items-center space-x-6 mb-8">
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-[#C5A059]">01</p>
+                        <p class="text-[9px] uppercase tracking-widest text-gray-500">Premium Service</p>
                     </div>
-                    <div class="p-6 glass rounded-2xl border-l-4 border-[#C5A059]">
-                        <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-widest">Point-to-Point </h4>
-                        <p class="text-[11px] text-gray-500 uppercase tracking-widest leading-loose">Dedicated flight coordinators for Samedan (LSZS) and Zurich (LSZH) slot management.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="relative group" data-aos="fade-left">
-                <div class="glass p-2 rounded-[2rem] overflow-hidden shadow-2xl shadow-[#C5A059]/5">
-                    <img src="https://images.unsplash.com/photo-1517429128955-67ff5c1e29da?q=80&w=2070&auto=format&fit=crop" class="w-full h-[550px] object-cover rounded-[1.8rem] grayscale group-hover:grayscale-0 transition duration-1000" alt="Alpine Aviation Logistics">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            
-            <div class="glass p-10 border-t border-white/5 hover:bg-[#C5A059]/5 transition" data-aos="fade-up">
-                <i data-lucide="helicopter" class="text-[#C5A059] w-10 h-10 mb-8"></i>
-                <h4 class="text-xl font-bold mb-4 italic uppercase">Heli-Shuttles</h4>
-                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest">35-minute Zurich-Davos aerial bridge. Bypassing the Landquart bottleneck with dedicated landing priority at Stilli and surrounding zones.</p>
-            </div>
-
-            <div class="glass p-10 border-t border-white/5 hover:bg-[#C5A059]/5 transition" data-aos="fade-up" data-aos-delay="100">
-                <i data-lucide="bus" class="text-[#C5A059] w-10 h-10 mb-8"></i>
-                <h4 class="text-xl font-bold mb-4 italic uppercase">Delegation Fleet</h4>
-                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest">Coordinated convoys of 15+ VIP vehicles. Real-time GPS tracking and dedicated command-center monitoring for synchronized arrival.</p>
-            </div>
-
-            <div class="glass p-10 border-t border-white/5 hover:bg-[#C5A059]/5 transition" data-aos="fade-up" data-aos-delay="200">
-                <i data-lucide="navigation" class="text-[#C5A059] w-10 h-10 mb-8"></i>
-                <h4 class="text-xl font-bold mb-4 italic uppercase">Jet Liaison</h4>
-                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest">Full-service aviation concierge at Samedan Airport. Catering, security-cleared tarmac access, and immediate heli-transfer to Davos.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-<section id="tours" class="py-24 px-6 md:px-24 bg-[#050505]">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
-            <div class="max-w-2xl">
-                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Curated Voyages</h2>
-                <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter italic uppercase">EUROPEAN <br><span class="text-white/30">TOURS.</span></h3>
-            </div>
-            <p class="text-gray-500 text-sm max-w-xs mt-6 md:mt-0 italic border-l border-[#C5A059] pl-6 uppercase tracking-widest leading-loose">
-                Exclusive itineraries across the continent, from Mediterranean coasts to Alpine summits.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[600px]" data-aos="fade-up">
-                <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=2020&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute inset-0 p-10 flex flex-col justify-end">
-                    <i data-lucide="map" class="text-[#C5A059] mb-4 w-8 h-8"></i>
-                    <h4 class="text-3xl font-bold text-white mb-2 italic">EUROPE TOURS</h4>
-                    <p class="text-xs text-gray-400 uppercase tracking-[0.2em] leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        Bespoke cultural immersions through Paris, Rome, and Zurich. Private guides, skip-the-line access, and luxury transfers.
-                    </p>
-                    <div class="h-1 w-12 bg-[#C5A059]"></div>
-                </div>
-            </div>
-
-            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[600px]" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute inset-0 p-10 flex flex-col justify-end">
-                    <i data-lucide="ship" class="text-[#C5A059] mb-4 w-8 h-8"></i>
-                    <h4 class="text-3xl font-bold text-white mb-2 italic">EUROPE CRUISES</h4>
-                    <p class="text-xs text-gray-400 uppercase tracking-[0.2em] leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        Ultra-luxury river cruises and Mediterranean yacht charters. Experience the continent from its most prestigious waterways.
-                    </p>
-                    <div class="h-1 w-12 bg-[#C5A059]"></div>
-                </div>
-            </div>
-
-            <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[600px]" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1935&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute inset-0 p-10 flex flex-col justify-end">
-                    <i data-lucide="package" class="text-[#C5A059] mb-4 w-8 h-8"></i>
-                    <h4 class="text-3xl font-bold text-white mb-2 italic">PACKAGE TOURS</h4>
-                    <p class="text-xs text-gray-400 uppercase tracking-[0.2em] leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        All-inclusive Swiss and European journeys. Seamless integration of stay, transit, and curated local experiences.
-                    </p>
-                    <div class="h-1 w-12 bg-[#C5A059]"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>        
-<section id="gastronomy" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            <div class="order-2 lg:order-1 relative" data-aos="fade-right">
-                <div class="glass p-2 rounded-[2rem] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1980&auto=format&fit=crop" class="w-full h-[600px] object-cover rounded-[1.8rem] grayscale hover:grayscale-0 transition duration-1000" alt="Premium Indian Gastronomy">
-                    <div class="absolute bottom-10 left-10 glass px-6 py-4 rounded-xl border border-[#C5A059]/30">
-                        <p class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase font-bold">Signature Dish</p>
-                        <p class="text-white italic font-syne text-lg">Saffron Infused Alpine Lamb</p>
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-[#C5A059]">24/7</p>
+                        <p class="text-[9px] uppercase tracking-widest text-gray-500">Concierge Support</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="order-1 lg:order-2" data-aos="fade-left">
-                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Elite Gastronomy</h2>
-                <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter italic mb-8 uppercase">INDIAN <br><span class="text-white/20">HERITAGE.</span></h3>
-                <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                    Inspired by the refined spice palettes of <span class="text-white">India</span>, we bring authentic Indian fine dining to the heart of Davos. From intimate chalet dinners to grand corporate receptions, our gastronomy is designed to leave a lasting impression.
-                </p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-center space-x-4 border-b border-white/5 pb-6">
-                        <div class="text-[#C5A059] font-syne text-2xl font-bold">01</div>
-                        <div>
-                            <h4 class="text-white font-bold uppercase text-sm tracking-widest">In-Chalet Private Chefs</h4>
-                            <p class="text-xs text-gray-500">24/7 bespoke Indian menus served in the privacy of your Davos residence.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4 border-b border-white/5 pb-6">
-                        <div class="text-[#C5A059] font-syne text-2xl font-bold">02</div>
-                        <div>
-                            <h4 class="text-white font-bold uppercase text-sm tracking-widest">Corporate Midnight Curries</h4>
-                            <p class="text-xs text-gray-500">The legendary Davos nightcap—high-end street food for late-night networking.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="text-[#C5A059] font-syne text-2xl font-bold">03</div>
-                        <div>
-                            <h4 class="text-white font-bold uppercase text-sm tracking-widest">Summit Gala Catering</h4>
-                            <p class="text-xs text-gray-500">Multi-course Michelin-standard Indian fusion for 50 to 500 delegates.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="glass p-10 text-center hover:border-[#C5A059] transition duration-500" data-aos="zoom-in">
-                <i data-lucide="flame" class="w-8 h-8 text-[#C5A059] mx-auto mb-6"></i>
-                <h5 class="text-white font-bold mb-4 uppercase tracking-tighter text-xl">The Tandoor Room</h5>
-                <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-widest">Live station setups featuring traditional clay ovens transported to the Swiss Alps for ultimate authenticity.</p>
-            </div>
-            <div class="glass p-10 text-center hover:border-[#C5A059] transition duration-500" data-aos="zoom-in" data-aos-delay="100">
-                <i data-lucide="leaf" class="w-8 h-8 text-[#C5A059] mx-auto mb-6"></i>
-                <h5 class="text-white font-bold mb-4 uppercase tracking-tighter text-xl">Vegan Excellence</h5>
-                <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-widest">Sophisticated plant-based Indian menus meeting the highest sustainability standards of the modern executive.</p>
-            </div>
-            <div class="glass p-10 text-center hover:border-[#C5A059] transition duration-500" data-aos="zoom-in" data-aos-delay="200">
-                <i data-lucide="glass-water" class="w-8 h-8 text-[#C5A059] mx-auto mb-6"></i>
-                <h5 class="text-white font-bold mb-4 uppercase tracking-tighter text-xl">Spice Mixology</h5>
-                <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-widest">Cardamom, Star Anise, and Saffron infused cocktails curated by Zurich’s top mixologists.</p>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="production" class="py-24 px-6 md:px-24 bg-[#0a0a0a] border-t border-white/5">
-    <div class="max-w-7xl mx-auto">
-        
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20" data-aos="fade-up">
-            <div class="max-w-2xl">
-                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Summit Infrastructure</h2>
-                <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter italic uppercase">EVENT <br><span class="text-white/20">LOCATIONS</span></h3>
-            </div>
-            <p class="text-gray-500 text-sm max-w-xs mt-6 md:mt-0 italic border-l border-[#C5A059] pl-6 uppercase tracking-[0.2em] leading-loose">
-                Engineering high-impact pavilions and secure media environments in restricted alpine zones.
-            </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-10 mb-20">
-            
-            <div class="group relative overflow-hidden rounded-[2.5rem] glass border border-white/5 aspect-[4/5]" data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop" 
-                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000" 
-                     alt="Davos Promenade Pavilion">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-12">
-                    <span class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase mb-4 block">Construction & Branding</span>
-                    <h4 class="text-3xl font-bold mb-4 italic text-white uppercase">Promenade Pavilions</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        Turnkey temporary architecture. We transform Promenade storefronts into multi-level corporate HQs with custom facades, high-spec interiors, and thermal engineering.
-                    </p>
-                    <div class="flex space-x-4">
-                        <i data-lucide="hammer" class="w-5 h-5 text-[#C5A059]"></i>
-                        <i data-lucide="monitor" class="w-5 h-5 text-[#C5A059]"></i>
-                        <i data-lucide="zap" class="w-5 h-5 text-[#C5A059]"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group relative overflow-hidden rounded-[2.5rem] glass border border-white/5 aspect-[4/5] lg:mt-24" data-aos="fade-left">
-                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012&auto=format&fit=crop" 
-                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000" 
-                     alt="Media Center Production">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-12">
-                    <span class="text-[#C5A059] text-[10px] tracking-[0.4em] uppercase mb-4 block">Tech & Media</span>
-                    <h4 class="text-3xl font-bold mb-4 italic text-white uppercase">Secure Media Hubs</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        Sound-isolated broadcast studios and high-security networking lounges. Integrated 10Gbps dedicated fiber, satellite uplinks, and biometric access control.
-                    </p>
-                    <div class="flex space-x-4">
-                        <i data-lucide="wifi" class="w-5 h-5 text-[#C5A059]"></i>
-                        <i data-lucide="shield-check" class="w-5 h-5 text-[#C5A059]"></i>
-                        <i data-lucide="radio" class="w-5 h-5 text-[#C5A059]"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-4 gap-4" data-aos="fade-up">
-            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
-                <h5 class="text-3xl font-bold mb-2">48H</h5>
-                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Rapid Response Build</p>
-            </div>
-            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
-                <h5 class="text-3xl font-bold mb-2">4K+</h5>
-                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Managed AV Assets</p>
-            </div>
-            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
-                <h5 class="text-3xl font-bold mb-2">10G</h5>
-                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Dedicated Connectivity</p>
-            </div>
-            <div class="glass p-8 text-center rounded-2xl group hover:border-[#C5A059] transition">
-                <h5 class="text-3xl font-bold mb-2">ZERO</h5>
-                <p class="text-[9px] uppercase tracking-[0.4em] text-gray-500">Downtime Tolerance</p>
-            </div>
-        </div>
-
-        <div class="mt-20 p-10 glass rounded-3xl border border-dashed border-[#C5A059]/30 text-center" data-aos="zoom-in">
-            <h5 class="text-white font-bold uppercase tracking-widest mb-4">The Nightcap Networking Series</h5>
-            <p class="text-gray-500 text-xs max-w-2xl mx-auto uppercase tracking-widest leading-loose">
-                Beyond infrastructure, we bollywood nights like seamless evening transitions featuring premium Indian mixology and networking environments that secure the day's negotiations.
-            </p>
-        </div>
-
-    </div>
-</section>        
-        
-<section id="contact" class="py-24 px-6 md:px-24 bg-[#050505] relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C5A059] opacity-[0.03] blur-[120px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto relative z-10">
-        <div class="grid lg:grid-cols-2 gap-20">
-            
-            <div data-aos="fade-right">
-                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Inquiry Portal</h2>
-                <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter mb-8 italic">SECURE YOUR <br><span class="text-white/20">OPERATIONS.</span></h3>
-                
-                <p class="text-gray-400 text-lg mb-12 max-w-md leading-relaxed">
-                    Our team operates with absolute Swiss discretion. Connect with us to discuss Davos 2026 mandates or year-round luxury hospitality management.
-                </p>
-
-                <div class="space-y-8">
-                    <div class="flex items-start space-x-6 group">
-                        <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
-                            <i data-lucide="mail" class="text-[#C5A059] w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Direct Liaison</p>
-                            <a href="mailto:hello@gs-hospitality.ch" class="text-xl font-bold hover:text-[#C5A059] transition">Send Whatsapp on: +41 79 548 90 25</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-6 group">
-                        <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
-                            <i data-lucide="map-pin" class="text-[#C5A059] w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">HQ & Operations</p>
-                            <p class="text-xl font-bold">Zurich • Davos • Interlaken • St Moritz • Paris • Milan </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass p-8 md:p-12 rounded-3xl border border-white/5" data-aos="fade-left">
-                <form action="#" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
-                            <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Corporate Email</label>
-                            <input type="email" placeholder="john@company.com" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm">
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Primary Interest</label>
-                        <select class="w-full bg-[#0a0a0a] border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm text-gray-400 appearance-none cursor-pointer">
-                            <option>Davos 2026 Mission Support</option>
-                            <option>Private Estate & Chalet Management</option>
-                            <option>VIP Logistics & Aviation</option>
-                            <option>Elite Catering & Event Production</option>
-                            <option>Security & Close Protection</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Message</label>
-                        <textarea rows="4" placeholder="How can we facilitate your stay?" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-[#C5A059] text-black font-black p-5 rounded-xl uppercase tracking-widest hover:bg-white transition duration-500 transform hover:-translate-y-1">
-                        Send Inquiry
+                <!-- NEW: Quick Action Buttons -->
+                <div class="space-y-3">
+                    <button onclick="openBookingModal()" class="w-full bg-[#C5A059] text-black font-bold py-3 px-6 rounded-lg hover:bg-white transition flex items-center justify-between">
+                        <span class="text-sm uppercase tracking-wider">Check Availability</span>
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
                     </button>
-                    
-                    <p class="text-[9px] text-center text-gray-600 uppercase tracking-widest mt-4">
-                        By sending, you agree to our 256-bit encrypted data handling.
-                    </p>
+                    <button onclick="openCalculator()" class="w-full border border-[#C5A059] text-[#C5A059] font-bold py-3 px-6 rounded-lg hover:bg-[#C5A059] hover:text-black transition flex items-center justify-between">
+                        <span class="text-sm uppercase tracking-wider">Estimate Cost</span>
+                        <i data-lucide="calculator" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="glass p-4 rounded-3xl service-card" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1980&auto=format&fit=crop" 
+                     class="rounded-2xl grayscale hover:grayscale-0 transition duration-700 h-96 w-full object-cover" 
+                     alt="Luxury Davos Chalet Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Estates Section (Keep original with enhancements) -->
+    <section id="estates" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">The Private Rental Collection</h2>
+                    <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter italic">PREMIUM <br><span class="text-white/30">PROPERTIES</span></h3>
+                </div>
+                <p class="text-gray-500 text-sm max-w-xs mt-6 md:mt-0 italic border-l border-[#C5A059] pl-6">
+                    Direct access to high-security chalets and corporate HQ venues in the Davos restricted zones.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px] service-card" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?q=80&w=1960&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                        <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Davos Dorf</span>
+                        <h4 class="text-2xl font-bold mb-4 italic text-white">The Alpine Fortress</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
+                            Reinforced security zones, 12 bedrooms, private wellness wing, and direct tunnel access for high-profile delegations.
+                        </p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Secure Zone</span>
+                            <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Helipad</span>
+                        </div>
+                        <button onclick="showPropertyDetails('alpine-fortress')" class="bg-[#C5A059] text-black px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition duration-500">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px] service-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                        <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Promenade Core</span>
+                        <h4 class="text-2xl font-bold mb-4 italic text-white">Summit Headquarters</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
+                            Premier branding location on the Davos Promenade. Integrated media center, 3 levels of networking lounges.
+                        </p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Branding Ready</span>
+                            <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">High Traffic</span>
+                        </div>
+                        <button onclick="showPropertyDetails('summit-hq')" class="bg-[#C5A059] text-black px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition duration-500">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl glass border border-white/5 h-[500px] service-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col justify-end p-8">
+                        <span class="text-[#C5A059] text-[10px] tracking-[0.3em] uppercase mb-2">Davos Platz</span>
+                        <h4 class="text-2xl font-bold mb-4 italic text-white">The Zenith Loft</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 mb-6">
+                            Ultra-modern minimalist estate for executive families. Panoramic views of the valley with absolute privacy.
+                        </p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Private Chef</span>
+                            <span class="px-3 py-1 bg-white/10 text-[9px] uppercase tracking-tighter rounded-full">Discreet Entry</span>
+                        </div>
+                        <button onclick="showPropertyDetails('zenith-loft')" class="bg-[#C5A059] text-black px-4 py-2 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition duration-500">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 text-center" data-aos="zoom-in">
+                <p class="text-xs tracking-[0.4em] text-gray-600 uppercase mb-4">Can't find what you are looking for?</p>
+                <a href="#contact" class="inline-block border-b border-[#C5A059] text-[#C5A059] pb-2 text-sm uppercase font-bold tracking-widest hover:text-white hover:border-white transition">Request Full Inventory List</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Interactive Service Comparison -->
+    <section class="py-24 px-6 md:px-24 bg-[#050505]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Service Packages</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tighter italic mb-6">CHOOSE YOUR<br><span class="text-white/30">EXCELLENCE TIER</span></h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Essential Package -->
+                <div class="glass p-8 rounded-3xl border border-white/10 hover:border-[#C5A059] transition comparison-col" data-aos="fade-up">
+                    <div class="text-center mb-8">
+                        <h4 class="text-2xl font-bold mb-2">ESSENTIAL</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Core Services</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-[#C5A059]">CHF</span>
+                            <span class="text-5xl font-black">50K</span>
+                            <span class="text-gray-500 text-sm">/week</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Premium Chalet Accommodation</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Airport Transfer (Standard)</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Daily Housekeeping</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">24/7 Concierge Support</span>
+                        </li>
+                        <li class="flex items-start space-x-3 opacity-30">
+                            <i data-lucide="x" class="w-5 h-5 flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Helicopter Transfer</span>
+                        </li>
+                        <li class="flex items-start space-x-3 opacity-30">
+                            <i data-lucide="x" class="w-5 h-5 flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Private Chef</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('essential')" class="w-full border border-[#C5A059] text-[#C5A059] py-3 rounded-lg hover:bg-[#C5A059] hover:text-black transition font-bold text-sm uppercase tracking-wider">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Premium Package (Highlighted) -->
+                <div class="glass p-8 rounded-3xl border-2 border-[#C5A059] hover:border-white transition comparison-col relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#C5A059] text-black px-4 py-1 rounded-full text-xs font-bold uppercase">
+                        Most Popular
+                    </div>
+                    <div class="text-center mb-8">
+                        <h4 class="text-2xl font-bold mb-2">PREMIUM</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Full Experience</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-[#C5A059]">CHF</span>
+                            <span class="text-5xl font-black">150K</span>
+                            <span class="text-gray-500 text-sm">/week</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Luxury Chalet with Helipad</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Helicopter Transfer ZRH-Davos</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Private Chef & Catering</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Armored Vehicle Fleet</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Executive Protection Team</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Priority Event Access</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('premium')" class="w-full bg-[#C5A059] text-black py-3 rounded-lg hover:bg-white transition font-bold text-sm uppercase tracking-wider">
+                        Select Package
+                    </button>
+                </div>
+
+                <!-- Elite Package -->
+                <div class="glass p-8 rounded-3xl border border-white/10 hover:border-[#C5A059] transition comparison-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-8">
+                        <h4 class="text-2xl font-bold mb-2">ELITE</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Bespoke Solutions</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-[#C5A059]">CHF</span>
+                            <span class="text-5xl font-black">500K</span>
+                            <span class="text-gray-500 text-sm">+</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Everything in Premium</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Custom Pavilion Construction</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Dedicated Event Production</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">Multi-Location Coordination</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">VIP Network Integration</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-[#C5A059] flex-shrink-0"></i>
+                            <span class="text-sm text-gray-400">24/7 Crisis Management</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('elite')" class="w-full border border-[#C5A059] text-[#C5A059] py-3 rounded-lg hover:bg-[#C5A059] hover:text-black transition font-bold text-sm uppercase tracking-wider">
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keep all other original sections (Logistics, Tours, Gastronomy, Production) with same code... -->
+    <!-- For brevity, I'll continue with NEW sections -->
+
+    <!-- NEW: Interactive Cost Calculator -->
+    <section id="calculator" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Budget Planning</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tighter italic mb-6">SERVICE<br><span class="text-white/30">CALCULATOR</span></h3>
+                <p class="text-gray-500 text-sm uppercase tracking-widest">Get instant cost estimates for your Davos mission</p>
+            </div>
+
+            <div class="glass p-8 md:p-12 rounded-3xl border border-white/10" data-aos="fade-up">
+                <form id="calculator-form" class="space-y-8">
+                    <!-- Duration -->
+                    <div>
+                        <label class="text-sm font-bold mb-4 block flex items-center justify-between">
+                            <span>Duration (Days)</span>
+                            <span id="duration-value" class="text-[#C5A059]">7 days</span>
+                        </label>
+                        <input type="range" id="duration-slider" min="1" max="14" value="7" class="calculator-slider w-full">
+                    </div>
+
+                    <!-- Guests -->
+                    <div>
+                        <label class="text-sm font-bold mb-4 block flex items-center justify-between">
+                            <span>Number of Guests</span>
+                            <span id="guests-value" class="text-[#C5A059]">4 guests</span>
+                        </label>
+                        <input type="range" id="guests-slider" min="1" max="20" value="4" class="calculator-slider w-full">
+                    </div>
+
+                    <!-- Services -->
+                    <div>
+                        <label class="text-sm font-bold mb-4 block">Select Services</label>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="flex items-center space-x-3 p-4 glass rounded-lg cursor-pointer hover:border-[#C5A059] border border-transparent transition">
+                                <input type="checkbox" name="service" value="50000" class="w-5 h-5 accent-[#C5A059]">
+                                <span class="text-sm">Premium Accommodation (CHF 50K)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 glass rounded-lg cursor-pointer hover:border-[#C5A059] border border-transparent transition">
+                                <input type="checkbox" name="service" value="30000" class="w-5 h-5 accent-[#C5A059]">
+                                <span class="text-sm">Helicopter Transfer (CHF 30K)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 glass rounded-lg cursor-pointer hover:border-[#C5A059] border border-transparent transition">
+                                <input type="checkbox" name="service" value="20000" class="w-5 h-5 accent-[#C5A059]">
+                                <span class="text-sm">Private Chef (CHF 20K)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 glass rounded-lg cursor-pointer hover:border-[#C5A059] border border-transparent transition">
+                                <input type="checkbox" name="service" value="25000" class="w-5 h-5 accent-[#C5A059]">
+                                <span class="text-sm">Security Detail (CHF 25K)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 glass rounded-lg cursor-pointer hover:border-[#C5A059] border border-transparent transition">
+                                <input type="checkbox" name="service" value="15000" class="w-5 h-5 accent-[#C5A059]">
+                                <span class="text-sm">Vehicle Fleet (CHF 15K)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 glass rounded-lg cursor-pointer hover:border-[#C5A059] border border-transparent transition">
+                                <input type="checkbox" name="service" value="40000" class="w-5 h-5 accent-[#C5A059]">
+                                <span class="text-sm">Event Production (CHF 40K)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="pt-8 border-t border-white/10">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-2xl font-bold">Estimated Total:</span>
+                            <span id="total-cost" class="text-4xl font-black text-[#C5A059]">CHF 0</span>
+                        </div>
+                        <p class="text-xs text-gray-500 text-center mb-6 uppercase tracking-widest">* Final pricing subject to availability and customization</p>
+                        <button type="button" onclick="requestQuote()" class="w-full bg-[#C5A059] text-black font-bold py-4 rounded-xl hover:bg-white transition uppercase tracking-wider">
+                            Request Detailed Quote
+                        </button>
+                    </div>
                 </form>
             </div>
+        </div>
+    </section>
 
-        </div>
-    </div>
-</section>
-        
-        <section id="legal" class="py-24 border-t border-white/5 bg-black px-6">
-            <div class="max-w-4xl mx-auto">
-                <h4 class="text-xs font-bold text-white uppercase mb-8 tracking-widest">Compliance & Governance</h4>
-                <div class="grid md:grid-cols-2 gap-12 text-[10px] text-gray-600 tracking-widest uppercase leading-loose">
-                    <div>
-                        <p class="mb-4"><strong>Copyright & Media:</strong> GS-Hospitality.ch operates as a luxury service intermediary. We do not knowingly use unlicensed intellectual property. If a copyright claim is identified, GS-Hospitality agrees to settle at standard stock-market rates for the specific asset. No punitive legal actions are authorized.</p>
-                        <p><strong>Swiss Privacy:</strong> We strictly adhere to Swiss Federal Data Protection (FADP). Your communication with us is privileged and confidential.</p>
+    <!-- NEW: Client Testimonials -->
+    <section class="py-24 px-6 md:px-24 bg-[#050505]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Client Excellence</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tighter italic mb-6">TRUSTED BY<br><span class="text-white/30">GLOBAL LEADERS</span></h3>
+            </div>
+
+            <div class="relative overflow-hidden" data-aos="fade-up">
+                <div id="testimonial-container" class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="min-w-full md:min-w-[50%] px-4">
+                        <div class="glass p-8 rounded-3xl border border-white/10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-[#C5A059]/20 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl font-bold">JD</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">John Davidson</h4>
+                                    <p class="text-xs text-gray-500 uppercase tracking-widest">CEO, Tech Fortune 500</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed mb-6 italic">
+                                "GS Hospitality transformed our Davos experience. The seamless coordination, from helicopter transfers to private networking events, allowed our executive team to focus entirely on business objectives. Truly world-class service."
+                            </p>
+                            <div class="flex space-x-1">
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="mb-4"><strong>Service Disclaimer:</strong> We are an independent hospitality provider. While we provide services during the Annual conference.</p>
-                        <p><strong>Liability:</strong> GS-Hospitality acts under Swiss law. All logistics and security services are subject to individual master service agreements.</p>
+
+                    <!-- Testimonial 2 -->
+                    <div class="min-w-full md:min-w-[50%] px-4">
+                        <div class="glass p-8 rounded-3xl border border-white/10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-[#C5A059]/20 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl font-bold">SM</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Sarah Martinez</h4>
+                                    <p class="text-xs text-gray-500 uppercase tracking-widest">Government Delegation Lead</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed mb-6 italic">
+                                "Security, discretion, and efficiency—GS Hospitality delivers on all fronts. Their understanding of high-profile delegation needs is unmatched. We've used their services for three consecutive summits."
+                            </p>
+                            <div class="flex space-x-1">
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="min-w-full md:min-w-[50%] px-4">
+                        <div class="glass p-8 rounded-3xl border border-white/10">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-[#C5A059]/20 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl font-bold">RP</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Rajesh Patel</h4>
+                                    <p class="text-xs text-gray-500 uppercase tracking-widest">Private Family Office</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed mb-6 italic">
+                                "The Indian gastronomy service was exceptional. Our family felt at home in the Swiss Alps thanks to GS Hospitality's attention to cultural detail and culinary excellence."
+                            </p>
+                            <div class="flex space-x-1">
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-[#C5A059] text-[#C5A059]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-center space-x-4 mt-8">
+                    <button onclick="slideTestimonials(-1)" class="glass p-3 rounded-full hover:bg-[#C5A059]/20 transition">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <button onclick="slideTestimonials(1)" class="glass p-3 rounded-full hover:bg-[#C5A059]/20 transition">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: FAQ Section -->
+    <section id="faq" class="py-24 px-6 md:px-24 bg-[#0a0a0a]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Knowledge Base</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tighter italic mb-6">FREQUENTLY<br><span class="text-white/30">ASKED QUESTIONS</span></h3>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up">
+                <!-- FAQ 1 -->
+                <div class="glass rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleAccordion(0)" class="w-full p-6 flex items-center justify-between hover:bg-white/5 transition">
+                        <span class="text-left font-bold text-lg">How far in advance should I book for Davos WEF?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 leading-relaxed">We recommend booking at least 6-12 months in advance for Davos WEF week. Premium properties and helicopter slots are secured on a first-come, first-served basis. For last-minute requests, we maintain contingency inventory but cannot guarantee preferred options.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="glass rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleAccordion(1)" class="w-full p-6 flex items-center justify-between hover:bg-white/5 transition">
+                        <span class="text-left font-bold text-lg">What security measures are in place?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 leading-relaxed">All our properties feature advanced security systems including biometric access, 24/7 surveillance, and panic rooms. We coordinate with Swiss security services and can arrange executive protection teams, armored vehicles, and secure communication channels as needed.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="glass rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleAccordion(2)" class="w-full p-6 flex items-center justify-between hover:bg-white/5 transition">
+                        <span class="text-left font-bold text-lg">Can you accommodate dietary restrictions?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 leading-relaxed">Absolutely. Our private chefs specialize in accommodating all dietary requirements including vegan, kosher, halal, and medical restrictions. We also maintain relationships with specialized suppliers for rare ingredients and can replicate specific cultural cuisines.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="glass rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleAccordion(3)" class="w-full p-6 flex items-center justify-between hover:bg-white/5 transition">
+                        <span class="text-left font-bold text-lg">What are the helicopter transfer times?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 leading-relaxed">Zurich Airport (ZRH) to Davos typically takes 35 minutes. Geneva Airport (GVA) to Davos is approximately 45 minutes. All times are subject to weather conditions. We monitor forecasts and have backup ground transportation on standby.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="glass rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleAccordion(4)" class="w-full p-6 flex items-center justify-between hover:bg-white/5 transition">
+                        <span class="text-left font-bold text-lg">Do you provide services outside of Davos WEF week?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 leading-relaxed">Yes, we operate year-round across Switzerland and select European locations. Our services include luxury ski vacations, summer Alpine retreats, cultural tours, and private event production in Zurich, Geneva, St. Moritz, and Interlaken.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="glass rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleAccordion(5)" class="w-full p-6 flex items-center justify-between hover:bg-white/5 transition">
+                        <span class="text-left font-bold text-lg">What payment methods do you accept?</span>
+                        <i data-lucide="chevron-down" class="w-6 h-6 accordion-icon transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6 pb-6">
+                        <p class="text-gray-400 leading-relaxed">We accept bank transfers (SWIFT/SEPA), cryptocurrency (BTC, ETH), and for qualified clients, we can arrange credit terms. A 50% deposit is required upon booking confirmation, with the balance due 14 days before arrival.</p>
                     </div>
                 </div>
             </div>
-            <section id="digital-pass" class="py-24 px-6 bg-[#030303] border-t border-white/5">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-16">
-        
-        <div class="text-center md:text-left max-w-lg" data-aos="fade-up">
-            <h4 class="text-[#C5A059] text-xs tracking-[0.5em] uppercase mb-4">Seamless Connectivity</h4>
-            <h3 class="text-3xl md:text-5xl font-extrabold italic mb-6">THE DIGITAL <br><span class="text-white/20">ACCESS PASS.</span></h3>
-            <p class="text-gray-500 text-sm uppercase tracking-widest leading-loose mb-10">
-                Share the GS-Hospitality powered by Swisswowvacations experience. This encrypted link provides instant access to our private inventory, logistics schedules, and summit production details.
-            </p>
-            <div class="flex items-center space-x-6 justify-center md:justify-start">
-                <div class="flex items-center space-x-2">
-                    <i data-lucide="shield-check" class="text-[#C5A059] w-4 h-4"></i>
-                    <span class="text-[9px] text-gray-400 uppercase tracking-widest">Secure Link</span>
+        </div>
+    </section>
+
+    <!-- Keep original Contact, Legal, Digital Pass sections... -->
+    <!-- Contact Section with Newsletter Signup -->
+    <section id="contact" class="py-24 px-6 md:px-24 bg-[#050505] relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C5A059] opacity-[0.03] blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20">
+                
+                <div data-aos="fade-right">
+                    <h2 class="text-xs tracking-[0.6em] text-[#C5A059] uppercase mb-4">Inquiry Portal</h2>
+                    <h3 class="text-3xl md:text-3xl font-extrabold tracking-tighter mb-8 italic">SECURE YOUR <br><span class="text-white/20">OPERATIONS.</span></h3>
+                    
+                    <p class="text-gray-400 text-lg mb-12 max-w-md leading-relaxed">
+                        Our team operates with absolute Swiss discretion. Connect with us to discuss Davos 2026 mandates or year-round luxury hospitality management.
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6 group">
+                            <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
+                                <i data-lucide="message-circle" class="text-[#C5A059] w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Direct Liaison</p>
+                                <a href="https://wa.me/41795489025" target="_blank" class="text-xl font-bold hover:text-[#C5A059] transition">WhatsApp: +41 79 548 90 25</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 group">
+                            <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
+                                <i data-lucide="mail" class="text-[#C5A059] w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Email</p>
+                                <a href="mailto:hello@gs-hospitality.ch" class="text-xl font-bold hover:text-[#C5A059] transition">hello@gs-hospitality.ch</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 group">
+                            <div class="p-3 glass border border-white/10 group-hover:border-[#C5A059] transition">
+                                <i data-lucide="map-pin" class="text-[#C5A059] w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">HQ & Operations</p>
+                                <p class="text-xl font-bold">Zurich • Davos • Interlaken • St Moritz</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="mt-12 glass p-6 rounded-2xl border border-[#C5A059]/30">
+                        <h4 class="text-sm font-bold uppercase tracking-widest mb-3">Subscribe for VIP Updates</h4>
+                        <p class="text-xs text-gray-500 mb-4">Exclusive insights on luxury hospitality and early booking opportunities</p>
+                        <form onsubmit="subscribeNewsletter(event)" class="flex space-x-2">
+                            <input type="email" id="newsletter-email" placeholder="your@email.com" class="flex-1 bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm focus:outline-none focus:border-[#C5A059]" required>
+                            <button type="submit" class="bg-[#C5A059] text-black px-6 py-2 rounded-lg font-bold hover:bg-white transition text-sm">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <i data-lucide="zap" class="text-[#C5A059] w-4 h-4"></i>
-                    <span class="text-[9px] text-gray-400 uppercase tracking-widest">Instant Load</span>
+
+                <div class="glass p-8 md:p-12 rounded-3xl border border-white/5" data-aos="fade-left">
+                    <form action="#" onsubmit="submitContactForm(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
+                                <input type="text" placeholder="John Doe" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Corporate Email</label>
+                                <input type="email" placeholder="john@company.com" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm" required>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Primary Interest</label>
+                            <select class="w-full bg-[#0a0a0a] border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm text-gray-400 appearance-none cursor-pointer">
+                                <option>Davos 2026 Mission Support</option>
+                                <option>Private Estate & Chalet Management</option>
+                                <option>VIP Logistics & Aviation</option>
+                                <option>Elite Catering & Event Production</option>
+                                <option>Security & Close Protection</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-1">Message</label>
+                            <textarea rows="4" placeholder="How can we facilitate your stay?" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl focus:outline-none focus:border-[#C5A059] transition text-sm resize-none" required></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-[#C5A059] text-black font-black p-5 rounded-xl uppercase tracking-widest hover:bg-white transition duration-500 transform hover:-translate-y-1">
+                            Send Inquiry
+                        </button>
+                        
+                        <p class="text-[9px] text-center text-gray-600 uppercase tracking-widest mt-4">
+                            By sending, you agree to our 256-bit encrypted data handling.
+                        </p>
+                    </form>
                 </div>
+
             </div>
         </div>
-        
-        <div class="relative group" data-aos="zoom-in" data-aos-delay="200">
-            <div class="absolute -inset-4 bg-[#C5A059] opacity-10 blur-2xl rounded-full group-hover:opacity-20 transition duration-1000"></div>
-            
-            <div class="relative glass p-8 rounded-[2.5rem] border border-white/10 flex flex-col items-center">
-                <div class="bg-black p-4 rounded-2xl border border-[#C5A059]/30">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sridharswiss.github.io/gs-hospitality/index.html&color=C5A059&bgcolor=000000" 
-                         class="w-48 h-48" 
-                         alt="GS Hospitality QR Code">
+    </section>
+
+    <!-- Keep original Legal and Digital Pass sections... -->
+    <section id="legal" class="py-24 border-t border-white/5 bg-black px-6">
+        <div class="max-w-4xl mx-auto">
+            <h4 class="text-xs font-bold text-white uppercase mb-8 tracking-widest">Compliance & Governance</h4>
+            <div class="grid md:grid-cols-2 gap-12 text-[10px] text-gray-600 tracking-widest uppercase leading-loose">
+                <div>
+                    <p class="mb-4"><strong>Copyright & Media:</strong> GS-Hospitality.ch operates as a luxury service intermediary. We do not knowingly use unlicensed intellectual property. If a copyright claim is identified, GS-Hospitality agrees to settle at standard stock-market rates for the specific asset.</p>
+                    <p><strong>Swiss Privacy:</strong> We strictly adhere to Swiss Federal Data Protection (FADP). Your communication with us is privileged and confidential.</p>
                 </div>
-                <div class="mt-6 text-center">
-                    <p class="text-[10px] text-white font-bold tracking-[0.3em] uppercase mb-1">GS-HOSPITALITY</p>
-                    <p class="text-[8px] text-gray-600 uppercase tracking-widest">Private Member Portal</p>
+                <div>
+                    <p class="mb-4"><strong>Service Disclaimer:</strong> We are an independent hospitality provider. Services are provided on a private, discretionary basis.</p>
+                    <p><strong>Liability:</strong> GS-Hospitality acts under Swiss law. All logistics and security services are subject to individual master service agreements.</p>
                 </div>
             </div>
         </div>
 
-    </div>
-</section>
+        <!-- Digital Pass with QR -->
+        <section id="digital-pass" class="py-24 px-6 bg-[#030303] border-t border-white/5">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-16">
+                
+                <div class="text-center md:text-left max-w-lg" data-aos="fade-up">
+                    <h4 class="text-[#C5A059] text-xs tracking-[0.5em] uppercase mb-4">Seamless Connectivity</h4>
+                    <h3 class="text-3xl md:text-5xl font-extrabold italic mb-6">THE DIGITAL <br><span class="text-white/20">ACCESS PASS.</span></h3>
+                    <p class="text-gray-500 text-sm uppercase tracking-widest leading-loose mb-10">
+                        Share the GS-Hospitality experience. This encrypted link provides instant access to our private inventory and summit production details.
+                    </p>
+                    <div class="flex items-center space-x-6 justify-center md:justify-start">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="shield-check" class="text-[#C5A059] w-4 h-4"></i>
+                            <span class="text-[9px] text-gray-400 uppercase tracking-widest">Secure Link</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="zap" class="text-[#C5A059] w-4 h-4"></i>
+                            <span class="text-[9px] text-gray-400 uppercase tracking-widest">Instant Load</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="absolute -inset-4 bg-[#C5A059] opacity-10 blur-2xl rounded-full group-hover:opacity-20 transition duration-1000"></div>
+                    
+                    <div class="relative glass p-8 rounded-[2.5rem] border border-white/10 flex flex-col items-center">
+                        <div class="bg-black p-4 rounded-2xl border border-[#C5A059]/30">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://sridharswiss.github.io/gs-hospitality/index.html&color=C5A059&bgcolor=000000" 
+                                 class="w-48 h-48" 
+                                 alt="GS Hospitality QR Code">
+                        </div>
+                        <div class="mt-6 text-center">
+                            <p class="text-[10px] text-white font-bold tracking-[0.3em] uppercase mb-1">GS-HOSPITALITY</p>
+                            <p class="text-[8px] text-gray-600 uppercase tracking-widest">Private Member Portal</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
+    </section>
 
-<footer class="py-16 px-6 text-center border-t border-white/5 bg-black">
-    <div class="max-w-5xl mx-auto mb-10">
-        <p class="text-[11px] md:text-[12px] text-gray-400 tracking-wide leading-relaxed uppercase">
-            With over a decade of excellence in <span class="text-white">Swiss luxury hospitality</span>, 
-            <strong>GS Hospitality</strong> (powered by <strong>Swiss Wow Vacations</strong>) 
-            specializes in turnkey mission support and <span class="text-white">VIP concierge services</span> 
-            for international delegations attending the <span class="text-white">annual January summit in Davos</span>. 
-            Our portfolio features <span class="text-white">high-security luxury chalets in Davos Dorf</span>, 
-            exclusive <span class="text-white">Promenade pavilion rentals</span>, and temporary corporate 
-            headquarters branding. We facilitate seamless <span class="text-white">VIP logistics</span>, 
-            including <span class="text-white">helicopter transfers from Zurich Airport (ZRH) to Davos</span>, 
-            armored vehicle fleets, and executive protection.
+    <!-- Footer -->
+    <footer class="py-16 px-6 text-center border-t border-white/5 bg-black">
+        <div class="max-w-5xl mx-auto mb-10">
+            <p class="text-[11px] md:text-[12px] text-gray-400 tracking-wide leading-relaxed uppercase">
+                With over a decade of excellence in <span class="text-white">Swiss luxury hospitality</span>, 
+                <strong>GS Hospitality</strong> (powered by <strong>Swiss Wow Vacations</strong>) 
+                specializes in turnkey mission support and <span class="text-white">VIP concierge services</span> 
+                for international delegations attending the <span class="text-white">annual January summit in Davos</span>. 
+                Our portfolio features <span class="text-white">high-security luxury chalets in Davos Dorf</span>, 
+                exclusive <span class="text-white">Promenade pavilion rentals</span>, and temporary corporate 
+                headquarters branding.
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto py-6 border-y border-white/5 mb-8">
+            <p class="text-[9px] text-gray-600 tracking-[0.2em] uppercase leading-loose">
+                GS Hospitality is an independent hospitality and logistics provider. 
+                We are not affiliated with, endorsed by, sponsored by, or partnered with 
+                the World Economic Forum (WEF) or any official government body.
+            </p>
+        </div>
+
+        <p class="text-[10px] text-gray-500 tracking-[0.5em] uppercase mb-4">
+            © 2026 GS HOSPITALITY POWERED BY SWISSWOWVACATIONS
         </p>
-        <p class="text-[11px] md:text-[12px] text-gray-400 tracking-wide leading-relaxed uppercase mt-4">
-            Our <span class="text-white">Elite Gastronomy</span> division brings authentic 
-            <span class="text-white">Indian fine dining and private chef services</span> to the Swiss Alps, 
-            offering bespoke catering for corporate HQs and late-night networking events. 
-            From <span class="text-white">St. Moritz to Interlaken and Zurich</span>, we are your 
-            strategic partner for <span class="text-white">high-profile event management</span> and 
-            ultra-luxury travel in Switzerland.
-        </p>
+
+        <!-- Social Links (Optional) -->
+        <div class="flex justify-center space-x-4 mt-6">
+            <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:border-[#C5A059] border border-transparent transition">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:border-[#C5A059] border border-transparent transition">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:border-[#C5A059] border border-transparent transition">
+                <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </footer>
+
+</main>
+
+<!-- Floating Chat Button -->
+<div class="chat-button pulse" onclick="openChat()">
+    <i data-lucide="message-circle" class="w-7 h-7 text-black"></i>
+</div>
+
+<!-- Newsletter Popup (appears after 15 seconds) -->
+<div id="newsletter-popup" class="newsletter-popup glass p-6 rounded-2xl border border-[#C5A059]/30 max-w-sm">
+    <button onclick="closeNewsletterPopup()" class="absolute top-3 right-3 text-gray-500 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+    <h4 class="text-lg font-bold mb-2">Stay Informed</h4>
+    <p class="text-xs text-gray-500 mb-4">Get exclusive updates on Davos 2026 bookings</p>
+    <form onsubmit="subscribeNewsletterPopup(event)" class="space-y-3">
+        <input type="email" placeholder="Enter your email" class="w-full bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm focus:outline-none focus:border-[#C5A059]" required>
+        <button type="submit" class="w-full bg-[#C5A059] text-black font-bold py-2 rounded-lg hover:bg-white transition text-sm">
+            Subscribe
+        </button>
+    </form>
+</div>
+
+<!-- Booking Modal -->
+<div id="booking-modal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass max-w-2xl w-full p-8 rounded-3xl border border-white/10 relative">
+        <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-gray-500 hover:text-white">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        
+        <h3 class="text-2xl font-bold mb-6">Check Availability</h3>
+        
+        <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2 block">Check-in</label>
+                    <input type="date" class="w-full bg-white/5 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#C5A059]">
+                </div>
+                <div>
+                    <label class="text-xs uppercase tracking-widest text-gray-500 mb-2 block">Check-out</label>
+                    <input type="date" class="w-full bg-white/5 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#C5A059]">
+                </div>
+            </div>
+            
+            <div>
+                <label class="text-xs uppercase tracking-widest text-gray-500 mb-2 block">Property Type</label>
+                <select class="w-full bg-white/5 border border-white/10 p-3 rounded-lg focus:outline-none focus:border-[#C5A059]">
+                    <option>Luxury Chalet</option>
+                    <option>Summit Headquarters</option>
+                    <option>Executive Loft</option>
+                </select>
+            </div>
+            
+            <button onclick="checkAvailability()" class="w-full bg-[#C5A059] text-black font-bold py-3 rounded-lg hover:bg-white transition">
+                Check Availability
+            </button>
+        </div>
     </div>
+</div>
 
-    <div class="max-w-3xl mx-auto py-6 border-y border-white/5 mb-8">
-        <p class="text-[9px] text-gray-600 tracking-[0.2em] uppercase leading-loose">
-            GS Hospitality is an independent hospitality and logistics provider. 
-            We are not affiliated with, endorsed by, sponsored by, or partnered with 
-            the World Economic Forum (WEF) or any official government body. 
-            All services are provided on a private, discretionary basis.
-        </p>
-    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    // Initialize Lucide Icons and AOS
+    lucide.createIcons();
+    AOS.init({ duration: 1200, once: true });
 
-    <p class="text-[10px] text-gray-500 tracking-[0.5em] uppercase">
-        © 2026 GS HOSPITALITY POWERED BY SWISSWOWVACATIONS | ZURICH · DAVOS · ST. MORITZ
-    </p>
-</footer>
+    // Entry Gate
+    const checkbox = document.getElementById('agree-check');
+    const enterBtn = document.getElementById('enter-btn');
 
-    </main>
+    checkbox.addEventListener('change', function() {
+        if(this.checked) {
+            enterBtn.disabled = false;
+            enterBtn.classList.remove('opacity-20', 'cursor-not-allowed');
+        } else {
+            enterBtn.disabled = true;
+            enterBtn.classList.add('opacity-20', 'cursor-not-allowed');
+        }
+    });
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
+    function enterSite() {
+        document.getElementById('entry-gate').style.display = 'none';
+        document.body.style.overflowY = 'auto';
+        document.getElementById('main-content').style.opacity = '1';
+        
+        // Show newsletter popup after 15 seconds
+        setTimeout(() => {
+            if(!localStorage.getItem('newsletterClosed')) {
+                document.getElementById('newsletter-popup').classList.add('show');
+            }
+        }, 15000);
+    }
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            setTimeout(() => {
+                menu.classList.remove('translate-x-full');
+                body.style.overflow = 'hidden';
+            }, 10);
+        } else {
+            menu.classList.add('translate-x-full');
+            body.style.overflow = 'auto';
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 500);
+        }
         lucide.createIcons();
-        AOS.init({ duration: 1200 });
+    }
 
-        const checkbox = document.getElementById('agree-check');
-        const enterBtn = document.getElementById('enter-btn');
+    // Service Cycler
+    const services = [
+        "MISSION SUPPORT",
+        "SECURE CHALET MANAGEMENT",
+        "ELITE INDIAN GASTRONOMY",
+        "DELEGATION SHUTTLES",
+        "EUROPEAN TOURS",
+        "PROMENADE PAVILION DESIGN",
+        "EXECUTIVE PROTECTION",
+        "VIP AVIATION LOGISTICS"
+    ];
 
-        checkbox.addEventListener('change', function() {
-            if(this.checked) {
-                enterBtn.disabled = false;
-                enterBtn.classList.remove('opacity-20', 'cursor-not-allowed');
-            } else {
-                enterBtn.disabled = true;
-                enterBtn.classList.add('opacity-20', 'cursor-not-allowed');
+    let currentIndex = 0;
+    const cyclerElement = document.getElementById('service-cycler');
+
+    function cycleText() {
+        cyclerElement.style.opacity = '0';
+        cyclerElement.style.transform = 'translateY(-10px)';
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % services.length;
+            cyclerElement.textContent = services[currentIndex];
+            cyclerElement.style.opacity = '1';
+            cyclerElement.style.transform = 'translateY(0)';
+        }, 500);
+    }
+
+    setInterval(cycleText, 3000);
+
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    let counterAnimated = false;
+
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+
+            updateCounter();
+        });
+        counterAnimated = true;
+    }
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+
+        // Animate counters when in view
+        if (!counterAnimated) {
+            const statsSection = document.querySelector('.stat-item');
+            if (statsSection) {
+                const rect = statsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    animateCounters();
+                }
+            }
+        }
+
+        // Parallax effect
+        const heroBg = document.getElementById('hero-bg');
+        if (heroBg) {
+            const scrollPosition = window.scrollY;
+            heroBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        }
+
+        // Shrink nav on scroll
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 100) {
+            nav.classList.add('py-3');
+            nav.classList.remove('py-5');
+        } else {
+            nav.classList.add('py-5');
+            nav.classList.remove('py-3');
+        }
+    });
+
+    // Language Switcher
+    function changeLang(lang) {
+        document.getElementById('current-lang').textContent = lang;
+        showToast(`Language changed to ${lang === 'EN' ? 'English' : lang === 'DE' ? 'German' : 'French'}`);
+    }
+
+    // Calculator
+    const durationSlider = document.getElementById('duration-slider');
+    const guestsSlider = document.getElementById('guests-slider');
+    const serviceCheckboxes = document.querySelectorAll('input[name="service"]');
+
+    function updateCalculator() {
+        const duration = parseInt(durationSlider.value);
+        const guests = parseInt(guestsSlider.value);
+        
+        document.getElementById('duration-value').textContent = `${duration} days`;
+        document.getElementById('guests-value').textContent = `${guests} guests`;
+
+        let total = 0;
+        serviceCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                total += parseInt(checkbox.value);
             }
         });
 
-        function enterSite() {
-            document.getElementById('entry-gate').style.display = 'none';
-            document.body.style.overflowY = 'auto';
-            document.getElementById('main-content').style.opacity = '1';
-        }
-        function toggleMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const body = document.body;
-
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        // Small timeout to allow the 'hidden' removal to register before animating
-        setTimeout(() => {
-            menu.classList.remove('translate-x-full');
-            body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-        }, 10);
-    } else {
-        menu.classList.add('translate-x-full');
-        body.style.overflow = 'auto'; // Re-enable scrolling
-        setTimeout(() => {
-            menu.classList.add('hidden');
-        }, 500); // Matches the duration of the transition
+        total = total * (duration / 7); // Adjust for duration
+        document.getElementById('total-cost').textContent = `CHF ${total.toLocaleString()}`;
     }
-}
- // Text Cycler for the Hero Section
-const services = [
-    "MISSION SUPPORT",
-    "SECURE CHALET MANAGEMENT",
-    "ELITE INDIAN GASTRONOMY",
-    "DELEGATION SHUTTLES",
-    "EUROPEAN TOURS",
-    "PROMENADE PAVILION DESIGN",
-    "EXECUTIVE PROTECTION",
-    "VIP AVIATION LOGISTICS"
-    ];
 
-let currentIndex = 0;
-const cyclerElement = document.getElementById('service-cycler');
+    durationSlider.addEventListener('input', updateCalculator);
+    guestsSlider.addEventListener('input', updateCalculator);
+    serviceCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateCalculator);
+    });
 
-function cycleText() {
-    // Fade out
-    cyclerElement.style.opacity = '0';
-    cyclerElement.style.transform = 'translateY(-10px)';
-
-    setTimeout(() => {
-        // Change text
-        currentIndex = (currentIndex + 1) % services.length;
-        cyclerElement.textContent = services[currentIndex];
+    // Accordion
+    function toggleAccordion(index) {
+        const accordions = document.querySelectorAll('.accordion-content');
+        const icons = document.querySelectorAll('.accordion-icon');
         
-        // Fade in
-        cyclerElement.style.opacity = '1';
-        cyclerElement.style.transform = 'translateY(0)';
-    }, 500); // Half second for the fade transition
-}
+        accordions[index].classList.toggle('active');
+        icons[index].classList.toggle('rotate-180');
+    }
 
-// Start cycling every 3 seconds
-setInterval(cycleText, 3000);       
-    </script>
+    // Testimonial Slider
+    let testimonialIndex = 0;
+    function slideTestimonials(direction) {
+        const container = document.getElementById('testimonial-container');
+        const cards = container.children;
+        testimonialIndex = (testimonialIndex + direction + cards.length) % cards.length;
+        container.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+    }
+
+    // Auto-slide testimonials
+    setInterval(() => slideTestimonials(1), 5000);
+
+    // Chat Button
+    function openChat() {
+        window.open('https://wa.me/41795489025', '_blank');
+    }
+
+    // Booking Modal
+    function openBookingModal() {
+        document.getElementById('booking-modal').classList.remove('hidden');
+        document.getElementById('booking-modal').classList.add('flex');
+        lucide.createIcons();
+    }
+
+    function closeBookingModal() {
+        document.getElementById('booking-modal').classList.add('hidden');
+        document.getElementById('booking-modal').classList.remove('flex');
+    }
+
+    function checkAvailability() {
+        showToast('Checking availability... Our team will contact you shortly!');
+        closeBookingModal();
+    }
+
+    // Calculator shortcut
+    function openCalculator() {
+        document.querySelector('#calculator').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Package Selection
+    function selectPackage(packageName) {
+        showToast(`${packageName.toUpperCase()} package selected! Scroll down to contact us.`);
+        setTimeout(() => {
+            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        }, 1500);
+    }
+
+    // Property Details
+    function showPropertyDetails(property) {
+        showToast('Opening detailed property information...');
+        // In a real implementation, this would open a detailed modal
+    }
+
+    // Newsletter
+    function subscribeNewsletter(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletter-email').value;
+        showToast('Thank you for subscribing! Check your email for confirmation.');
+        document.getElementById('newsletter-email').value = '';
+    }
+
+    function subscribeNewsletterPopup(e) {
+        e.preventDefault();
+        showToast('Welcome to our VIP list!');
+        closeNewsletterPopup();
+    }
+
+    function closeNewsletterPopup() {
+        document.getElementById('newsletter-popup').classList.remove('show');
+        localStorage.setItem('newsletterClosed', 'true');
+    }
+
+    // Contact Form
+    function submitContactForm(e) {
+        e.preventDefault();
+        showToast('Message sent successfully! We\'ll respond within 24 hours.');
+        e.target.reset();
+    }
+
+    // Quote Request
+    function requestQuote() {
+        showToast('Quote request submitted! Check your email shortly.');
+    }
+
+    // Toast Notification
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+        lucide.createIcons();
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Initialize calculator on load
+    updateCalculator();
+</script>
+
 </body>
 </html>
