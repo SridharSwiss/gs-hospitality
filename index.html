@@ -1213,6 +1213,7 @@
                             <span id="guests-val" class="text-[#C5A059] font-mono font-bold">4 guests</span>
                         </label>
                         <input type="range" id="guests-slider" min="1" max="20" value="4" class="calc-slider w-full" aria-label="Select number of guests">
+                        <p class="text-[9px] text-gray-600 mt-2 tracking-wider">Base pricing covers up to 4 guests · +15% per additional guest</p>
                     </div>
 
                     <fieldset>
@@ -1797,9 +1798,15 @@
         document.getElementById('dur-val').textContent = `${dur} day${dur > 1 ? 's' : ''}`;
         document.getElementById('guests-val').textContent = `${gst} guest${gst > 1 ? 's' : ''}`;
 
-        let total = 0;
-        svcBoxes.forEach(cb => { if (cb.checked) total += parseInt(cb.value); });
-        total = Math.round(total * (dur / 7));
+        let base = 0;
+        svcBoxes.forEach(cb => { if (cb.checked) base += parseInt(cb.value); });
+
+        // Base prices are for up to 4 guests per week
+        // +15% per additional guest beyond 4
+        const guestMultiplier = gst <= 4 ? 1 : 1 + (gst - 4) * 0.15;
+        const durationMultiplier = dur / 7;
+
+        const total = Math.round(base * durationMultiplier * guestMultiplier);
         document.getElementById('total-cost').textContent = `CHF ${total.toLocaleString()}`;
     }
 
