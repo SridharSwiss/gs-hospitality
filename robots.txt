@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gs-hospitality.ch/sitemap.xml
-
-# Block internal/utility paths
-Disallow: /assets/
+Sitemap: https://swisswowvacations.com/sitemap.xml
