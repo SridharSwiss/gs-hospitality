@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://swisswowvacations.com/sitemap.xml
+Sitemap: https://gs-hospitality.ch/sitemap.xml
