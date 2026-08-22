@@ -1601,6 +1601,30 @@ textarea { resize: vertical; min-height: 120px; }
   .hero-badge::before { animation: none; }
 }
 
+
+/* === Hero background image === */
+.hero {
+  position: relative;
+  background-image: url('./assets/img/hero-travel.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5,5,5,0.55) 0%,
+    rgba(5,5,5,0.35) 40%,
+    rgba(5,5,5,0.65) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+.hero > * { position: relative; z-index: 1; }
+
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2074,6 +2098,10 @@ textarea { resize: vertical; min-height: 120px; }
       <p class="footer-legal">© 2025 GS Hospitality GmbH. All rights reserved. Registered in Switzerland.</p>
       <div class="footer-cert"><span class="footer-cert-item"><span class="footer-cert-icon">✓</span> Swiss Registered</span><span class="footer-cert-item"><span class="footer-cert-icon">✓</span> Davos-Accredited</span></div>
     </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(197,160,89,0.12);margin-top:2rem;padding-top:1rem;font-size:0.72rem;color:rgba(255,255,255,0.28);text-align:center;line-height:1.6;">
+    All visual imagery on this website is synthetically generated and is the exclusive property of GS Hospitality. No third-party images, stock photography, or licensed media are used. All content is provided for informational purposes only; no compensation is required for, or associated with, any imagery displayed herein.
   </div>
 </footer>
 
