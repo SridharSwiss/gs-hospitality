@@ -550,13 +550,17 @@ section.section-lg { padding: 80px 0; }
   position: relative;
   padding: 120px 24px 80px;
   overflow: hidden;
+  background-image: url('/assets/img/heroes/home-hero.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .home-hero::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(197,160,89,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(197,160,89,0.04) 0%, transparent 70%);
+    linear-gradient(rgba(5,5,5,0.65), rgba(5,5,5,0.65)),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(197,160,89,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(197,160,89,0.08) 0%, transparent 70%);
 }
 .hero-grid {
   position: absolute; inset: 0;
