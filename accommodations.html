@@ -449,7 +449,7 @@ section.section-lg { padding: 80px 0; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
+  overflow: hidden;
   margin-bottom: 20px;
 }
 .card-title {
@@ -1198,7 +1198,7 @@ textarea { resize: vertical; min-height: 120px; }
   border-color: rgba(37,211,102,0.4);
   transform: translateY(-2px);
 }
-.wa-quick-icon { font-size: 1.5rem; }
+.wa-quick-icon { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
 .wa-quick-content { flex: 1; min-width: 0; }
 .wa-quick-title { font-size: 0.875rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
 .wa-quick-text { font-size: 0.775rem; color: var(--text-muted); }
@@ -1265,7 +1265,7 @@ textarea { resize: vertical; min-height: 120px; }
   transition: border-color var(--transition);
 }
 .info-card:hover { border-color: var(--border-hover); }
-.info-icon { font-size: 2rem; margin-bottom: 12px; }
+.info-icon { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
 .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }
 .info-value { font-weight: 600; color: var(--white); font-size: 0.9375rem; }
 .info-sub { font-size: 0.775rem; color: var(--text-muted); margin-top: 4px; }
@@ -1285,7 +1285,7 @@ textarea { resize: vertical; min-height: 120px; }
   color: var(--text-muted);
   font-size: 0.875rem;
 }
-.map-placeholder-icon { font-size: 3rem; }
+.map-placeholder-icon { font-size: 0; width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
 .map-placeholder strong { color: var(--gold); font-size: 1rem; }
 
 /* --- Testimonial Slider --- */
@@ -2451,14 +2451,14 @@ textarea { resize: vertical; min-height: 120px; }
         <div class="divider centered"></div>
       </div>
       <div class="grid-4 stagger">
-        <div class="info-card"><div class="info-icon">🛌</div><div class="info-label">Bedding</div><div class="info-value">Hotel-grade linen</div><div class="info-sub">Daily turndown</div></div>
-        <div class="info-card"><div class="info-icon">📶</div><div class="info-label">Internet</div><div class="info-value">High-speed WiFi</div><div class="info-sub">500Mbps+</div></div>
-        <div class="info-card"><div class="info-icon">🔐</div><div class="info-label">Security</div><div class="info-value">Secure access</div><div class="info-sub">Keypad or key</div></div>
-        <div class="info-card"><div class="info-icon">🧹</div><div class="info-label">Housekeeping</div><div class="info-value">Daily service</div><div class="info-sub">7am–10am</div></div>
-        <div class="info-card"><div class="info-icon">☕</div><div class="info-label">Provisions</div><div class="info-value">Welcome pack</div><div class="info-sub">On arrival</div></div>
-        <div class="info-card"><div class="info-icon">🤝</div><div class="info-label">Concierge</div><div class="info-value">24/7 WhatsApp</div><div class="info-sub">Response &lt;15 min</div></div>
-        <div class="info-card"><div class="info-icon">🚗</div><div class="info-label">Transfers</div><div class="info-value">Coordinated</div><div class="info-sub">To/from Zurich</div></div>
-        <div class="info-card"><div class="info-icon">🗺️</div><div class="info-label">Area Guide</div><div class="info-value">Custom briefing</div><div class="info-sub">Davos week tips</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-bed.jpg" alt="Bedroom" loading="lazy"><div class="info-label">Bedding</div><div class="info-value">Hotel-grade linen</div><div class="info-sub">Daily turndown</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-wifi.jpg" alt="High-speed WiFi" loading="lazy"><div class="info-label">Internet</div><div class="info-value">High-speed WiFi</div><div class="info-sub">500Mbps+</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-safe.jpg" alt="Security safe" loading="lazy"><div class="info-label">Security</div><div class="info-value">Secure access</div><div class="info-sub">Keypad or key</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-cleaning.jpg" alt="Housekeeping" loading="lazy"><div class="info-label">Housekeeping</div><div class="info-value">Daily service</div><div class="info-sub">7am–10am</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-coffee.jpg" alt="Coffee & kitchen" loading="lazy"><div class="info-label">Provisions</div><div class="info-value">Welcome pack</div><div class="info-sub">On arrival</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-concierge.jpg" alt="Concierge service" loading="lazy"><div class="info-label">Concierge</div><div class="info-value">24/7 WhatsApp</div><div class="info-sub">Response &lt;15 min</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-parking.jpg" alt="Private parking" loading="lazy"><div class="info-label">Transfers</div><div class="info-value">Coordinated</div><div class="info-sub">To/from Zurich</div></div>
+        <div class="info-card"><img class="info-icon" src="/assets/img/site/amenity-map.jpg" alt="Location & maps" loading="lazy"><div class="info-label">Area Guide</div><div class="info-value">Custom briefing</div><div class="info-sub">Davos week tips</div></div>
       </div>
     </div>
   </section>
@@ -2473,9 +2473,9 @@ textarea { resize: vertical; min-height: 120px; }
         <p class="section-lead">Our portfolio is updated daily. The best way to check availability is directly via WhatsApp — we'll respond within 2 hours with options tailored to your requirements.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;max-width:600px;margin:0 auto;" class="reveal">
-        <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20need%20a%20luxury%20chalet%20for%20Davos%20Summit%202027%20for%20my%20delegation." class="wa-quick-btn" target="_blank" rel="noopener noreferrer"><div class="wa-quick-icon">🏔️</div><div class="wa-quick-content"><div class="wa-quick-title">Luxury Chalet Enquiry</div><div class="wa-quick-text">Private chalet for 5–15 person delegation</div></div><span style="color:var(--wa);">→</span></a>
-        <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20need%20a%20corporate%20HQ%20venue%20for%20Davos%20Summit%202027%20for%20a%20large%20organisation." class="wa-quick-btn" target="_blank" rel="noopener noreferrer"><div class="wa-quick-icon">🏢</div><div class="wa-quick-content"><div class="wa-quick-title">Corporate HQ Venue</div><div class="wa-quick-text">HQ venue for 15–60 person operation</div></div><span style="color:var(--wa);">→</span></a>
-        <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20need%20an%20executive%20apartment%20for%20Davos%20Summit%202027." class="wa-quick-btn" target="_blank" rel="noopener noreferrer"><div class="wa-quick-icon">🏠</div><div class="wa-quick-content"><div class="wa-quick-title">Executive Apartment</div><div class="wa-quick-text">1–4 bedroom apartment for individual or small team</div></div><span style="color:var(--wa);">→</span></a>
+        <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20need%20a%20luxury%20chalet%20for%20Davos%20Summit%202027%20for%20my%20delegation." class="wa-quick-btn" target="_blank" rel="noopener noreferrer"><img class="wa-quick-icon" src="/assets/img/site/service-tours.jpg" alt="Mountain accommodation" loading="lazy"><div class="wa-quick-content"><div class="wa-quick-title">Luxury Chalet Enquiry</div><div class="wa-quick-text">Private chalet for 5–15 person delegation</div></div><span style="color:var(--wa);">→</span></a>
+        <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20need%20a%20corporate%20HQ%20venue%20for%20Davos%20Summit%202027%20for%20a%20large%20organisation." class="wa-quick-btn" target="_blank" rel="noopener noreferrer"><img class="wa-quick-icon" src="/assets/img/site/card-venue.jpg" alt="Corporate HQ" loading="lazy"><div class="wa-quick-content"><div class="wa-quick-title">Corporate HQ Venue</div><div class="wa-quick-text">HQ venue for 15–60 person operation</div></div><span style="color:var(--wa);">→</span></a>
+        <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20need%20an%20executive%20apartment%20for%20Davos%20Summit%202027." class="wa-quick-btn" target="_blank" rel="noopener noreferrer"><img class="wa-quick-icon" src="/assets/img/site/pillar-secure.jpg" alt="Apartment" loading="lazy"><div class="wa-quick-content"><div class="wa-quick-title">Executive Apartment</div><div class="wa-quick-text">1–4 bedroom apartment for individual or small team</div></div><span style="color:var(--wa);">→</span></a>
       </div>
     </div>
   </section>
@@ -2585,8 +2585,8 @@ textarea { resize: vertical; min-height: 120px; }
         <div class="footer-logo">GS Hospitality</div>
         <div class="footer-logo-sub">Est. 2014 · Switzerland</div>
         <p class="footer-tagline">Davos Summit hospitality specialists.</p>
-        <div class="footer-contact-item"><span class="footer-contact-icon">📱</span><a href="https://wa.me/41795489025" style="color:var(--text-muted)" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-        <div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><a href="mailto:hello@gs-hospitality.ch" style="color:var(--text-muted)">hello@gs-hospitality.ch</a></div>
+        <div class="footer-contact-item"><img class="footer-contact-icon" src="/assets/img/site/contact-phone.jpg" alt="Phone" loading="lazy"><a href="https://wa.me/41795489025" style="color:var(--text-muted)" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+        <div class="footer-contact-item"><img class="footer-contact-icon" src="/assets/img/site/contact-email.jpg" alt="Email" loading="lazy"><a href="mailto:hello@gs-hospitality.ch" style="color:var(--text-muted)">hello@gs-hospitality.ch</a></div>
       </div>
       <div><div class="footer-col-title">Davos 2027</div><nav class="footer-links"><a href="./wef-2027.html">Davos Summit Hub</a><a href="./wef-2027.html#packages">Packages</a><a href="./wef-2027.html#arrival">Arrival Guide</a><a href="./wef-2027.html#faq">FAQ</a></nav></div>
       <div><div class="footer-col-title">Services</div><nav class="footer-links"><a href="./services.html#lounge">Corporate Lounge</a><a href="./services.html#av">AV Production</a><a href="./services.html#events">Event Management</a><a href="./services.html#catering">Catering</a><a href="./accommodations.html">Accommodations</a></nav></div>

@@ -449,7 +449,7 @@ section.section-lg { padding: 80px 0; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
+  overflow: hidden;
   margin-bottom: 20px;
 }
 .card-title {
@@ -634,9 +634,12 @@ section.section-lg { padding: 80px 0; }
   box-shadow: var(--shadow-card);
 }
 .service-tile-icon {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
   display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 .service-tile-title {
   font-family: var(--font-display);
@@ -669,7 +672,7 @@ section.section-lg { padding: 80px 0; }
   border: 1px solid var(--border);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.75rem;
+  overflow: hidden;
   margin: 0 auto 20px;
 }
 .pillar-title {
@@ -1015,7 +1018,7 @@ td.cross { color: #ff5555; }
   transition: border-color var(--transition);
 }
 .transport-card:hover { border-color: var(--border-hover); }
-.transport-icon { font-size: 2rem; flex-shrink: 0; }
+.transport-icon { width: 56px; height: 56px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
 .transport-details { flex: 1; }
 .transport-name { font-weight: 600; color: var(--white); margin-bottom: 6px; }
 .transport-time { color: var(--gold); font-size: 0.875rem; font-weight: 600; margin-bottom: 4px; }
@@ -1062,7 +1065,7 @@ td.cross { color: #ff5555; }
 .tour-card-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; }
 .tour-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
 .tour-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); }
-.tour-meta-icon { color: var(--gold); }
+.tour-meta-icon { width: 16px; height: 16px; border-radius: 3px; object-fit: cover; vertical-align: middle; }
 .tour-price { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--gold); }
 .tour-price-from { font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-body); }
 
@@ -1198,7 +1201,7 @@ textarea { resize: vertical; min-height: 120px; }
   border-color: rgba(37,211,102,0.4);
   transform: translateY(-2px);
 }
-.wa-quick-icon { font-size: 1.5rem; }
+.wa-quick-icon { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
 .wa-quick-content { flex: 1; min-width: 0; }
 .wa-quick-title { font-size: 0.875rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
 .wa-quick-text { font-size: 0.775rem; color: var(--text-muted); }
@@ -1265,7 +1268,7 @@ textarea { resize: vertical; min-height: 120px; }
   transition: border-color var(--transition);
 }
 .info-card:hover { border-color: var(--border-hover); }
-.info-icon { font-size: 2rem; margin-bottom: 12px; }
+.info-icon { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
 .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }
 .info-value { font-weight: 600; color: var(--white); font-size: 0.9375rem; }
 .info-sub { font-size: 0.775rem; color: var(--text-muted); margin-top: 4px; }
@@ -1285,7 +1288,7 @@ textarea { resize: vertical; min-height: 120px; }
   color: var(--text-muted);
   font-size: 0.875rem;
 }
-.map-placeholder-icon { font-size: 3rem; }
+.map-placeholder-icon { font-size: 0; width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
 .map-placeholder strong { color: var(--gold); font-size: 1rem; }
 
 /* --- Testimonial Slider --- */
@@ -1428,7 +1431,7 @@ textarea { resize: vertical; min-height: 120px; }
   color: var(--text-muted);
   margin-bottom: 8px;
 }
-.footer-contact-icon { color: var(--gold); font-size: 0.875rem; width: 16px; }
+.footer-contact-icon { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 .footer-col-title {
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -1754,9 +1757,9 @@ textarea { resize: vertical; min-height: 120px; }
             <div class="tour-card-title">Glacier Express — The Scenic Throne</div>
             <p class="tour-card-text">Arguably the world's most beautiful train journey: 291 bridges, 91 tunnels, and 8 hours of jaw-dropping Alpine scenery between Zermatt and St. Moritz. Private compartments for GS clients.</p>
             <div class="tour-meta">
-              <span class="tour-meta-item"><span class="tour-meta-icon">⏱</span> 8 hours</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">👥</span> Private compartment</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">📍</span> Zermatt–St Moritz</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-duration.jpg" alt="Duration" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> 8 hours</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-group.jpg" alt="Group size" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Private compartment</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-location.jpg" alt="Location" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Zermatt–St Moritz</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div><div class="tour-price-from">Private · 2 pax</div><div class="tour-price">On enquiry</div></div>
@@ -1772,9 +1775,9 @@ textarea { resize: vertical; min-height: 120px; }
             <div class="tour-card-title">Zermatt &amp; Matterhorn Private Day</div>
             <p class="tour-card-text">Private chauffeured transfer to Zermatt (car-free village), Matterhorn Glacier Paradise at 3,883m, and a private fondue lunch with a view of the world's most iconic peak.</p>
             <div class="tour-meta">
-              <span class="tour-meta-item"><span class="tour-meta-icon">⏱</span> Full day (10h)</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">👥</span> Up to 8 guests</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">📍</span> From Davos/Zurich</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-duration.jpg" alt="Duration" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Full day (10h)</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-group.jpg" alt="Group size" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Up to 8 guests</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-location.jpg" alt="Location" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> From Davos/Zurich</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div><div class="tour-price-from">Private group</div><div class="tour-price">On enquiry</div></div>
@@ -1790,9 +1793,9 @@ textarea { resize: vertical; min-height: 120px; }
             <div class="tour-card-title">Jungfraujoch — Top of Europe</div>
             <p class="tour-card-text">Take the rack railway to 3,454m — the highest railway station in Europe. Glacier views, the Sphinx Observatory, and a private warm lunch above the clouds. Unforgettable on a clear January day.</p>
             <div class="tour-meta">
-              <span class="tour-meta-item"><span class="tour-meta-icon">⏱</span> Full day (9h)</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">👥</span> Private group</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">📍</span> Interlaken/Grindelwald</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-duration.jpg" alt="Duration" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Full day (9h)</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-group.jpg" alt="Group size" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Private group</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-location.jpg" alt="Location" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Interlaken/Grindelwald</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div><div class="tour-price-from">Private · 4 pax</div><div class="tour-price">On enquiry</div></div>
@@ -1808,9 +1811,9 @@ textarea { resize: vertical; min-height: 120px; }
             <div class="tour-card-title">Zurich Private City Experience</div>
             <p class="tour-card-text">The Bahnhofstrasse luxury shopping district, old town with medieval guildhalls, private art collection viewings, and a dinner at a Michelin-starred restaurant by the lake. Perfect for a layover day in Zurich.</p>
             <div class="tour-meta">
-              <span class="tour-meta-item"><span class="tour-meta-icon">⏱</span> Half or full day</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">👥</span> Up to 6 guests</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">📍</span> Zurich</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-duration.jpg" alt="Duration" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Half or full day</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-group.jpg" alt="Group size" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Up to 6 guests</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-location.jpg" alt="Location" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Zurich</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div><div class="tour-price-from">Private half-day</div><div class="tour-price">On enquiry</div></div>
@@ -1826,9 +1829,9 @@ textarea { resize: vertical; min-height: 120px; }
             <div class="tour-card-title">Lake Geneva Private Cruise</div>
             <p class="tour-card-text">Chartered private yacht on Lake Geneva with the Alps as your backdrop. Sail past Montreux, Château de Chillon, and Lausanne. On-board catering and Swiss wines included. Ideal for private networking.</p>
             <div class="tour-meta">
-              <span class="tour-meta-item"><span class="tour-meta-icon">⏱</span> 4–8 hours</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">👥</span> Up to 20 guests</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">📍</span> Geneva / Lausanne</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-duration.jpg" alt="Duration" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> 4–8 hours</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-group.jpg" alt="Group size" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Up to 20 guests</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-location.jpg" alt="Location" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Geneva / Lausanne</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div><div class="tour-price-from">Half-day · 8 pax</div><div class="tour-price">On enquiry</div></div>
@@ -1844,9 +1847,9 @@ textarea { resize: vertical; min-height: 120px; }
             <div class="tour-card-title">Swiss Cheese &amp; Chocolate Country</div>
             <p class="tour-card-text">A private guided tour through the Emmental region — home of Swiss cheese — then to Broc's Cailler chocolate factory for a private tasting. A surprisingly popular choice with Asian and Indian delegates seeking unique Swiss experiences.</p>
             <div class="tour-meta">
-              <span class="tour-meta-item"><span class="tour-meta-icon">⏱</span> Full day (8h)</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">👥</span> Up to 10 guests</span>
-              <span class="tour-meta-item"><span class="tour-meta-icon">📍</span> Emmental / Broc</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-duration.jpg" alt="Duration" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Full day (8h)</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-group.jpg" alt="Group size" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Up to 10 guests</span>
+              <span class="tour-meta-item"><img class="tour-meta-icon" src="/assets/img/site/meta-location.jpg" alt="Location" loading="lazy" style="width:16px;height:16px;border-radius:3px;object-fit:cover;vertical-align:middle;"> Emmental / Broc</span>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
               <div><div class="tour-price-from">Private group</div><div class="tour-price">On enquiry</div></div>
@@ -2027,8 +2030,8 @@ textarea { resize: vertical; min-height: 120px; }
         <div class="footer-logo">GS Hospitality</div>
         <div class="footer-logo-sub">Est. 2014 · Switzerland</div>
         <p class="footer-tagline">Davos Summit hospitality specialists.</p>
-        <div class="footer-contact-item"><span class="footer-contact-icon">📱</span><a href="https://wa.me/41795489025" style="color:var(--text-muted)" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-        <div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><a href="mailto:hello@gs-hospitality.ch" style="color:var(--text-muted)">hello@gs-hospitality.ch</a></div>
+        <div class="footer-contact-item"><img class="footer-contact-icon" src="/assets/img/site/contact-phone.jpg" alt="Phone" loading="lazy"><a href="https://wa.me/41795489025" style="color:var(--text-muted)" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+        <div class="footer-contact-item"><img class="footer-contact-icon" src="/assets/img/site/contact-email.jpg" alt="Email" loading="lazy"><a href="mailto:hello@gs-hospitality.ch" style="color:var(--text-muted)">hello@gs-hospitality.ch</a></div>
       </div>
       <div><div class="footer-col-title">Davos 2027</div><nav class="footer-links"><a href="./wef-2027.html">Davos Summit Hub</a><a href="./wef-2027.html#packages">Packages</a><a href="./wef-2027.html#arrival">Arrival Guide</a><a href="./wef-2027.html#faq">FAQ</a></nav></div>
       <div><div class="footer-col-title">Services</div><nav class="footer-links"><a href="./services.html">Business Services</a><a href="./accommodations.html">Accommodations</a><a href="./tours.html">Tours</a><a href="./swiss-travel.html">Travel Advisory</a></nav></div>

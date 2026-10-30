@@ -464,7 +464,7 @@ section.section-lg { padding: 80px 0; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
+  overflow: hidden;
   margin-bottom: 20px;
 }
 .card-title {
@@ -1213,7 +1213,7 @@ textarea { resize: vertical; min-height: 120px; }
   border-color: rgba(37,211,102,0.4);
   transform: translateY(-2px);
 }
-.wa-quick-icon { font-size: 1.5rem; }
+.wa-quick-icon { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
 .wa-quick-content { flex: 1; min-width: 0; }
 .wa-quick-title { font-size: 0.875rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
 .wa-quick-text { font-size: 0.775rem; color: var(--text-muted); }
@@ -1280,7 +1280,7 @@ textarea { resize: vertical; min-height: 120px; }
   transition: border-color var(--transition);
 }
 .info-card:hover { border-color: var(--border-hover); }
-.info-icon { font-size: 2rem; margin-bottom: 12px; }
+.info-icon { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
 .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }
 .info-value { font-weight: 600; color: var(--white); font-size: 0.9375rem; }
 .info-sub { font-size: 0.775rem; color: var(--text-muted); margin-top: 4px; }
@@ -1300,7 +1300,7 @@ textarea { resize: vertical; min-height: 120px; }
   color: var(--text-muted);
   font-size: 0.875rem;
 }
-.map-placeholder-icon { font-size: 3rem; }
+.map-placeholder-icon { font-size: 0; width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
 .map-placeholder strong { color: var(--gold); font-size: 1rem; }
 
 /* --- Testimonial Slider --- */
@@ -1792,8 +1792,8 @@ textarea { resize: vertical; min-height: 120px; }
         <div class="footer-logo">GS Hospitality</div>
         <div class="footer-logo-sub">Est. 2014 · Switzerland</div>
         <p class="footer-tagline">Davos Summit hospitality specialists.</p>
-        <div class="footer-contact-item"><span class="footer-contact-icon">📱</span><a href="https://wa.me/41795489025" style="color:var(--text-muted)" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
-        <div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><a href="mailto:hello@gs-hospitality.ch" style="color:var(--text-muted)">hello@gs-hospitality.ch</a></div>
+        <div class="footer-contact-item"><img class="footer-contact-icon" src="/assets/img/site/contact-phone.jpg" alt="Phone" loading="lazy"><a href="https://wa.me/41795489025" style="color:var(--text-muted)" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+        <div class="footer-contact-item"><img class="footer-contact-icon" src="/assets/img/site/contact-email.jpg" alt="Email" loading="lazy"><a href="mailto:hello@gs-hospitality.ch" style="color:var(--text-muted)">hello@gs-hospitality.ch</a></div>
         </div>
       <div><div class="footer-col-title">Davos 2027</div><nav class="footer-links"><a href="./wef-2027.html">Davos Summit Hub</a><a href="./wef-2027.html#packages">Packages</a><a href="./wef-2027.html#arrival">Arrival Guide</a><a href="./wef-2027.html#faq">FAQ</a></nav></div>
       <div><div class="footer-col-title">Services</div><nav class="footer-links"><a href="./services.html">Business Services</a><a href="./accommodations.html">Accommodations</a><a href="./tours.html">Tours</a><a href="./swiss-travel.html">Travel Advisory</a></nav></div>
