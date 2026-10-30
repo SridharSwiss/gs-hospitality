@@ -1,0 +1,15 @@
+node_modules/
+.next/
+lib/
+next-env.d.ts
+next.config.mjs
+package.json
+package-lock.json
+postcss.config.mjs
+tailwind.config.ts
+tsconfig.json
+public/
+assets/img/properties/pdf-extract/
+assets/img/properties/pdf-extract-new/
+assets/img/properties/*-page*.png
+assets/img/properties/*-pdf-1.png
