@@ -1737,48 +1737,113 @@ textarea { resize: vertical; min-height: 120px; }
 
   <!-- ══ FEATURED LISTING ══ -->
   <style>
-    /* Featured cards responsive fixes */
-    .prop-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
+    /* Featured listings — full-width row layout */
+    .prop-listings {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
       max-width: 1060px;
       margin: 0 auto;
     }
-    .prop-card {
-      background: rgba(255,255,255,0.03);
+    .prop-listing {
+      display: grid;
+      grid-template-columns: 420px 1fr;
       border: 1px solid rgba(197,160,89,0.25);
       border-radius: 6px;
       overflow: hidden;
+      background: rgba(255,255,255,0.03);
+    }
+    .prop-listing.featured-prop {
+      border-color: rgba(197,160,89,0.4);
+      box-shadow: 0 0 0 1px rgba(197,160,89,0.1);
+    }
+    /* Image gallery */
+    .prop-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      min-height: 340px;
+      background: #000;
+    }
+    .prop-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .prop-gallery img:hover { transform: scale(1.03); }
+    .prop-gallery .img-main {
+      grid-row: 1 / 3;
+      grid-column: 1;
+    }
+    .prop-gallery .img-2 {
+      grid-row: 1;
+      grid-column: 2;
+    }
+    .prop-gallery .img-3 {
+      grid-row: 2;
+      grid-column: 2;
+    }
+    /* Property details panel */
+    .prop-details {
+      padding: 32px 32px 28px;
       display: flex;
       flex-direction: column;
+      gap: 20px;
     }
-    .prop-card-body {
-      padding: 28px;
+    .prop-details-header { flex: 0 0 auto; }
+    .prop-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(197,160,89,0.15);
+      flex: 0 0 auto;
+    }
+    .prop-stat {
+      padding: 10px 12px;
+      border-right: 1px solid rgba(197,160,89,0.15);
+      border-bottom: 1px solid rgba(197,160,89,0.15);
+    }
+    .prop-stat:nth-child(2n) { border-right: none; }
+    .prop-stat:nth-last-child(-n+2) { border-bottom: none; }
+    .prop-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
-    .prop-card-actions {
+    .prop-features li {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+    }
+    .prop-features li:last-child { border-bottom: none; }
+    .prop-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      flex: 0 0 auto;
     }
     .prop-card-actions a {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 11px 16px;
+      gap: 6px;
+      min-height: 42px;
+      padding: 10px 12px;
       border-radius: 3px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
       box-sizing: border-box;
+      text-align: center;
     }
     .prop-card-actions a.btn-enquire {
       background: var(--gold);
@@ -1796,12 +1861,25 @@ textarea { resize: vertical; min-height: 120px; }
       border: 1px solid rgba(37,211,102,0.3);
       color: #25d366;
     }
-    @media (max-width: 640px) {
-      .prop-cards-grid {
+    @media (max-width: 860px) {
+      .prop-listing {
         grid-template-columns: 1fr;
-        gap: 20px;
       }
-      .prop-card-body { padding: 20px; }
+      .prop-gallery {
+        min-height: 260px;
+        max-height: 280px;
+      }
+    }
+    @media (max-width: 640px) {
+      .prop-gallery {
+        min-height: 220px;
+        max-height: 240px;
+      }
+      .prop-details { padding: 20px; }
+      .prop-card-actions {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
       .prop-card-actions a { min-height: 48px; font-size: 0.8rem; }
       .featured-section-inner { padding: 48px 0 56px !important; }
     }
@@ -1824,51 +1902,55 @@ textarea { resize: vertical; min-height: 120px; }
         Five hand-selected properties for Davos Annual Meeting 2027 — city apartments in Davos Platz, a Promenade apartment, and two alpine chalets in Klosters. Pricing on request; enquire for a tailored proposal.
       </p>
 
-      <!-- Property cards grid -->
-      <div class="prop-cards-grid">
+      <!-- Property listings — one per row with image gallery -->
+      <div class="prop-listings">
 
-        <!-- Card 1: Grünistrasse 2a -->
-        <div class="prop-card">
-          <div style="background:linear-gradient(135deg,#1a1a2e,#0f3460);height:160px;display:flex;align-items:flex-end;padding:20px;position:relative;">
-            <div style="position:absolute;top:14px;left:14px;background:var(--gold);color:#050505;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Available</div>
-            <div>
-              <div style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.8);text-transform:uppercase;margin-bottom:4px;">Apartment · Davos Platz</div>
-              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:#fff;line-height:1.2;">Grünistrasse 2a</div>
-            </div>
+        <!-- Listing 1: Grünistrasse 2a -->
+        <div class="prop-listing reveal">
+          <div class="prop-gallery" style="overflow:hidden;">
+            <img class="img-main" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80&fit=crop" alt="Grünistrasse 2a living room" loading="lazy">
+            <img class="img-2" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80&fit=crop" alt="Grünistrasse 2a bedroom" loading="lazy">
+            <img class="img-3" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop" alt="Davos mountain balcony view" loading="lazy">
           </div>
-          <div class="prop-card-body">
-            <div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(197,160,89,0.15);margin-bottom:20px;">
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
-                </div>
-                <div style="padding:10px 12px;border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
-                </div>
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">1.9km</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Congress</div>
-                </div>
-                <div style="padding:10px 12px;">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2P</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Indoor Parking</div>
-                </div>
+          <div class="prop-details">
+            <div class="prop-details-header">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                <span style="background:var(--gold);color:#050505;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Available</span>
+                <span style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.7);text-transform:uppercase;">Apartment · Davos Platz</span>
               </div>
-              <ul style="list-style:none;padding:0;margin-bottom:24px;">
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Balcony · pool access · 1.5 bathrooms</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Swimming pool · heating · electricity incl.</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Max. 6 nights · 2 double beds</li>
-              </ul>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:#fff;line-height:1.15;margin-bottom:4px;">Grünistrasse 2a</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">2-bedroom apartment with balcony and pool access — 1.9 km to Congress Centre.</div>
+            </div>
+            <div class="prop-stats">
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">1.9km</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Congress</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2P</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Indoor Parking</div>
+              </div>
+            </div>
+            <ul class="prop-features">
+              <li><span style="color:var(--gold);">✦</span>Balcony · pool access · 1.5 bathrooms</li>
+              <li><span style="color:var(--gold);">✦</span>Swimming pool · heating · electricity included</li>
+              <li><span style="color:var(--gold);">✦</span>2 double beds · max 6 nights</li>
+            </ul>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
+              <span style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Nightly Rate</span>
+              <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--white);">On Request</span>
             </div>
             <div class="prop-card-actions">
-              <div style="text-align:center;padding:12px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
-                <div style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;">Rate</div>
-                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">On Request</div>
-              </div>
               <a href="mailto:hello@gs-hospitality.ch?subject=Davos%202027%20Enquiry%20%E2%80%94%20Gr%C3%BCnistrasse%202a&body=Hello%20GS%20Hospitality%2C%0A%0AI%20am%20interested%20in%20the%20Gr%C3%BCnistrasse%202a%20apartment%20for%20Davos%20Summit%202027." class="btn-enquire">✉ Enquire</a>
-              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20Gr%C3%BCnistrasse%202a." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Request Brochure</a>
+              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20Gr%C3%BCnistrasse%202a." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Brochure</a>
               <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20am%20interested%20in%20the%20Gr%C3%BCnistrasse%202a%20apartment%20for%20Davos%20Summit%202027." target="_blank" rel="noopener noreferrer" class="btn-wa">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
@@ -1877,48 +1959,52 @@ textarea { resize: vertical; min-height: 120px; }
           </div>
         </div>
 
-        <!-- Card 2: Talstrasse 19 -->
-        <div class="prop-card" style="border-color:rgba(197,160,89,0.35);box-shadow:0 0 0 1px rgba(197,160,89,0.08);">
-          <div style="background:linear-gradient(135deg,#0d1117,#162436);height:160px;display:flex;align-items:flex-end;padding:20px;position:relative;">
-            <div style="position:absolute;top:14px;left:14px;background:var(--gold);color:#050505;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Closest to Congress</div>
-            <div>
-              <div style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.8);text-transform:uppercase;margin-bottom:4px;">Apartment · Heart of Davos</div>
-              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:#fff;line-height:1.2;">Talstrasse 19</div>
-            </div>
+        <!-- Listing 2: Talstrasse 19 -->
+        <div class="prop-listing featured-prop reveal">
+          <div class="prop-gallery" style="overflow:hidden;">
+            <img class="img-main" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80&fit=crop" alt="Talstrasse 19 modern kitchen" loading="lazy">
+            <img class="img-2" src="https://images.unsplash.com/photo-1540304453527-62f979142a17?w=400&q=80&fit=crop" alt="Talstrasse 19 living room" loading="lazy">
+            <img class="img-3" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80&fit=crop" alt="Talstrasse 19 bedroom" loading="lazy">
           </div>
-          <div class="prop-card-body">
-            <div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(197,160,89,0.15);margin-bottom:20px;">
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
-                </div>
-                <div style="padding:10px 12px;border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">4</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
-                </div>
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">1km</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Congress</div>
-                </div>
-                <div style="padding:10px 12px;">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">P</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Garage</div>
-                </div>
+          <div class="prop-details">
+            <div class="prop-details-header">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                <span style="background:var(--gold);color:#050505;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Closest to Congress</span>
+                <span style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.7);text-transform:uppercase;">Apartment · Heart of Davos</span>
               </div>
-              <ul style="list-style:none;padding:0;margin-bottom:24px;">
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Central location on Talstrasse</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Electricity · heating · bedding incl.</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Max. 7 nights · modern open-plan</li>
-              </ul>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:#fff;line-height:1.15;margin-bottom:4px;">Talstrasse 19</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Modern open-plan apartment on Talstrasse — just 1 km from the Congress Centre with private garage.</div>
+            </div>
+            <div class="prop-stats">
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">4</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">1km</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Congress</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">P</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Garage</div>
+              </div>
+            </div>
+            <ul class="prop-features">
+              <li><span style="color:var(--gold);">✦</span>Central location on Talstrasse</li>
+              <li><span style="color:var(--gold);">✦</span>Electricity · heating · bedding included</li>
+              <li><span style="color:var(--gold);">✦</span>Modern open-plan · max 7 nights</li>
+            </ul>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
+              <span style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Nightly Rate</span>
+              <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--white);">On Request</span>
             </div>
             <div class="prop-card-actions">
-              <div style="text-align:center;padding:12px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
-                <div style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;">Rate</div>
-                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">On Request</div>
-              </div>
               <a href="mailto:hello@gs-hospitality.ch?subject=Davos%202027%20Enquiry%20%E2%80%94%20Talstrasse%2019&body=Hello%20GS%20Hospitality%2C%0A%0AI%20am%20interested%20in%20the%20Talstrasse%2019%20apartment%20for%20Davos%20Summit%202027." class="btn-enquire">✉ Enquire</a>
-              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20Talstrasse%2019." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Request Brochure</a>
+              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20Talstrasse%2019." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Brochure</a>
               <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20am%20interested%20in%20the%20Talstrasse%2019%20apartment%20for%20Davos%20Summit%202027." target="_blank" rel="noopener noreferrer" class="btn-wa">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
@@ -1927,48 +2013,52 @@ textarea { resize: vertical; min-height: 120px; }
           </div>
         </div>
 
-        <!-- Card 3: Chalet Klosters -->
-        <div class="prop-card">
-          <div style="background:linear-gradient(135deg,#1a120a,#3d2510);height:160px;display:flex;align-items:flex-end;padding:20px;position:relative;">
-            <div style="position:absolute;top:14px;left:14px;background:rgba(197,160,89,0.15);border:1px solid rgba(197,160,89,0.4);color:var(--gold);font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Alpine Chalet</div>
-            <div>
-              <div style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.8);text-transform:uppercase;margin-bottom:4px;">Chalet · Klosters Serneus</div>
-              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:#fff;line-height:1.2;">Lehenweg 26</div>
-            </div>
+        <!-- Listing 3: Lehenweg 26 Klosters -->
+        <div class="prop-listing reveal">
+          <div class="prop-gallery" style="overflow:hidden;">
+            <img class="img-main" src="https://images.unsplash.com/photo-1605117882932-f9e32b03fea9?w=700&q=80&fit=crop" alt="Lehenweg 26 chalet living room" loading="lazy">
+            <img class="img-2" src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400&q=80&fit=crop" alt="Lehenweg 26 sauna" loading="lazy">
+            <img class="img-3" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80&fit=crop" alt="Klosters alpine landscape" loading="lazy">
           </div>
-          <div class="prop-card-body">
-            <div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(197,160,89,0.15);margin-bottom:20px;">
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
-                </div>
-                <div style="padding:10px 12px;border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
-                </div>
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">22min</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Congress</div>
-                </div>
-                <div style="padding:10px 12px;">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">S+P</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Sauna + Parking</div>
-                </div>
+          <div class="prop-details">
+            <div class="prop-details-header">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                <span style="background:rgba(197,160,89,0.15);border:1px solid rgba(197,160,89,0.4);color:var(--gold);font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Alpine Chalet</span>
+                <span style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.7);text-transform:uppercase;">Chalet · Klosters Serneus</span>
               </div>
-              <ul style="list-style:none;padding:0;margin-bottom:24px;">
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Sauna · balcony · open fireplace</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Wi-Fi · electricity · heating incl.</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Max. 6 nights · 15min by train</li>
-              </ul>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:#fff;line-height:1.15;margin-bottom:4px;">Lehenweg 26</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Private chalet with sauna and open fireplace in Klosters Serneus — 22 min drive or 15 min by train.</div>
+            </div>
+            <div class="prop-stats">
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">22min</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Congress</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">S+P</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Sauna + Parking</div>
+              </div>
+            </div>
+            <ul class="prop-features">
+              <li><span style="color:var(--gold);">✦</span>Private sauna · balcony · open fireplace</li>
+              <li><span style="color:var(--gold);">✦</span>Wi-Fi · electricity · heating included</li>
+              <li><span style="color:var(--gold);">✦</span>Max 6 nights · 15 min by train to Davos</li>
+            </ul>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
+              <span style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Nightly Rate</span>
+              <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--white);">On Request</span>
             </div>
             <div class="prop-card-actions">
-              <div style="text-align:center;padding:12px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
-                <div style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;">Rate</div>
-                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">On Request</div>
-              </div>
               <a href="mailto:hello@gs-hospitality.ch?subject=Davos%202027%20Enquiry%20%E2%80%94%20Klosters%20Chalet&body=Hello%20GS%20Hospitality%2C%0A%0AI%20am%20interested%20in%20the%20Klosters%20chalet%20for%20Davos%20Summit%202027." class="btn-enquire">✉ Enquire</a>
-              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20the%20Klosters%20Chalet." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Request Brochure</a>
+              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20the%20Klosters%20Chalet." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Brochure</a>
               <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20am%20interested%20in%20the%20Klosters%20chalet%20for%20Davos%20Summit%202027." target="_blank" rel="noopener noreferrer" class="btn-wa">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
@@ -1977,48 +2067,52 @@ textarea { resize: vertical; min-height: 120px; }
           </div>
         </div>
 
-        <!-- Card 4: Davos Summit Apartment -->
-        <div class="prop-card">
-          <div style="background:linear-gradient(135deg,#0e1a10,#1a3020);height:160px;display:flex;align-items:flex-end;padding:20px;position:relative;">
-            <div style="position:absolute;top:14px;left:14px;background:var(--gold);color:#050505;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Near Promenade</div>
-            <div>
-              <div style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.8);text-transform:uppercase;margin-bottom:4px;">3.5-Room Apartment · Davos</div>
-              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:#fff;line-height:1.2;">Davos Summit Apartment</div>
-            </div>
+        <!-- Listing 4: Davos Summit Apartment -->
+        <div class="prop-listing reveal">
+          <div class="prop-gallery" style="overflow:hidden;">
+            <img class="img-main" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80&fit=crop" alt="Davos Summit Apartment living area" loading="lazy">
+            <img class="img-2" src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=400&q=80&fit=crop" alt="Davos Summit Apartment kitchen" loading="lazy">
+            <img class="img-3" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=400&q=80&fit=crop" alt="Davos Summit Apartment bedroom" loading="lazy">
           </div>
-          <div style="padding:28px;flex:1;display:flex;flex-direction:column;justify-content:space-between;">
-            <div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(197,160,89,0.15);margin-bottom:20px;">
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
-                </div>
-                <div style="padding:10px 12px;border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
-                </div>
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2 min</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Promenade</div>
-                </div>
-                <div style="padding:10px 12px;">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">P</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Parking</div>
-                </div>
+          <div class="prop-details">
+            <div class="prop-details-header">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                <span style="background:var(--gold);color:#050505;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Near Promenade</span>
+                <span style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.7);text-transform:uppercase;">3.5-Room Apartment · Davos</span>
               </div>
-              <ul style="list-style:none;padding:0;margin-bottom:24px;">
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Bright 3.5-room · 3rd floor</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Kitchen · bathtub · Wi-Fi &amp; TV</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Non-smoking · relaxed alpine feel</li>
-              </ul>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:#fff;line-height:1.15;margin-bottom:4px;">Davos Summit Apartment</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Bright 3.5-room apartment on the 3rd floor, 2 minutes' walk from Davos Promenade with parking.</div>
+            </div>
+            <div class="prop-stats">
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bedrooms</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2 min</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">to Promenade</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">P</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Parking</div>
+              </div>
+            </div>
+            <ul class="prop-features">
+              <li><span style="color:var(--gold);">✦</span>Bright 3.5-room layout · 3rd floor</li>
+              <li><span style="color:var(--gold);">✦</span>Full kitchen · bathtub · Wi-Fi &amp; TV</li>
+              <li><span style="color:var(--gold);">✦</span>Non-smoking · relaxed alpine atmosphere</li>
+            </ul>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
+              <span style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Nightly Rate</span>
+              <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--white);">On Request</span>
             </div>
             <div class="prop-card-actions">
-              <div style="text-align:center;padding:12px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
-                <div style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;">Rate</div>
-                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">On Request</div>
-              </div>
               <a href="mailto:hello@gs-hospitality.ch?subject=Davos%202027%20Enquiry%20%E2%80%94%20Davos%20Summit%20Apartment&body=Hello%20GS%20Hospitality%2C%0A%0AI%20am%20interested%20in%20the%20Davos%20Summit%20Apartment%20for%20Davos%20Summit%202027." class="btn-enquire">✉ Enquire</a>
-              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20the%20Davos%20Summit%20Apartment." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Request Brochure</a>
+              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20the%20Davos%20Summit%20Apartment." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Brochure</a>
               <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20am%20interested%20in%20the%20Davos%20Summit%20Apartment%20for%20Davos%20Summit%202027." target="_blank" rel="noopener noreferrer" class="btn-wa">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
@@ -2027,48 +2121,52 @@ textarea { resize: vertical; min-height: 120px; }
           </div>
         </div>
 
-        <!-- Card 5: Klosters Haus Chalet -->
-        <div class="prop-card">
-          <div style="background:linear-gradient(135deg,#1a0e0a,#3a1a0a);height:160px;display:flex;align-items:flex-end;padding:20px;position:relative;">
-            <div style="position:absolute;top:14px;left:14px;background:rgba(197,160,89,0.15);border:1px solid rgba(197,160,89,0.4);color:var(--gold);font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Sleeps 6 · Garden</div>
-            <div>
-              <div style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.8);text-transform:uppercase;margin-bottom:4px;">4.5-Room Chalet · Haus Klosters</div>
-              <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:400;color:#fff;line-height:1.2;">Alpine Chalet, Klosters</div>
-            </div>
+        <!-- Listing 5: Alpine Chalet Klosters Haus -->
+        <div class="prop-listing reveal">
+          <div class="prop-gallery" style="overflow:hidden;">
+            <img class="img-main" src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=700&q=80&fit=crop" alt="Alpine Chalet Klosters exterior" loading="lazy">
+            <img class="img-2" src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=400&q=80&fit=crop" alt="Klosters Haus garden" loading="lazy">
+            <img class="img-3" src="https://images.unsplash.com/photo-1571900154564-c4a6d2c91fa4?w=400&q=80&fit=crop" alt="Klosters Haus cosy fireplace" loading="lazy">
           </div>
-          <div style="padding:28px;flex:1;display:flex;flex-direction:column;justify-content:space-between;">
-            <div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(197,160,89,0.15);margin-bottom:20px;">
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">4.5</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Rooms</div>
-                </div>
-                <div style="padding:10px 12px;border-bottom:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">6</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
-                </div>
-                <div style="padding:10px 12px;border-right:1px solid rgba(197,160,89,0.15);">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3P</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Parking spaces</div>
-                </div>
-                <div style="padding:10px 12px;">
-                  <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
-                  <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bathrooms</div>
-                </div>
+          <div class="prop-details">
+            <div class="prop-details-header">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+                <span style="background:rgba(197,160,89,0.15);border:1px solid rgba(197,160,89,0.4);color:var(--gold);font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:2px;">Sleeps 6 · Garden</span>
+                <span style="font-size:0.6rem;letter-spacing:0.18em;color:rgba(197,160,89,0.7);text-transform:uppercase;">4.5-Room Chalet · Klosters</span>
               </div>
-              <ul style="list-style:none;padding:0;margin-bottom:24px;">
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Private back garden · balcony workspace</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Queen room · bunk room · extra bed</li>
-                <li style="font-size:0.8rem;color:var(--text-muted);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--gold);">✦</span>Kitchen · 3 parking · 15min by train</li>
-              </ul>
+              <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:#fff;line-height:1.15;margin-bottom:4px;">Alpine Chalet, Klosters</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Spacious 4.5-room chalet in Klosters village with private back garden, 3 parking spaces and a queen room.</div>
+            </div>
+            <div class="prop-stats">
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">4.5</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Rooms</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">6</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Guests</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">3P</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Parking</div>
+              </div>
+              <div class="prop-stat">
+                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">2</div>
+                <div style="font-size:0.6rem;letter-spacing:0.12em;color:var(--text-muted);text-transform:uppercase;">Bathrooms</div>
+              </div>
+            </div>
+            <ul class="prop-features">
+              <li><span style="color:var(--gold);">✦</span>Private back garden · balcony workspace</li>
+              <li><span style="color:var(--gold);">✦</span>Queen room · bunk room · extra bed</li>
+              <li><span style="color:var(--gold);">✦</span>Full kitchen · 15 min by train to Davos</li>
+            </ul>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
+              <span style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Nightly Rate</span>
+              <span style="font-family:var(--font-display);font-size:1.4rem;color:var(--white);">On Request</span>
             </div>
             <div class="prop-card-actions">
-              <div style="text-align:center;padding:12px;background:rgba(197,160,89,0.06);border:1px solid rgba(197,160,89,0.2);border-radius:4px;">
-                <div style="font-size:0.6rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:2px;">Rate</div>
-                <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);">On Request</div>
-              </div>
               <a href="mailto:hello@gs-hospitality.ch?subject=Davos%202027%20Enquiry%20%E2%80%94%20Klosters%20Haus%20Chalet&body=Hello%20GS%20Hospitality%2C%0A%0AI%20am%20interested%20in%20the%20Klosters%20Haus%20Chalet%20for%20Davos%20Summit%202027." class="btn-enquire">✉ Enquire</a>
-              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20the%20Klosters%20Haus%20Chalet." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Request Brochure</a>
+              <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20would%20like%20to%20receive%20the%20brochure%20for%20the%20Klosters%20Haus%20Chalet." target="_blank" rel="noopener noreferrer" class="btn-brochure">📄 Brochure</a>
               <a href="https://wa.me/41795489025?text=Hello%20GS%20Hospitality%2C%20I%20am%20interested%20in%20the%20Klosters%20Haus%20Chalet%20for%20Davos%20Summit%202027." target="_blank" rel="noopener noreferrer" class="btn-wa">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
@@ -2077,7 +2175,7 @@ textarea { resize: vertical; min-height: 120px; }
           </div>
         </div>
 
-      </div><!-- /property cards grid -->
+      </div><!-- /property listings -->
 
     </div>
   </section>
