@@ -46,3 +46,20 @@ create index if not exists newsletter_email_idx on newsletter_subscribers(email)
 alter table newsletter_subscribers enable row level security;
 create policy "service role access newsletter" on newsletter_subscribers
   for all using (true) with check (true);
+
+-- Email campaigns log
+create table if not exists email_campaigns (
+  id bigserial primary key,
+  subject text not null,
+  preview_text text default '',
+  body_html text not null,
+  campaign_type text not null,
+  audience text not null,
+  status text default 'sent',
+  recipient_count int default 0,
+  sent_at timestamptz default now(),
+  created_at timestamptz default now()
+);
+alter table email_campaigns enable row level security;
+create policy "service role access campaigns" on email_campaigns
+  for all using (true) with check (true);
