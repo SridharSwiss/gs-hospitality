@@ -2178,13 +2178,14 @@ textarea { resize: vertical; min-height: 120px; }
     hamburger.addEventListener('click', () => {
       const isOpen = mobileNav.classList.toggle('open');
       hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
   }
   if (mobileClose && mobileNav) {
     mobileClose.addEventListener('click', () => {
       mobileNav.classList.remove('open');
-      if (hamburger) hamburger.classList.remove('open');
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
       document.body.style.overflow = '';
     });
   }
@@ -2194,7 +2195,7 @@ textarea { resize: vertical; min-height: 120px; }
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('open');
-        if (hamburger) hamburger.classList.remove('open');
+        if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
         document.body.style.overflow = '';
       });
     });
