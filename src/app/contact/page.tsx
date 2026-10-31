@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Contact GS Hospitality — Davos 2027',
-    description: 'hello@gs-hospitality.ch · +41 79 548 90 25 · Typically within 2 hours.',
+    description: 'hello@gs-hospitality.ch · WhatsApp · Typically within 2 hours.',
   },
   alternates: { canonical: 'https://gs-hospitality.ch/contact' },
 };

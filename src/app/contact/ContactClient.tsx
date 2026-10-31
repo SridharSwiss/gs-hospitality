@@ -50,20 +50,25 @@ export default function ContactClient() {
     if (errors[name as keyof FormState]) setErrors(prev => ({ ...prev, [name]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setErrors({});
     setSubmitting(true);
-    // mailto fallback
-    const subject = encodeURIComponent(`[GS Hospitality] ${form.subject} — ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\n\n${form.message}`);
-    setTimeout(() => {
-      window.open(`mailto:${EMAIL}?subject=${subject}&body=${body}`, '_blank');
-      setSubmitting(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('Failed');
       setSubmitted(true);
-    }, 700);
+    } catch {
+      setErrors({ message: 'Something went wrong. Please try emailing us directly.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputBase = "w-full px-4 py-3 rounded-xl text-[var(--text)] placeholder-[rgba(240,237,232,0.25)] focus:outline-none transition-all duration-200 font-sans text-[0.9375rem]";
@@ -119,8 +124,8 @@ export default function ContactClient() {
                 <p className="text-xs font-medium tracking-[0.2em] uppercase mb-3" style={{ color: '#25D366' }}>
                   Fastest Response
                 </p>
-                <h2 className="font-serif text-3xl md:text-5xl font-semibold text-white mb-2">
-                  +41 79 548 90 25
+                <h2 className="font-serif text-3xl md:text-4xl font-semibold text-white mb-2">
+                  Fastest Response Channel
                 </h2>
                 <p className="mb-8 text-base" style={{ color: 'rgba(240,237,232,0.6)' }}>
                   Typically within 2 hours · Mon–Sun 08:00–22:00 CET
@@ -184,9 +189,9 @@ export default function ContactClient() {
                   <h3 className="font-serif text-xl font-semibold text-white mb-3">Enquiry Sent</h3>
                   <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(240,237,232,0.6)' }}>
                     Thank you, {form.name.split(' ')[0]}. We will be in touch within 24 hours.
-                    For urgent matters, WhatsApp us at{' '}
+                    For urgent matters,{' '}
                     <a href={WHATSAPP_URL} style={{ color: '#25D366' }} target="_blank" rel="noopener noreferrer">
-                      +41 79 548 90 25
+                      WhatsApp us
                     </a>.
                   </p>
                   <button
@@ -325,7 +330,7 @@ export default function ContactClient() {
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-widest mb-0.5" style={{ color: 'rgba(240,237,232,0.55)' }}>WhatsApp</p>
-                      <p className="font-semibold text-sm" style={{ color: '#25D366' }}>+41 79 548 90 25</p>
+                      <p className="font-semibold text-sm" style={{ color: '#25D366' }}>Chat with us — fastest response</p>
                     </div>
                   </a>
                   {/* Location */}
