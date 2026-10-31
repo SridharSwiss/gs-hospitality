@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { NAV_LINKS, WHATSAPP_URL, EMAIL, SITE_URL } from '@/lib/constants'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 export default function Footer() {
   return (
@@ -170,8 +171,13 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Newsletter */}
+        <div className="mt-12">
+          <NewsletterSignup variant="footer" />
+        </div>
+
         {/* Divider */}
-        <div className="mt-12 mb-6 h-px" style={{ background: 'var(--border)' }} />
+        <div className="mt-8 mb-6 h-px" style={{ background: 'var(--border)' }} />
 
         {/* Copyright bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: 'var(--text-subtle)' }}>

@@ -10,6 +10,7 @@ import WhyCards from '@/components/WhyCards'
 import ServicesOverview from '@/components/ServicesOverview'
 import CtaSection from '@/components/CtaSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 export const metadata: Metadata = {
   title: 'GS Hospitality — Davos Summit 2027 Hospitality Specialists',
@@ -272,6 +273,9 @@ export default function HomePage() {
 
       {/* 9. Testimonials */}
       <TestimonialsSection />
+
+      {/* 10. Newsletter */}
+      <NewsletterSignup variant="banner" />
     </>
   )
 }

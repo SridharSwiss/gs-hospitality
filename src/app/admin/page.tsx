@@ -47,6 +47,8 @@ export default async function AdminPage({ searchParams }: Props) {
     byCountryRes,
     byDeviceRes,
     enquiriesRes,
+    subscriberCountRes,
+    subscribersRes,
   ] = await Promise.all([
     supabase.from('page_views').select('*', { count: 'exact', head: true }),
     supabase.from('page_views').select('*', { count: 'exact', head: true }).gte('created_at', day7ago),
@@ -54,6 +56,8 @@ export default async function AdminPage({ searchParams }: Props) {
     supabase.from('page_views').select('country').gte('created_at', day30ago),
     supabase.from('page_views').select('device').gte('created_at', day30ago),
     supabase.from('enquiries').select('*').order('created_at', { ascending: false }).limit(20),
+    supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
+    supabase.from('newsletter_subscribers').select('*').order('subscribed_at', { ascending: false }).limit(20),
   ]);
 
   const totalCount = totalViewsRes.count ?? 0;
@@ -77,6 +81,8 @@ export default async function AdminPage({ searchParams }: Props) {
   });
   const totalDevices = Object.values(deviceCount).reduce((a, b) => a + b, 0);
   const enquiries = enquiriesRes.data || [];
+  const subscriberCount = subscriberCountRes.count ?? 0;
+  const subscribers = subscribersRes.data || [];
 
   const card: React.CSSProperties = { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(197,160,89,0.15)', borderRadius: 16, padding: 24 };
   const lbl: React.CSSProperties = { color: 'rgba(240,237,232,0.5)', fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 4 };
@@ -96,6 +102,7 @@ export default async function AdminPage({ searchParams }: Props) {
             { label: 'Total Visits', value: totalCount },
             { label: 'Visits (7 days)', value: week7Count },
             { label: 'Enquiries', value: enquiries.length },
+            { label: 'Subscribers', value: subscriberCount },
             { label: 'Top Country', value: topCountries[0]?.[0] ?? '—' },
           ].map(({ label: l, value }) => (
             <div key={l} style={card}>
@@ -165,6 +172,37 @@ export default async function AdminPage({ searchParams }: Props) {
                       <td style={{ padding: '10px 12px' }}><a href={`mailto:${e.email}`} style={{ color: '#C5A059', textDecoration: 'none' }}>{e.email}</a></td>
                       <td style={{ padding: '10px 12px', color: 'rgba(240,237,232,0.65)' }}>{e.subject}</td>
                       <td style={{ padding: '10px 12px', color: 'rgba(240,237,232,0.55)', maxWidth: 240, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.message}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+
+        {/* Newsletter Subscribers */}
+        <div style={{ ...card, marginTop: 24 }}>
+          <p style={{ ...lbl, marginBottom: 16 }}>Newsletter Subscribers</p>
+          {subscribers.length === 0 && <p style={{ color: 'rgba(240,237,232,0.4)', fontSize: 14 }}>No subscribers yet.</p>}
+          {subscribers.length > 0 && (
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                <thead>
+                  <tr>
+                    {['Date', 'Name', 'Email', 'Company', 'Phone', 'Source'].map((h) => (
+                      <th key={h} style={{ textAlign: 'left', padding: '8px 12px', color: 'rgba(240,237,232,0.45)', fontWeight: 500, borderBottom: '1px solid rgba(255,255,255,0.07)' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {subscribers.map((s: any) => (
+                    <tr key={s.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                      <td style={{ padding: '10px 12px', color: 'rgba(240,237,232,0.5)', whiteSpace: 'nowrap' }}>{new Date(s.subscribed_at).toLocaleDateString()}</td>
+                      <td style={{ padding: '10px 12px', color: '#F0EDE8', fontWeight: 500 }}>{s.name}</td>
+                      <td style={{ padding: '10px 12px' }}><a href={`mailto:${s.email}`} style={{ color: '#C5A059', textDecoration: 'none' }}>{s.email}</a></td>
+                      <td style={{ padding: '10px 12px', color: 'rgba(240,237,232,0.65)' }}>{s.company || '—'}</td>
+                      <td style={{ padding: '10px 12px', color: 'rgba(240,237,232,0.65)' }}>{s.phone || '—'}</td>
+                      <td style={{ padding: '10px 12px', color: 'rgba(240,237,232,0.45)' }}>{s.source}</td>
                     </tr>
                   ))}
                 </tbody>
