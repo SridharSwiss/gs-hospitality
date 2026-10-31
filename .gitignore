@@ -1,14 +1,13 @@
 node_modules/
 .next/
-lib/
+.vercel/
+dist/
+out/
+
+# Next.js generated
 next-env.d.ts
-next.config.mjs
-package.json
-package-lock.json
-postcss.config.mjs
-tailwind.config.ts
-tsconfig.json
-public/
+
+# Large PDF extract artifacts (not source code)
 assets/img/properties/pdf-extract/
 assets/img/properties/pdf-extract-new/
 assets/img/properties/*-page*.png

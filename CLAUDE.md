@@ -1,64 +1,59 @@
 # GS Hospitality Website — gs-hospitality.ch
 
-Static HTML website for GS Hospitality, Davos Summit hospitality specialists.
-
-## ⚠️ ALWAYS USE THIS REPO FOR ALL CHANGES
+## ⚠️ CRITICAL: ALWAYS USE THIS REPO
 
 - **Production repo**: `SridharSwiss/gs-hospitality` → `/home/user/gs-hospitality`
-- **DO NOT commit to `SridharSwiss/Elaichi`** — that is a stale dev repo, no longer used
-- Every push to `main` here auto-deploys to gs-hospitality.ch via Vercel
+- **DO NOT commit to `SridharSwiss/Elaichi`** — stale mirror, no longer used
+- Every push to `main` auto-deploys to gs-hospitality.ch via Vercel
 
-## Site Structure
+---
 
-9 main pages + support files:
-- `index.html` — Homepage
-- `wef-2027.html` — Davos Summit 2027 guide (linked as "Davos 2027" in nav)
-- `accommodations.html` — Luxury chalets, HQ venues, apartments
-- `services.html` — Lounge/AV/events/catering corporate services
-- `swiss-travel.html` — Travel guide (Zurich→Davos, visas, tips)
-- `tours.html` — Swiss tours (Glacier Express, Zermatt, Jungfraujoch)
-- `contact.html` — WhatsApp contact + enquiry form
-- `privacy.html` / `terms.html` — Legal pages
-- `davos-summit-2027.html` — Redirect to wef-2027.html
-- `sitemap.xml` / `robots.txt` — SEO infrastructure
+## Stack
 
-## Key Details
+Next.js 14 App Router + TypeScript + Tailwind CSS + Framer Motion.
 
-- **Domain**: gs-hospitality.ch
-- **WhatsApp**: +41 79 548 90 25 (wa.me/41795489025)
-- **Email**: hello@gs-hospitality.ch
-- **Design**: Dark glass morphism — `--gold: #C5A059`, `--bg: #050505`
-- **Fonts**: Cormorant Garamond (headings) + DM Sans (body) via Google Fonts
-- **CSS/JS**: Fully inlined in each HTML file — no external asset dependencies
-- **Schema.org**: TravelAgency, LodgingBusiness, Event, FAQPage, BreadcrumbList
+- Source: `src/app/` (pages) + `src/components/` (shared)
+- Assets: `public/assets/img/` (images), `public/assets/docs/` (PDFs)
+- Build: `npm run build` | Dev: `npm run dev`
 
-## Available Review Agents
+---
 
-Run these any time pages are updated:
+## Never Change
 
-- **`/seo-review`** — Full SEO audit: titles, meta descriptions, schema, canonical URLs, H1s, robots.txt, sitemap. Auto-fixes Critical and High issues.
-- **`/quality-review`** — Data quality audit: factual accuracy, broken links, text artifacts, consistency. Auto-fixes Critical and High issues.
+| Constant | Value |
+|---|---|
+| WhatsApp | `41795489025` (wa.me/41795489025) |
+| Email | `hello@gs-hospitality.ch` |
+| Domain | `gs-hospitality.ch` |
+| Davos dates | Jan 19–23, 2027 |
+| All pricing | "On Request" only — no CHF amounts |
+| Nav order | Home → Davos 2027 → Accommodations → Services → Swiss Travel → Tours → Contact |
 
-## Featured Properties (accommodations.html)
+No WEF / World Economic Forum / Congress Centre brand names in any public-facing copy.
+No other brand logos or names visible anywhere.
+Disclaimers: only where factually required; no hallucinated regulations.
 
-5 property cards in featured listings section:
-1. **Grünistrasse 2a** — 2BR, 2 guests, 1.9km to Congress, 2 indoor parking
-2. **Talstrasse 19** — 2BR, 4 guests, 1km to Congress (closest), garage
-3. **Lehenweg 26 Klosters** — 3BR chalet, 3 guests, sauna, 22min drive
-4. **Davos Summit Apartment** — 3.5-room, 3 guests, near Promenade, parking
-5. **Alpine Chalet Klosters Haus** — 4.5-room, 6 guests, garden, 3 parking
+---
 
-PDF brochures in `assets/docs/` — NOT publicly downloadable; clients request via WhatsApp.
+## Design System
 
-## Deployment
+Colours: `--gold: #C5A059` | `--gold-light: #D4B870` | `--bg: #050508`
+Fonts: Playfair Display (headings) + Inter (body)
+Glass: `backdrop-filter: blur(20px)` + `rgba(255,255,255,0.04)` surface
 
-Push to `main` branch → Vercel auto-deploys to gs-hospitality.ch
+Hero overlay pattern: `linear-gradient(rgba(5,5,5,0.65), rgba(5,5,5,0.65))` layered over image.
+Section overlay: `rgba(5,5,5,0.92)` minimum for readability.
 
-## Do Not Change
+---
 
-- WhatsApp number: 41795489025
-- Domain: gs-hospitality.ch
-- Email: hello@gs-hospitality.ch
-- Nav order: Home → Davos 2027 → Accommodations → Services → Swiss Travel → Tours → Contact
-- Davos Annual Meeting dates: Jan 19–23, 2027
-- All pricing: "On Request" only — no specific CHF amounts
+## SEO / Schema
+
+Every page exports `metadata` (Next.js API) + JSON-LD structured data.
+Types: TravelAgency, LodgingBusiness, Event, FAQPage, BreadcrumbList.
+
+---
+
+## Review Agents
+
+- `/seo-review` — full SEO audit, auto-fixes Critical/High
+- `/quality-review` — data quality audit, auto-fixes Critical/High

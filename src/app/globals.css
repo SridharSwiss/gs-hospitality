@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────────────────── */
+:root {
+  /* Gold palette */
+  --gold:           #C5A059;
+  --gold-light:     #D4B870;
+  --gold-dark:      #A8893D;
+  --gold-muted:     rgba(197, 160, 89, 0.12);
+
+  /* Backgrounds */
+  --bg:             #050508;
+  --surface:        rgba(255, 255, 255, 0.04);
+  --surface-elevated: rgba(255, 255, 255, 0.07);
+
+  /* Borders */
+  --border:         rgba(255, 255, 255, 0.08);
+  --border-gold:    rgba(197, 160, 89, 0.25);
+
+  /* Text */
+  --text:           #F0EDE8;
+  --text-muted:     rgba(240, 237, 232, 0.55);
+  --text-subtle:    rgba(240, 237, 232, 0.35);
+
+  /* Shadows */
+  --shadow-gold:    0 0 40px rgba(197, 160, 89, 0.18);
+  --shadow-card:    0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Base Reset & Body ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Typography Defaults ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(197, 160, 89, 0.35);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background-color: rgba(197, 160, 89, 0.35);
+  color: var(--text);
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) var(--bg);
+}
+
+/* ─── Utility Classes ───────────────────────────────────────────────── */
+
+/* Glass card — the core surface pattern */
+.glass-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.glass-card-elevated {
+  background: var(--surface-elevated);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+}
+
+/* Gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gold label / caption style */
+.gold-label {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* ─── Section Overlay (bg-image sections) ───────────────────────────── */
+.section-overlay {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.92);
+  z-index: -1;
+}
+
+/* ─── Hero Pattern ──────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Dark overlay above the image */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.65));
+  z-index: 1;
+}
+
+/* Gold radial accent from bottom */
+.hero-section .hero-gold-accent {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(197, 160, 89, 0.12), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Fade to --bg at the bottom */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(transparent, var(--bg));
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Hero content sits above overlays */
+.hero-content {
+  position: relative;
+  z-index: 4;
+}
+
+/* ─── Button Utilities ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  color: #050508;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 32px rgba(197, 160, 89, 0.45);
+  color: #050508;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--surface-elevated);
+  border-color: var(--gold);
+  transform: scale(1.02);
+  color: var(--gold-light);
+}
+
+/* ─── Gold Divider ──────────────────────────────────────────────────── */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+/* ─── Focus Styles ──────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Image Defaults ────────────────────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Section Spacing ───────────────────────────────────────────────── */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
