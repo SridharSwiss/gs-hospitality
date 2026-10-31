@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/api/',
+        disallow: ['/api/', '/admin'],
       },
       // Explicit allow for AI/LLM search bots (GEO optimization)
       { userAgent: 'GPTBot', allow: '/' },

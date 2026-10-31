@@ -43,6 +43,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
     }
 
+    // Store enquiry in Supabase (fire-and-forget)
+    const sbUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const sbKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (sbUrl && sbKey) {
+      fetch(`${sbUrl}/rest/v1/enquiries`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: sbKey,
+          Authorization: `Bearer ${sbKey}`,
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({ name, company, email, phone: phone || null, subject, message }),
+      }).catch(() => {});
+    }
+
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error('Contact route error:', err);
