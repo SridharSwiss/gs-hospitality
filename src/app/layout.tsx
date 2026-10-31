@@ -21,28 +21,68 @@ const inter = Inter({
 
 /* ─── Metadata ───────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  title: 'GS Hospitality — Davos Summit 2027 | gs-hospitality.ch',
+  title: {
+    default: 'GS Hospitality — Davos 2027 Luxury Hospitality | gs-hospitality.ch',
+    template: '%s | GS Hospitality',
+  },
   description:
-    'Luxury hospitality specialists for the Davos Annual Meeting. Private chalets, corporate suites, and bespoke concierge services in Davos, January 19–23 2027. Contact us at hello@gs-hospitality.ch.',
+    'Luxury hospitality specialists for the Davos Annual Meeting 2027 (Jan 19–23). Private chalets, corporate suites, VIP concierge, private transfers, and curated Swiss tours. Contact hello@gs-hospitality.ch.',
   metadataBase: new URL('https://gs-hospitality.ch'),
+  keywords: [
+    'Davos 2027 accommodation',
+    'Davos Annual Meeting hospitality',
+    'luxury chalets Davos',
+    'Davos corporate suites',
+    'Switzerland VIP concierge',
+    'Davos private transfer',
+    'Davos luxury rental',
+    'Swiss Alps hospitality',
+    'Davos 2027 lodging',
+    'GS Hospitality',
+  ],
+  alternates: {
+    canonical: 'https://gs-hospitality.ch',
+  },
   openGraph: {
-    title: 'GS Hospitality — Davos Summit 2027',
+    title: 'GS Hospitality — Davos 2027 Luxury Hospitality',
     description:
-      'Private chalets, corporate suites, and bespoke concierge services for the Davos Annual Meeting 2027.',
+      'Private chalets, corporate suites, VIP concierge, and curated Swiss experiences for the Davos Annual Meeting 2027.',
     url: 'https://gs-hospitality.ch',
     siteName: 'GS Hospitality',
-    locale: 'en_US',
+    locale: 'en_GB',
     type: 'website',
+    images: [
+      {
+        url: 'https://gs-hospitality.ch/assets/img/heroes/davos-hero.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'GS Hospitality — Luxury Davos Accommodation for the Annual Meeting 2027',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GS Hospitality — Davos Summit 2027',
+    title: 'GS Hospitality — Davos 2027 Luxury Hospitality',
     description:
-      'Luxury Davos hospitality specialists. Private chalets & concierge services for the Annual Meeting.',
+      'Private chalets, VIP concierge & curated Swiss experiences for the Davos Annual Meeting. hello@gs-hospitality.ch',
+    images: ['https://gs-hospitality.ch/assets/img/heroes/davos-hero.jpg'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: '',
+    other: {
+      'msvalidate.01': '',
+    },
   },
 }
 
@@ -52,10 +92,24 @@ const jsonLd = {
   '@type': 'TravelAgency',
   name: 'GS Hospitality',
   url: 'https://gs-hospitality.ch',
-  telephone: '+41795489025',
   email: 'hello@gs-hospitality.ch',
   description:
-    'Luxury Davos Summit hospitality specialists — private chalets, corporate suites, and concierge services for the Annual Meeting.',
+    'Luxury Davos Annual Meeting hospitality specialists — private chalets, corporate suites, VIP concierge, private transfers, and curated Swiss tours.',
+  priceRange: 'On Request',
+  areaServed: [
+    { '@type': 'City', name: 'Davos', containedInPlace: { '@type': 'Country', name: 'Switzerland' } },
+  ],
+  sameAs: [],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Davos 2027 Hospitality Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Premium Accommodation', description: 'Vetted private chalets and corporate suites in Davos' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Private Transfers', description: 'Dedicated vehicles with professional drivers for airport and intercity travel' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Curated Swiss Tours', description: 'Glacier Express, Zermatt, Jungfraujoch, Lake Geneva and bespoke Alpine itineraries' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'VIP Concierge', description: 'End-to-end logistics, restaurant reservations, and personal assistance throughout your stay' } },
+    ],
+  },
 }
 
 /* ─── Root Layout ────────────────────────────────────────────────────── */

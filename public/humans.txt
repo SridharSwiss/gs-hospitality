@@ -1,0 +1,10 @@
+/* TEAM */
+Name: GS Hospitality
+Contact: hello@gs-hospitality.ch
+Location: Davos, Switzerland
+
+/* SITE */
+Last update: 2026
+Standards: HTML5, CSS3, WAI-ARIA
+Built with: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
+Hosted on: Vercel
